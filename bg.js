@@ -12,15 +12,15 @@ var points;
 
 function onLoad() {
 	var svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
-	svg.setAttribute('width', window.innerWidth);
-	svg.setAttribute('height', window.innerHeight);
+	svg.setAttribute('width', screen.availWidth);
+	svg.setAttribute('height', screen.availHeight);
 	document.querySelector('#bg').appendChild(svg);
 
-	var unitSize = (window.innerWidth + window.innerHeight) / 20;
-	numPointsX = Math.ceil(window.innerWidth / unitSize) + 1;
-	numPointsY = Math.ceil(window.innerHeight / unitSize) + 1;
-	unitWidth = Math.ceil(window.innerWidth / (numPointsX - 1));
-	unitHeight = Math.ceil(window.innerHeight / (numPointsY - 1));
+	var unitSize = (screen.availWidth + screen.availHeight) / 20;
+	numPointsX = Math.ceil(screen.availWidth / unitSize) + 1;
+	numPointsY = Math.ceil(screen.availHeight / unitSize) + 1;
+	unitWidth = Math.ceil(screen.availWidth / (numPointsX - 1));
+	unitHeight = Math.ceil(screen.availHeight / (numPointsY - 1));
 
 	points = [];
 
