@@ -1,12 +1,13 @@
 {
-	"[css]": {
-		"editor.formatOnPaste": true,
-		"editor.formatOnSave": true,
-		"editor.formatOnType": true
-	},
-	"[javascript]": {
-		"editor.formatOnPaste": true,
-		"editor.formatOnSave": true,
-		"editor.formatOnType": true
-	}
+  "css.lint.unknownAtRules": "ignore",
+
+  "editor.formatOnPaste": true,
+  "editor.formatOnSave": true,
+  "editor.formatOnType": true,
+
+  "[html]": {
+    "editor.formatOnPaste": false,
+    "editor.formatOnSave": false,
+    "editor.formatOnType": false
+  }
 }
