@@ -35,9 +35,12 @@
     ]
   },
   "devDependencies": {
+    "@types/prettier": "^1.19.0",
+    "@types/react-grid-layout": "^0.16.7",
     "husky": "^3.1.0",
     "lint-staged": "^9.4.3",
-    "prettier": "^1.19.1"
+    "prettier": "^1.19.1",
+    "typesync": "^0.6.1"
   },
   "husky": {
     "hooks": {
