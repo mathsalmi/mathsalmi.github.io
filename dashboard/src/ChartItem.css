@@ -1,0 +1,19 @@
+.chart-item {
+  background: rgba(47, 53, 69, 1);
+}
+
+.custom_handle {
+  border-left: 2px solid rgba(47, 53, 69, 1);
+  padding: 5px;
+  margin-left: -1px;
+  background: rgba(142, 145, 151, 1);
+  cursor: move;
+}
+
+.is_dragging iframe {
+  pointer-events: none;
+}
+
+.react-resizable-handle {
+  background-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2IDYiIHg9IjBweCIgeT0iMHB4IiB3aWR0aD0iNnB4IiBoZWlnaHQ9IjZweCI+PHBhdGggZD0iTSA2IDYgTCAwIDYgTCAwIDQuMiBMIDQgNC4yIEwgNC4yIDQuMiBMIDQuMiAwIEwgNiAwIEwgNiA2IEwgNiA2IFoiIGZpbGw9IiNmZmZmZmYiLz48L3N2Zz4=") !important;
+}
