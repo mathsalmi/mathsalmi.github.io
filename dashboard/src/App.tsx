@@ -16,12 +16,8 @@ const App: React.FC = () => {
     { symbol: "BITSTAMP:BTCUSD" },
     { symbol: "MERCADO:XRPBRL" },
     { symbol: "MERCADO:ETHBRL" },
-    { symbol: "MERCADO:ETHBRL" },
-    { symbol: "MERCADO:ETHBRL" },
-    { symbol: "MERCADO:ETHBRL" },
-    { symbol: "MERCADO:ETHBRL" },
-    { symbol: "MERCADO:ETHBRL" },
-    { symbol: "MERCADO:ETHBRL" }
+    { symbol: "MERCADO:BCHBRL" },
+    { symbol: "MERCADO:LTCBRL" }
   ];
 
   const currentLayout = (index: number) => {
