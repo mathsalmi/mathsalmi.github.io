@@ -1,8 +1,84 @@
 import React, { useState } from "react";
-import GridLayout from "react-grid-layout";
-import ChartItem from "./ChartItem";
+import { Responsive, WidthProvider } from "react-grid-layout";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import ChartItem from "./ChartItem";
 import "./ChartItem.css";
+
+const ResponsiveGridLayout = WidthProvider(Responsive);
+
+const Charts = [
+  { symbol: "MERCADO:BTCBRL" },
+  { symbol: "BITSTAMP:BTCUSD" },
+  { symbol: "MERCADO:XRPBRL" },
+  { symbol: "MERCADO:ETHBRL" },
+  { symbol: "MERCADO:BCHBRL" },
+  { symbol: "MERCADO:LTCBRL" }
+];
+
+const Sizes = ["lg", "md", "sm", "xs", "xxs"] as const;
+
+type Size = typeof Sizes[number];
+
+type ConfigItem = {
+  itemsPerRow: number;
+  cols: number;
+  breakpoint: number;
+  height: number;
+};
+
+const ItemsConfig: { [key in Size]: ConfigItem } = {
+  lg: {
+    itemsPerRow: 3,
+    cols: 12,
+    breakpoint: 1200,
+    height: 4
+  },
+  md: {
+    itemsPerRow: 2,
+    cols: 12,
+    breakpoint: 996,
+    height: 4
+  },
+  sm: {
+    itemsPerRow: 2,
+    cols: 12,
+    breakpoint: 768,
+    height: 4
+  },
+  xs: {
+    itemsPerRow: 1,
+    cols: 12,
+    breakpoint: 480,
+    height: 4
+  },
+  xxs: {
+    itemsPerRow: 1,
+    cols: 12,
+    breakpoint: 0,
+    height: 4
+  }
+};
+
+const makeRowLayout = (index: number, size: Size) => {
+  const { cols, height, itemsPerRow } = ItemsConfig[size];
+
+  const width = cols / itemsPerRow;
+
+  const currentX = (index % itemsPerRow) * width;
+  const currentY = Math.floor((index * width) / itemsPerRow) * height;
+
+  return {
+    i: "" + index,
+    x: currentX,
+    y: currentY,
+    w: width,
+    h: height
+  };
+};
+
+const makeCompleteLayoutPerSize = (size: Size) => {
+  return Charts.map((_, index) => makeRowLayout(index, size));
+};
 
 const App: React.FC = () => {
   const [isDragging, setIsDragging] = useState(false);
@@ -11,39 +87,19 @@ const App: React.FC = () => {
     return isDragging ? "is_dragging" : "";
   };
 
-  const charts = [
-    { symbol: "MERCADO:BTCBRL" },
-    { symbol: "BITSTAMP:BTCUSD" },
-    { symbol: "MERCADO:XRPBRL" },
-    { symbol: "MERCADO:ETHBRL" },
-    { symbol: "MERCADO:BCHBRL" },
-    { symbol: "MERCADO:LTCBRL" }
-  ];
-
-  const currentLayout = (index: number) => {
-    const gridWidth = 12;
-    const maxElementsPerRow = 2;
-
-    const width = gridWidth / maxElementsPerRow;
-    const height = 4;
-
-    const currentX = (index % maxElementsPerRow) * width;
-    const currentY = Math.floor((index * width) / maxElementsPerRow) * height;
-
-    return {
-      i: "" + index,
-      x: currentX,
-      y: currentY,
-      w: width,
-      h: height
-    };
+  const sizeMap = (callback: (size: Size) => any) => {
+    return Sizes.reduce(
+      (prev, curr) => ({ ...prev, [curr]: callback(curr) }),
+      {}
+    );
   };
 
   return (
-    <GridLayout
-      cols={12}
+    <ResponsiveGridLayout
+      layouts={sizeMap(size => makeCompleteLayoutPerSize(size))}
+      breakpoints={sizeMap(size => ItemsConfig[size].breakpoint)}
+      cols={sizeMap(size => ItemsConfig[size].cols)}
       rowHeight={80}
-      width={1200}
       draggableHandle=".custom_handle"
       className={getWrapperClass()}
       onDragStart={() => setIsDragging(true)}
@@ -53,15 +109,15 @@ const App: React.FC = () => {
       margin={[0, 30]}
       containerPadding={[0, 0]}
     >
-      {charts.map((chart, index) => (
-        <div key={index} data-grid={currentLayout(index)}>
+      {Charts.map((chart, index) => (
+        <div key={index}>
           <ChartItem symbol={chart.symbol} />
           <div className="custom_handle">
             <FontAwesomeIcon icon="grip-vertical" />
           </div>
         </div>
       ))}
-    </GridLayout>
+    </ResponsiveGridLayout>
   );
 };
 
