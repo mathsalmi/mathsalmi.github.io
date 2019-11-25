@@ -1,7 +1,7 @@
 {
   "name": "dashboard",
   "version": "0.1.0",
-  "homepage": "https://msalmi.com/dashboard",
+  "homepage": "https://msalmi.com/stocks",
   "private": true,
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.25",
@@ -20,7 +20,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts build",
+    "build": "rm -rf build && rm -rf ../stocks && react-scripts build && mv build ../stocks",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
