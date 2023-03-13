@@ -3,7 +3,6 @@
   margin: 0;
   padding: 0;
   z-index: 100;
-  font-display: block;
 }
 
 a {
@@ -22,6 +21,10 @@ body {
   flex-direction: column;
   justify-content: center;
   text-align: center;
+}
+
+.hidden {
+  display: none;
 }
 
 #bg {
