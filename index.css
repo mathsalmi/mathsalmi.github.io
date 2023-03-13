@@ -32,10 +32,12 @@ body {
   left: 0;
   z-index: 1;
   overflow: hidden !important;
+  filter: blur(5px);
 }
 
 .profile-picture :is(img, source) {
   border-radius: 50%;
+  border: 1px solid rgba(0, 0, 0, 0.034);
 }
 
 .name {
