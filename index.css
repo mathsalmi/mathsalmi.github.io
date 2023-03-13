@@ -1,90 +1,102 @@
 * {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-    z-index: 100;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  z-index: 100;
+  font-display: block;
 }
 
 a {
-    color: inherit;
+  color: inherit;
 }
 
 html,
 body {
-    width: 100%;
-    height: 100%;
-    font-size: 10px;
-    font-family: 'Open Sans', sans-serif;
-    background: rgba(30, 30, 30, 1);
-    color: rgba(255, 255, 255, 0.8);
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    text-align: center;
+  width: 100%;
+  height: 100%;
+  font-size: 10px;
+  font-family: "Open Sans", sans-serif;
+  background: rgba(30, 30, 30, 1);
+  color: rgba(255, 255, 255, 0.8);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
 }
 
 #bg {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    top: 0;
-    left: 0;
-    z-index: 1;
-    overflow: hidden !important;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  overflow: hidden !important;
 }
 
-.profile-image {
-    border-radius: 50%;
-    width: 24rem;
+.profile-picture :is(img, source) {
+  border-radius: 50%;
 }
 
 .name {
-    font-size: 8rem;
+  font-size: 8rem;
 }
 
 ul {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    list-style: none;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  list-style: none;
 }
 
 li {
-    font-size: 4rem;
-    margin-left: 1.8rem;
-    color: rgba(255, 255, 255, 0.8);
+  font-size: 4rem;
+  margin-left: 1.8rem;
 }
 
 li:first-child {
-    margin-left: 0;
+  margin-left: 0;
 }
 
-.github:hover {
-    color: rgba(255, 255, 255, 0.30);
+li svg {
+  width: 40px;
+  height: 40px;
+  fill: rgba(255, 255, 255, 0.8);
 }
 
-.twitter:hover {
-    color: rgba(85, 172, 238, 1);
+.github:hover svg {
+  fill: rgba(255, 255, 255, 0.3);
 }
 
-.linkedin:hover {
-    color: rgba(0, 123, 181, 1);
+.linkedin:hover svg {
+  fill: rgba(0, 123, 181, 1);
 }
 
-.email:hover {
-    color: rgb(221, 93, 78);
+.twitter svg {
+  transform: translateY(4px);
+}
+
+.twitter:hover svg {
+  fill: rgba(85, 172, 238, 1);
+}
+
+.email svg {
+  transform: translateY(5px);
+}
+.email:hover svg {
+  fill: rgb(221, 93, 78);
 }
 
 @media (max-width: 768px) {
-    html,
-    body {
-        font-size: 6px;
-    }
-    ul {
-        margin-top: 2rem;
-    }
-    li {
-        font-size: 6rem;
-        margin-left: 4rem;
-    }
+  html,
+  body {
+    font-size: 6px;
+  }
+  ul {
+    margin-top: 2rem;
+  }
+  li {
+    font-size: 6rem;
+    margin-left: 4rem;
+  }
 }
