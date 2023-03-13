@@ -129,4 +129,3 @@ function onResize() {
 }
 
 window.onload = onLoad;
-window.onresize = onResize;
