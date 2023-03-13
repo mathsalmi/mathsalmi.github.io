@@ -15,7 +15,7 @@ body {
   width: 100%;
   height: 100%;
   font-size: 10px;
-  font-family: "Open Sans", sans-serif;
+  font-family: sans-serif;
   background: rgba(30, 30, 30, 1);
   color: rgba(255, 255, 255, 0.8);
   display: flex;
@@ -39,7 +39,12 @@ body {
 }
 
 .name {
-  font-size: 8rem;
+  height: 109px;
+}
+
+.name svg {
+  fill: white;
+  max-width: 550px;
 }
 
 ul {
@@ -93,10 +98,14 @@ li svg {
     font-size: 6px;
   }
   ul {
-    margin-top: 2rem;
+    margin-top: 5rem;
   }
   li {
     font-size: 6rem;
     margin-left: 4rem;
+  }
+  .name {
+    margin-top: 2rem;
+    max-height: 8rem;
   }
 }
