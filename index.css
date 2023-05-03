@@ -43,13 +43,43 @@ body {
   border: 1px solid rgba(0, 0, 0, 0.034);
 }
 
+hgroup {
+  max-width: 52rem;
+  margin: 0 auto;
+}
+
 .name {
   height: 10rem;
 }
 
 .name svg {
   fill: white;
-  max-width: 52rem;
+}
+
+.title {
+  font-size: 2rem;
+  font-weight: lighter;
+  position: relative;
+  margin: 1rem 0;
+}
+
+.title::before, .title::after {
+  content: ' ';
+  
+  display: block;
+  width: 32%;
+
+  position: absolute;
+  top: 1.2rem;
+  z-index: -1;
+  
+  border-bottom: 1px solid rgba(255, 255, 255, 0.8);
+}
+.title::before {
+  left: 0;
+}
+.title::after {
+  right: 0;
 }
 
 ul {
@@ -112,10 +142,10 @@ li svg {
     width: 5rem;
     height: 5rem;
   }
+  hgroup {
+    max-width: 48rem;
+  }
   .name {
     margin-top: 2rem;
-  }
-  .name svg {
-    max-width: 48rem;
   }
 }
