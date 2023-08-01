@@ -113,11 +113,11 @@ li svg {
 }
 
 .twitter svg {
-  transform: translateY(4px);
+  transform: translate(2px, 5px)
 }
 
 .twitter:hover svg {
-  fill: rgba(85, 172, 238, 1);
+  fill: white;
 }
 
 .email svg {
@@ -147,5 +147,12 @@ li svg {
   }
   .name {
     margin-top: 2rem;
+  }
+  .title {
+    font-size: 3rem;
+  }
+  .title::before, .title::after {
+    width: 22%;
+    top: 1.8rem;
   }
 }
