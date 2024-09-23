@@ -128,6 +128,15 @@ li svg {
   fill: rgb(221, 93, 78);
 }
 
+.px500 svg {
+  transform: scale(1.8) translate(5px, 0);
+  max-height: 24px;
+}
+
+.px500:hover svg {
+  fill: rgb(41, 134, 247);
+}
+
 @media (max-width: 768px) {
   html,
   body {
@@ -155,5 +164,8 @@ li svg {
   .title::before, .title::after {
     width: 22%;
     top: 1.8rem;
+  }
+  .px500 svg {
+    transform: scale(1.8) translate(5px, 5px);
   }
 }
