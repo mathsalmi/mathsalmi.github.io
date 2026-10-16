@@ -30,7 +30,7 @@
 	--fg: var(--ink);
 	--mut: var(--slate);
 	--line: var(--sand);
-	--focus: var(--stone);
+	--focus: var(--slate);
 	--btn-bg: var(--sand);
 	--btn-fg: var(--ink);
 	--photo: var(--sand);
@@ -45,7 +45,7 @@
 	--fg: var(--sand);
 	--mut: var(--stone);
 	--line: var(--dusk);
-	--focus: var(--slate);
+	--focus: var(--stone);
 	--btn-bg: var(--dusk);
 	--btn-fg: var(--sand);
 	--photo: var(--dusk);
@@ -60,7 +60,7 @@
 		--fg: var(--sand);
 		--mut: var(--stone);
 		--line: var(--dusk);
-		--focus: var(--slate);
+		--focus: var(--stone);
 		--btn-bg: var(--dusk);
 		--btn-fg: var(--sand);
 		--photo: var(--dusk);
