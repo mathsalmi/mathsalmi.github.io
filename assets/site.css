@@ -34,6 +34,8 @@
 	--btn-bg: var(--sand);
 	--btn-fg: var(--ink);
 	--photo: var(--sand);
+	--sel-bg: var(--acc);
+	--sel-fg: var(--paper);
 	color-scheme: light;
 }
 
@@ -47,6 +49,8 @@
 	--btn-bg: var(--dusk);
 	--btn-fg: var(--sand);
 	--photo: var(--dusk);
+	--sel-bg: var(--sand);
+	--sel-fg: var(--ink);
 	color-scheme: dark;
 }
 
@@ -60,6 +64,8 @@
 		--btn-bg: var(--dusk);
 		--btn-fg: var(--sand);
 		--photo: var(--dusk);
+		--sel-bg: var(--sand);
+		--sel-fg: var(--ink);
 		color-scheme: dark;
 	}
 }
@@ -77,6 +83,11 @@ html, body {
 body {
 	font-family: 'Instrument Sans', system-ui, sans-serif;
 	transition: background .35s ease, color .35s ease;
+}
+
+::selection {
+	background: var(--sel-bg);
+	color: var(--sel-fg);
 }
 
 a {
