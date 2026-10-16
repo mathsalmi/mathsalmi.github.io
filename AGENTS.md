@@ -48,7 +48,7 @@ The same facts are repeated across many files. When one changes, update **all** 
 
 ### Colors and fonts
 - Palette lives in `assets/site.css` `:root`. Hex values are also hard-coded in: `meta theme-color` (`index.html`, `404.html`), `assets/site.js` (theme-color update), `favicon.svg`, `assets/logo.svg` (fallbacks), `favicon-32.png`, `apple-touch-icon.png`, `og.png`.
-- The Google Fonts `<link>` must be identical in `index.html` and `404.html`.
+- Fonts are self-hosted in `assets/fonts/` (`@font-face` in `assets/site.css`). The font `preload` links must be identical in `index.html` and `404.html`.
 
 ## Conventions
 
@@ -57,7 +57,7 @@ The same facts are repeated across many files. When one changes, update **all** 
 - **Keep JavaScript to a minimum.** Do not add new JS; prefer HTML/CSS. `assets/site.js` is an ES module (`<script type="module">`) using modern syntax, and the site must stay fully usable without it.
 - Theme: CSS follows `prefers-color-scheme`; the toggle only sets `data-theme` for the current page view (nothing is persisted).
 - Photo: Gravatar only, `alt=""` (decorative). No local fallback.
-- Third parties are limited to Google Fonts and Gravatar. Do not add others.
+- The only third party is Gravatar. Do not add others (fonts are self-hosted on purpose).
 
 ## Accessibility
 

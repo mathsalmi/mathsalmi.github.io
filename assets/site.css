@@ -1,5 +1,23 @@
 /* msalmi.com — 7-color mirrored palette
    paper #F5F4F0 · sand #DCD7CE · stone #9A948A · slate #5C5752 · dusk #34302B · ink #1E1C1A · accent #C2410C */
+/* Self-hosted variable fonts, Latin subset (from Google Fonts, SIL Open Font License) */
+/* optional + preload: no font swap after first paint, so no layout shift */
+@font-face {
+	font-family: 'Instrument Sans';
+	font-style: normal;
+	font-weight: 400 600;
+	font-display: optional;
+	src: url(/assets/fonts/instrument-sans-latin.woff2) format('woff2');
+}
+
+@font-face {
+	font-family: 'JetBrains Mono';
+	font-style: normal;
+	font-weight: 400 700;
+	font-display: optional;
+	src: url(/assets/fonts/jetbrains-mono-latin.woff2) format('woff2');
+}
+
 :root {
 	--paper: #F5F4F0;
 	--sand: #DCD7CE;
