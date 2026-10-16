@@ -1,0 +1,4 @@
+Contact: mailto:mathsalmi@gmail.com
+Expires: 2027-10-16T00:00:00.000Z
+Preferred-Languages: en, pt
+Canonical: https://msalmi.com/.well-known/security.txt

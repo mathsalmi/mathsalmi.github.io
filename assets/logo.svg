@@ -1,0 +1,167 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -940 3105 980" role="img" aria-label="ms.">
+	<!-- msalmi.com logo: "msalmi" collapses into "ms.", Jost 600 outlines (no font needed).
+	     Plays once on load. Inline in HTML: also replays on hover/click and follows the page's fg color variable.
+	     As <img>: plays once, colors follow the OS light/dark preference. -->
+	<style>
+		.ms-ink { fill: var(--fg, #1E1C1A); }
+		.ms-acc { fill: var(--acc, #C2410C); }
+		@media (prefers-color-scheme: dark) {
+			.ms-ink { fill: var(--fg, #DCD7CE); }
+		}
+
+		.ms-anim {
+			animation-duration: 1.2s;
+			animation-delay: .7s;
+			animation-fill-mode: both;
+			animation-timing-function: linear;
+		}
+
+		/* Tail "almi": a window that closes from the right */
+		.ms-cut {
+			transform-box: fill-box;
+			transform-origin: 0 50%;
+			animation-name: ms-cut;
+		}
+
+		/* The font's own i-dot hands off to the round dot */
+		.ms-gdot { animation-name: ms-gdot; }
+		.ms-dot { opacity: 0; animation-name: ms-dot; }
+
+		.ms-dx { animation-name: ms-x; }
+		.ms-dy { animation-name: ms-y; }
+		.ms-sq {
+			transform-box: fill-box;
+			transform-origin: 50% 100%;
+			animation-name: ms-sq;
+		}
+
+		@keyframes ms-cut {
+			0%, 7.5% { transform: scaleX(1); animation-timing-function: cubic-bezier(.42, 0, 1, 1); }
+			100% { transform: scaleX(0); }
+		}
+		@keyframes ms-gdot {
+			0%, 7.4% { opacity: 1; }
+			7.5%, 100% { opacity: 0; }
+		}
+		@keyframes ms-dot {
+			0%, 7.4% { opacity: 0; }
+			7.5%, 100% { opacity: 1; }
+		}
+		@keyframes ms-x {
+		0% { transform: translateX(0px); }
+		7.5% { transform: translateX(0px); }
+		36.4% { transform: translateX(-337.5px); }
+		68% { transform: translateX(-1201.5px); }
+		94% { transform: translateX(-1565.0px); }
+		100% { transform: translateX(-1565.0px); }
+		}
+		@keyframes ms-y {
+		0% { transform: translateY(0px); }
+		7.5% { transform: translateY(0px); animation-timing-function: cubic-bezier(.5,1,.89,1); }
+		18% { transform: translateY(-200px); animation-timing-function: cubic-bezier(.11,0,.5,0); }
+		36.4% { transform: translateY(565px); animation-timing-function: cubic-bezier(.5,1,.89,1); }
+		52.2% { transform: translateY(96.25px); animation-timing-function: cubic-bezier(.11,0,.5,0); }
+		68% { transform: translateY(565px); animation-timing-function: cubic-bezier(.5,1,.89,1); }
+		81% { transform: translateY(252.5px); animation-timing-function: cubic-bezier(.11,0,.5,0); }
+		94% { transform: translateY(565px); }
+		100% { transform: translateY(565px); }
+		}
+		@keyframes ms-sq {
+			0%, 36.2% { transform: none; }
+			36.4% { transform: scale(1.25, .75); }
+			38.6%, 67.8% { transform: none; }
+			68% { transform: scale(1.18, .82); }
+			70.2%, 93.8% { transform: none; }
+			94% { transform: scale(1.1, .9); }
+			96.5%, 100% { transform: none; }
+		}
+
+		/* Reduced motion and print: static "ms." */
+		@media (prefers-reduced-motion: reduce), print {
+			.ms-anim { animation: none; }
+			.ms-cut { transform: scaleX(0); }
+			.ms-gdot { opacity: 0; }
+			.ms-dot { opacity: 1; }
+			.ms-dx { transform: translateX(-1565.0px); }
+			.ms-dy { transform: translateY(565px); }
+		}
+	</style>
+
+	<defs>
+		<clipPath id="ms-tail">
+			<rect class="ms-cut ms-anim" x="1247" y="-940" width="1858" height="980"/>
+		</clipPath>
+	</defs>
+
+	<path class="ms-ink" d="M744 0L744-294Q744-350 728.5-389.5Q713-429 681-449.5Q649-470 598-470Q551-470 514.5-450Q478-430 453-391Q438-430 405-450Q372-470 321-470Q275-470 242-450Q209-430 189-392L189-460L64-460L64 0L189 0L189-280Q189-310 199-331.5Q209-353 227-363.5Q245-374 269-374Q305-374 321-350.5Q337-327 337-280L337 0L466 0L466-280Q466-310 476-331.5Q486-353 504-363.5Q522-374 546-374Q582-374 598-350.5Q614-327 614-280L614 0L744 0Z"/>
+	<path class="ms-ink" transform="translate(808 0)" d="M87-159L24-78Q50-53 82.5-31.5Q115-10 155.5 3Q196 16 245 16Q324 16 369-22.5Q414-61 414-130Q414-172 395-198Q376-224 344.5-241.5Q313-259 276-273Q246-286 222.5-295Q199-304 186.5-315.5Q174-327 174-342Q174-359 186.5-367.5Q199-376 221-376Q254-376 288.5-359Q323-342 348-315L405-395Q383-417 354-433.5Q325-450 291-460Q257-470 218-470Q172-470 134.5-455.5Q97-441 75-412.5Q53-384 53-343Q53-300 72.5-272.5Q92-245 122-228.5Q152-212 184-200Q218-189 240-179Q262-169 273.5-156.5Q285-144 285-126Q285-106 271-94.5Q257-83 231-83Q211-83 188.5-91Q166-99 141-115.5Q116-132 87-159Z"/>
+
+	<g clip-path="url(#ms-tail)">
+		<path class="ms-ink" transform="translate(1247 0)" d="M58-418L106-330Q116-337 137-347Q158-357 187-364Q216-371 248-371Q269-371 286-367Q303-363 315.5-354Q328-345 334-331.5Q340-318 340-299L340-250Q317-263 283.5-272Q250-281 206-281Q120-281 73-242Q26-203 26-136Q26-89 48.5-56.5Q71-24 108-7Q145 10 188 10Q230 10 268.5-5Q307-20 332-50Q336-56 340-62L340 0L465 0L465-326Q465-373 439-405.5Q413-438 367-455Q321-472 262-472Q198-472 146-454.5Q94-437 58-418ZM156-143Q156-163 165-176.5Q174-190 193-197.5Q212-205 242-205Q279-205 313-195Q327-191 340-185L340-184Q340-151 325-127.5Q310-104 286-91.5Q262-79 232-79Q211-79 193.5-86.5Q176-94 166-108.5Q156-123 156-143Z"/>
+		<path class="ms-ink" transform="translate(1768 0)" d="M194-780L64-780L64 0L194 0Z"/>
+		<path class="ms-ink" transform="translate(2026 0)" d="M744 0L744-294Q744-350 728.5-389.5Q713-429 681-449.5Q649-470 598-470Q551-470 514.5-450Q478-430 453-391Q438-430 405-450Q372-470 321-470Q275-470 242-450Q209-430 189-392L189-460L64-460L64 0L189 0L189-280Q189-310 199-331.5Q209-353 227-363.5Q245-374 269-374Q305-374 321-350.5Q337-327 337-280L337 0L466 0L466-280Q466-310 476-331.5Q486-353 504-363.5Q522-374 546-374Q582-374 598-350.5Q614-327 614-280L614 0L744 0Z"/>
+		<path class="ms-ink" transform="translate(2834 0)" d="M198-460L72-460L72 0L198 0Z"/>
+		<path class="ms-acc ms-gdot ms-anim" transform="translate(2834 0)" d="M58-638Q58-607 81-586Q104-565 136-565Q168-565 190.5-586Q213-607 213-638Q213-670 190.5-690.5Q168-711 136-711Q104-711 81-690.5Q58-670 58-638Z"/>
+	</g>
+
+	<g class="ms-dx ms-anim">
+		<g class="ms-dy ms-anim">
+			<g class="ms-dot ms-anim">
+				<circle class="ms-acc ms-sq ms-anim" cx="2969.5" cy="-642.5" r="77.5"/>
+			</g>
+		</g>
+	</g>
+
+	<script><![CDATA[
+		/* Inline use only (scripts never run in <img>): hover/click plays ms. -> msalmi -> ms.,
+		   reversing mid-flight without jumping. */
+		(function () {
+			var svg = document.currentScript && document.currentScript.closest('svg');
+			if (!svg || !svg.getAnimations) {
+				return;
+			}
+			try {
+				if (matchMedia('(prefers-reduced-motion: reduce)').matches) {
+					return;
+				}
+			} catch (e) {}
+
+			var busy = false;
+			var timer;
+
+			function all() {
+				return svg.getAnimations({ subtree: true }).filter(function (a) {
+					return (a.animationName || '').indexOf('ms-') === 0;
+				});
+			}
+
+			function go(rate) {
+				all().forEach(function (a) {
+					a.effect.updateTiming({ delay: 0 });
+					var total = a.effect.getComputedTiming().duration;
+					var t = Math.max(0, Math.min(a.currentTime || 0, total));
+					a.currentTime = t;
+					a.playbackRate = rate;
+					a.play();
+				});
+			}
+
+			function cycle() {
+				if (busy) {
+					return;
+				}
+				busy = true;
+				clearTimeout(timer);
+				go(-1);
+				timer = setTimeout(function () {
+					go(1);
+					setTimeout(function () { busy = false; }, 1300);
+				}, 1600);
+			}
+
+			svg.style.cursor = 'pointer';
+			svg.addEventListener('mouseenter', cycle);
+			svg.addEventListener('click', cycle);
+		})();
+	]]></script>
+</svg>

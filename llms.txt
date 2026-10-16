@@ -1,0 +1,28 @@
+# Matheus Salmi
+
+> Software Architect & Tech Lead at StartCHURCH (US), working remotely from Brazil. He designs systems end to end: how they’re built and scale, what they cost and return, and how AI helps them do more and know more.
+
+Matheus has been building software professionally since 2007. Since 2018 he has owned the architecture and operation of StartCHURCH’s platform (billing, CRM integration, sites and admin tools) across infrastructure, backend, data and front end.
+
+His work is organized around three areas:
+
+- **Engineering:** systems and teams that don’t depend on a single hero. Re-platformed infrastructure to AWS and Kubernetes, modernized the framework stack, and made deploys zero-downtime.
+- **Business:** tradeoffs explained in numbers, to engineers and to the CFO. Runs the AWS cost program (staging compute down ~80–87%, a ~30% month-over-month drop in the AWS bill) and keeps billing and payments reliable.
+- **AI:** LLMs in the product, agents for the team, shipped rather than demoed. Built a self-hosted MCP server giving the team read-only, AI-assisted access to production data.
+
+Contact: mathsalmi@gmail.com.
+
+## Profile
+
+- [CV (Markdown)](https://msalmi.com/cv.md): full experience, skills, education and languages as plain text
+- [CV (PDF)](https://msalmi.com/cv.pdf): the same CV, formatted for printing
+- [Site](https://msalmi.com/): one-page profile
+
+## Elsewhere
+
+- [LinkedIn](https://www.linkedin.com/in/matheus-salmi/): professional profile
+- [GitHub](https://github.com/mathsalmi): code
+
+## Optional
+
+- [500px](https://500px.com/p/mathsalmi): photography
