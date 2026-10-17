@@ -11,7 +11,10 @@ root.classList.add('js');
 
 const btn = doc.getElementById('theme');
 
-/* Choice made with the toggle (data-theme) wins; otherwise follow the OS. Not persisted: a reload follows the OS again. */
+/* Choice made with the toggle (data-theme) wins; otherwise follow the OS.
+   Saved in localStorage only when the visitor uses the toggle; the inline script in <head> re-applies it before first paint. */
+const STORE = 'theme';
+
 function currentTheme() {
 	return root.getAttribute('data-theme') ?? (darkQuery.matches ? 'dark' : 'light');
 }
@@ -36,7 +39,13 @@ function applyTheme(theme, pin) {
 applyTheme(currentTheme(), false);
 
 btn?.addEventListener('click', () => {
-	applyTheme(currentTheme() === 'dark' ? 'light' : 'dark', true);
+	const next = currentTheme() === 'dark' ? 'light' : 'dark';
+	applyTheme(next, true);
+	try {
+		localStorage.setItem(STORE, next);
+	} catch (e) {
+		/* storage blocked (private mode, policy): the choice lasts for this page only */
+	}
 });
 
 darkQuery.addEventListener('change', (e) => {

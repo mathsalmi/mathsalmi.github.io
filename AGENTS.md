@@ -55,7 +55,7 @@ The same facts are repeated across many files. When one changes, update **all** 
 - **American English** in all content and comments.
 - Indent with tabs. HTML is formatted by hand (format-on-save is off for HTML).
 - **Keep JavaScript to a minimum.** Do not add new JS; prefer HTML/CSS. `assets/site.js` is an ES module (`<script type="module">`) using modern syntax, and the site must stay fully usable without it.
-- Theme: CSS follows `prefers-color-scheme`; the toggle only sets `data-theme` for the current page view (nothing is persisted).
+- Theme: CSS follows `prefers-color-scheme` until the visitor uses the toggle; only then is the choice saved in `localStorage` (`theme`), and a tiny inline script in each page's `<head>` re-applies it before first paint (no flash between pages). Every new page needs that inline script.
 - Photo: Gravatar only, `alt=""` (decorative). No local fallback.
 - The only third party is Gravatar. Do not add others (fonts are self-hosted on purpose).
 
