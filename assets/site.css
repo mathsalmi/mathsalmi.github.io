@@ -1,5 +1,5 @@
 /* msalmi.com — 7-color mirrored palette
-   paper #F5F4F0 · sand #DCD7CE · stone #9A948A · slate #5C5752 · dusk #34302B · ink #1E1C1A · accent #C2410C */
+	paper #F5F4F0 · sand #DCD7CE · stone #9A948A · slate #5C5752 · dusk #34302B · ink #1E1C1A · accent #C2410C */
 /* Self-hosted variable fonts, Latin subset (from Google Fonts, SIL Open Font License) */
 /* optional + preload: no font swap after first paint, so no layout shift */
 @font-face {
@@ -19,13 +19,13 @@
 }
 
 :root {
-	--paper: #F5F4F0;
-	--sand: #DCD7CE;
-	--stone: #9A948A;
-	--slate: #5C5752;
-	--dusk: #34302B;
-	--ink: #1E1C1A;
-	--acc: #C2410C;
+	--paper: #f5f4f0;
+	--sand: #dcd7ce;
+	--stone: #9a948a;
+	--slate: #5c5752;
+	--dusk: #34302b;
+	--ink: #1e1c1a;
+	--acc: #c2410c;
 	--bg: var(--paper);
 	--fg: var(--ink);
 	--mut: var(--slate);
@@ -40,7 +40,7 @@
 }
 
 /* Dark: explicit choice, or the OS preference when no choice was saved */
-[data-theme="dark"] {
+[data-theme='dark'] {
 	--bg: var(--ink);
 	--fg: var(--sand);
 	--mut: var(--stone);
@@ -55,7 +55,7 @@
 }
 
 @media (prefers-color-scheme: dark) {
-	:root:not([data-theme="light"]) {
+	:root:not([data-theme='light']) {
 		--bg: var(--ink);
 		--fg: var(--sand);
 		--mut: var(--stone);
@@ -74,7 +74,8 @@
 	box-sizing: border-box;
 }
 
-html, body {
+html,
+body {
 	margin: 0;
 	background: var(--bg);
 	color: var(--fg);
@@ -82,7 +83,9 @@ html, body {
 
 body {
 	font-family: 'Instrument Sans', system-ui, sans-serif;
-	transition: background .35s ease, color .35s ease;
+	transition:
+		background 0.35s ease,
+		color 0.35s ease;
 }
 
 ::selection {
@@ -142,8 +145,8 @@ a:hover {
 .name {
 	margin: 0;
 	font-size: clamp(56px, 11vw, 160px);
-	line-height: .92;
-	letter-spacing: -.045em;
+	line-height: 0.92;
+	letter-spacing: -0.045em;
 	font-weight: 600;
 }
 
@@ -187,7 +190,8 @@ address {
 	color: var(--fg);
 }
 
-.lk:hover, .lk:focus-visible {
+.lk:hover,
+.lk:focus-visible {
 	color: var(--fg);
 }
 
@@ -197,28 +201,29 @@ address {
 }
 
 .lk .tx::after {
-	content: "";
+	content: '';
 	position: absolute;
 	left: 0;
 	bottom: -6px;
 	height: 2px;
 	width: var(--uw, max(55%, 1.4em));
 	background: var(--acc);
-	transition: width .25s ease;
+	transition: width 0.25s ease;
 }
 
-.lk:hover .tx::after, .lk:focus-visible .tx::after {
+.lk:hover .tx::after,
+.lk:focus-visible .tx::after {
 	width: 100%;
 }
 
 .lk .ic {
 	color: var(--acc);
 	display: inline-flex;
-	vertical-align: -.08em;
+	vertical-align: -0.08em;
 }
 
 /* a little air between "Email" and the paper plane */
-.lk[href^="mailto:"] .ic {
+.lk[href^='mailto:'] .ic {
 	margin-left: 4px;
 }
 
@@ -272,7 +277,7 @@ address {
 	margin: 0;
 	font-size: 16px;
 	line-height: 1.45;
-	opacity: .82;
+	opacity: 0.82;
 }
 
 /* Links from the home blocks to /work */
@@ -311,7 +316,7 @@ address {
 	font-size: 22px;
 	padding: 0;
 	border: 0;
-	border-radius: .42em;
+	border-radius: 0.42em;
 	background: var(--btn-bg);
 	color: var(--btn-fg);
 	align-items: center;
@@ -327,31 +332,31 @@ address {
 	display: none;
 }
 
-[data-theme="dark"] .tbtn .i-sun {
+[data-theme='dark'] .tbtn .i-sun {
 	display: none;
 }
 
-[data-theme="dark"] .tbtn .i-moon {
+[data-theme='dark'] .tbtn .i-moon {
 	display: block;
 }
 
 @media (prefers-color-scheme: dark) {
-	:root:not([data-theme="light"]) .tbtn .i-sun {
+	:root:not([data-theme='light']) .tbtn .i-sun {
 		display: none;
 	}
-	:root:not([data-theme="light"]) .tbtn .i-moon {
+	:root:not([data-theme='light']) .tbtn .i-moon {
 		display: block;
 	}
 }
 
 /* Logo: /assets/logo.svg (decorative; hidden from AT and tab order).
-   site.js inlines it so it can replay on hover/click and follow the theme colors. */
+	site.js inlines it so it can replay on hover/click and follow the theme colors. */
 .tile {
 	display: inline-flex;
 	align-items: center;
 	height: 1.7em;
-	padding: 0 .7em 0 0; /* no left padding: "ms." lines up with the text below */
-	margin-left: -.09em; /* the glyphs start 64 units into the SVG; pull them onto the text edge */
+	padding: 0 0.7em 0 0; /* no left padding: "ms." lines up with the text below */
+	margin-left: -0.09em; /* the glyphs start 64 units into the SVG; pull them onto the text edge */
 	font-size: 22px;
 	cursor: pointer;
 	-webkit-tap-highlight-color: transparent;
@@ -359,11 +364,12 @@ address {
 }
 
 /* 1em = 1000 font units in the SVG, drawn 1.4× (40% bigger) inside the same 1.7em tile; the shift keeps the baseline */
-.tile img, .tile svg {
+.tile img,
+.tile svg {
 	display: block;
 	width: 4.347em;
 	height: 1.372em;
-	margin-top: -.28em;
+	margin-top: -0.28em;
 }
 
 /* Reduced motion: the SVG shows a static "ms." on its own */
@@ -378,8 +384,10 @@ address {
 		size: A4;
 		margin: 16mm;
 	}
-	:root, :root[data-theme], :root:not([data-theme="light"]) {
-		--bg: #FFFFFF;
+	:root,
+	:root[data-theme],
+	:root:not([data-theme='light']) {
+		--bg: #ffffff;
 		--fg: var(--ink);
 		--mut: var(--slate);
 		--line: var(--sand);
@@ -389,17 +397,21 @@ address {
 		transition: none !important;
 		animation: none !important;
 	}
-	html, body {
-		background: #FFFFFF !important;
+	html,
+	body {
+		background: #ffffff !important;
 		color: var(--ink) !important;
 	}
 	.page {
 		min-height: 0;
 	}
-	.tbtn, .js .tbtn {
+	.tbtn,
+	.js .tbtn {
 		display: none !important;
 	}
-	.links, .own-lk, .more {
+	.links,
+	.own-lk,
+	.more {
 		display: none !important;
 	}
 	.print-only {
@@ -408,7 +420,9 @@ address {
 		font-size: 10pt;
 		color: var(--slate);
 	}
-	.photo, .own .lb, .tile svg {
+	.photo,
+	.own .lb,
+	.tile svg {
 		-webkit-print-color-adjust: exact;
 		print-color-adjust: exact;
 	}
@@ -425,7 +439,8 @@ address {
 		line-height: 1.4;
 		max-width: none;
 	}
-	.main, .own {
+	.main,
+	.own {
 		break-inside: avoid;
 	}
 	.role {

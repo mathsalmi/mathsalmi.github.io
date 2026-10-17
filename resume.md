@@ -14,6 +14,7 @@ I design systems end to end: how they’re built and scale, what they cost and r
 ## Experience
 
 ### StartCHURCH (US) — Software Architect & Tech Lead
+
 Jul 2018 – present · remote
 
 Products: startchurch.com, Admin Console, StartSITES, Kingdom Steward, StartCHURCH University, Video Platform, AppletBuilder, Giving Halo, Launch Halo and the Attorney Network. Contracted via Scalable Path until May 2022, then hired directly.
@@ -47,6 +48,7 @@ Products: startchurch.com, Admin Console, StartSITES, Kingdom Steward, StartCHUR
 - Onboard, review and mentor engineers, from bootcamp juniors to senior hires; advise on hiring profiles and interviews.
 
 ### Scalable Path (US) — Software Engineer
+
 Jul 2017 – May 2022 · remote
 
 - Embedded in US client teams: Tempo (Scalable Path’s showcase site), Timelinely, The Mission Zone and StartCHURCH.
@@ -54,6 +56,7 @@ Jul 2017 – May 2022 · remote
 - Placed with StartCHURCH, which hired me directly in 2022.
 
 ### Instituto Euvaldo Lodi (IEL-GO) — Technical Architect
+
 Aug 2014 – Jul 2017 · Goiânia, Brazil
 
 Industry Federation of Goiás (FIEG) organization for corporate management, entrepreneurial education and careers.
@@ -62,12 +65,14 @@ Industry Federation of Goiás (FIEG) organization for corporate management, entr
 - Moved the systems to Linux on AWS and hardened SQL Server; designed a new microservices architecture (Java, Spring Boot, SQL Server, messaging and queues) and built on it the account synchronization between IEL-GO and FIEG (Casa da Indústria); also the internship program website.
 
 ### Squadra Tecnologia — Software Engineer
+
 Oct 2012 – Jul 2014 · Anápolis, Brazil
 
 - Systems for Brazilian federal agencies: SIMEC (Ministry of Education), IPHAN (national heritage institute) and DNPM (national mining department), in PHP / Zend and Oracle, Java and .NET.
 - A cross-platform quiz app for iOS and Android.
 
 ### IIDAC — Web Developer
+
 Jul 2007 – Oct 2012 · Anápolis, Brazil
 
 - First job: web applications for social programs of a UN-partner NGO, reaching young people across Brazil: ODM Universidades, Voz dos Adolescentes, Rejupe, PPCAAM (federal program, Human Rights Secretariat) and the IIDAC website.

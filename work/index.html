@@ -1,304 +1,1564 @@
 <!doctype html>
 <html lang="en">
-<head>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Work — Matheus Salmi</title>
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<title>Work — Matheus Salmi</title>
 
-	<!-- SEO -->
-	<meta name="description" content="The work of Matheus Salmi, Software Architect &amp; Tech Lead: every company and project since 2007, and the outcomes they produced.">
-	<meta name="author" content="Matheus Salmi">
-	<meta name="robots" content="index, follow">
-	<link rel="canonical" href="https://msalmi.com/work/">
-	<meta name="color-scheme" content="light dark">
-	<meta name="theme-color" content="#F5F4F0" media="(prefers-color-scheme: light)">
-	<meta name="theme-color" content="#1E1C1A" media="(prefers-color-scheme: dark)">
-	<link rel="icon" type="image/svg+xml" href="/favicon.svg">
-	<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
-	<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+		<!-- SEO -->
+		<meta
+			name="description"
+			content="The work of Matheus Salmi, Software Architect &amp; Tech Lead: every company and project since 2007, and the outcomes they produced."
+		/>
+		<meta name="author" content="Matheus Salmi" />
+		<meta name="robots" content="index, follow" />
+		<link rel="canonical" href="https://msalmi.com/work/" />
+		<meta name="color-scheme" content="light dark" />
+		<meta name="theme-color" content="#F5F4F0" media="(prefers-color-scheme: light)" />
+		<meta name="theme-color" content="#1E1C1A" media="(prefers-color-scheme: dark)" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
+		<link rel="apple-touch-icon" href="/apple-touch-icon.png" />
 
-	<!-- Social -->
-	<meta property="og:type" content="website">
-	<meta property="og:site_name" content="msalmi.com">
-	<meta property="og:url" content="https://msalmi.com/work/">
-	<meta property="og:title" content="Work — Matheus Salmi">
-	<meta property="og:description" content="The work of Matheus Salmi, Software Architect &amp; Tech Lead: every company and project since 2007, and the outcomes they produced.">
-	<meta property="og:image" content="https://msalmi.com/og.png">
-	<meta property="og:image:width" content="1200">
-	<meta property="og:image:height" content="630">
-	<meta property="og:image:alt" content="Matheus Salmi — Software Architect &amp; Tech Lead">
-	<meta property="og:locale" content="en_US">
-	<meta name="twitter:card" content="summary_large_image">
-	<meta name="twitter:title" content="Work — Matheus Salmi">
-	<meta name="twitter:description" content="The work of Matheus Salmi, Software Architect &amp; Tech Lead: every company and project since 2007, and the outcomes they produced.">
-	<meta name="twitter:image" content="https://msalmi.com/og.png">
+		<!-- Social -->
+		<meta property="og:type" content="website" />
+		<meta property="og:site_name" content="msalmi.com" />
+		<meta property="og:url" content="https://msalmi.com/work/" />
+		<meta property="og:title" content="Work — Matheus Salmi" />
+		<meta
+			property="og:description"
+			content="The work of Matheus Salmi, Software Architect &amp; Tech Lead: every company and project since 2007, and the outcomes they produced."
+		/>
+		<meta property="og:image" content="https://msalmi.com/og.png" />
+		<meta property="og:image:width" content="1200" />
+		<meta property="og:image:height" content="630" />
+		<meta property="og:image:alt" content="Matheus Salmi — Software Architect &amp; Tech Lead" />
+		<meta property="og:locale" content="en_US" />
+		<meta name="twitter:card" content="summary_large_image" />
+		<meta name="twitter:title" content="Work — Matheus Salmi" />
+		<meta
+			name="twitter:description"
+			content="The work of Matheus Salmi, Software Architect &amp; Tech Lead: every company and project since 2007, and the outcomes they produced."
+		/>
+		<meta name="twitter:image" content="https://msalmi.com/og.png" />
 
+		<!-- Theme chosen with the toggle (saved only on a manual change), applied before first paint so navigation never flashes -->
+		<script>
+			try {
+				const t = localStorage.getItem('theme');
+				if (t === 'light' || t === 'dark') document.documentElement.setAttribute('data-theme', t);
+			} catch (e) {}
+		</script>
 
-	<!-- Theme chosen with the toggle (saved only on a manual change), applied before first paint so navigation never flashes -->
-	<script>try { const t = localStorage.getItem('theme'); if (t === 'light' || t === 'dark') document.documentElement.setAttribute('data-theme', t); } catch (e) {}</script>
+		<!-- Fonts and styles -->
+		<link rel="preload" href="/assets/fonts/instrument-sans-latin.woff2" as="font" type="font/woff2" crossorigin />
+		<link rel="preload" href="/assets/fonts/jetbrains-mono-latin.woff2" as="font" type="font/woff2" crossorigin />
+		<link rel="stylesheet" href="/assets/site.css" />
+		<script type="module" src="/assets/site.js"></script>
 
-	<!-- Fonts and styles -->
-	<link rel="preload" href="/assets/fonts/instrument-sans-latin.woff2" as="font" type="font/woff2" crossorigin>
-	<link rel="preload" href="/assets/fonts/jetbrains-mono-latin.woff2" as="font" type="font/woff2" crossorigin>
-	<link rel="stylesheet" href="/assets/site.css">
-	<script type="module" src="/assets/site.js"></script>
+		<style>
+			/* /work: page title, career timeline, side projects and outcomes. Works without JavaScript: chapters are radios, the phone view uses <details>. */
+			.work {
+				justify-content: flex-start;
+				gap: 0;
+				padding-top: clamp(24px, 5vh, 64px);
+			}
+			/* the logo is the way home on every subpage */
+			.top a.tile {
+				position: relative;
+				color: inherit;
+			}
+			.top a.tile::after {
+				content: '';
+				position: absolute;
+				inset: -4px 0;
+			} /* 44px touch target, no layout shift */
+			/* page title "/work": slash in stone, word in accent, a step above the Outcomes heading */
+			.w-h1 {
+				margin: 0;
+				font-family: 'JetBrains Mono', monospace;
+				font-size: clamp(36px, 3.8vw, 52px);
+				line-height: 1.05;
+				font-weight: 700;
+				letter-spacing: -0.02em;
+				color: var(--acc);
+			}
+			.w-h1-sl {
+				color: var(--stone);
+				font-weight: 400;
+			}
+			.w-foot {
+				margin: 56px 0 0;
+				padding-top: 16px;
+				border-top: 1px solid var(--line);
+				font-family: 'JetBrains Mono', monospace;
+				font-size: 14px;
+				color: var(--mut);
+			}
+			.w-foot a {
+				color: var(--fg);
+			}
 
-	<style>
-		/* /work: page title, career timeline, side projects and outcomes. Works without JavaScript: chapters are radios, the phone view uses <details>. */
-		.work { justify-content: flex-start; gap: 0; padding-top: clamp(24px, 5vh, 64px); }
-		/* the logo is the way home on every subpage */
-		.top a.tile { position: relative; color: inherit; }
-		.top a.tile::after { content: ""; position: absolute; inset: -4px 0; } /* 44px touch target, no layout shift */
-		/* page title "/work": slash in stone, word in accent, a step above the Outcomes heading */
-		.w-h1 { margin: 0; font-family: 'JetBrains Mono', monospace; font-size: clamp(36px, 3.8vw, 52px); line-height: 1.05; font-weight: 700; letter-spacing: -.02em; color: var(--acc); }
-		.w-h1-sl { color: var(--stone); font-weight: 400; }
-		.w-foot { margin: 56px 0 0; padding-top: 16px; border-top: 1px solid var(--line); font-family: 'JetBrains Mono', monospace; font-size: 14px; color: var(--mut); }
-		.w-foot a { color: var(--fg); }
+			/* ---------- desktop timeline ---------- */
+			.tlm {
+				display: none;
+			}
+			.tlx {
+				position: relative;
+				margin-top: 48px;
+				height: 236px;
+			}
+			.lane-edu {
+				position: absolute;
+				left: 0;
+				right: 0;
+				top: 0;
+				height: 44px;
+			}
+			.rail {
+				position: absolute;
+				left: 0;
+				right: 0;
+				top: 64px;
+				height: 2px;
+			}
+			.r-base {
+				position: absolute;
+				inset: 0;
+				background: var(--line);
+				transform-origin: 0 50%;
+			}
+			.r-now {
+				position: absolute;
+				top: 0;
+				bottom: 0;
+				left: var(--now);
+				right: 0;
+				background: var(--acc);
+				transform-origin: 0 50%;
+			}
+			.dot-now {
+				position: absolute;
+				right: -9px;
+				top: -8px;
+				width: 18px;
+				height: 18px;
+				border-radius: 50%;
+				background: var(--acc);
+			}
+			.lane-work {
+				position: absolute;
+				left: 0;
+				right: 0;
+				top: 58px;
+				bottom: 0;
+			}
 
-		/* ---------- desktop timeline ---------- */
-		.tlm { display: none; }
-		.tlx { position: relative; margin-top: 48px; height: 236px; }
-		.lane-edu { position: absolute; left: 0; right: 0; top: 0; height: 44px; }
-		.rail { position: absolute; left: 0; right: 0; top: 64px; height: 2px; }
-		.r-base { position: absolute; inset: 0; background: var(--line); transform-origin: 0 50%; }
-		.r-now { position: absolute; top: 0; bottom: 0; left: var(--now); right: 0; background: var(--acc); transform-origin: 0 50%; }
-		.dot-now { position: absolute; right: -9px; top: -8px; width: 18px; height: 18px; border-radius: 50%; background: var(--acc); }
-		.lane-work { position: absolute; left: 0; right: 0; top: 58px; bottom: 0; }
+			.ch {
+				position: absolute;
+				top: 0;
+				padding-top: 30px;
+				display: flex;
+				flex-direction: column;
+				gap: 4px;
+			}
+			.ch .mk {
+				position: absolute;
+				top: 0;
+				left: 0;
+				width: 14px;
+				height: 14px;
+				border-radius: 50%;
+				background: var(--bg);
+				box-shadow: inset 0 0 0 2px var(--stone);
+				transition:
+					background 0.2s,
+					box-shadow 0.2s,
+					transform 0.2s;
+			}
+			.ch .yr {
+				font-family: 'JetBrains Mono', monospace;
+				font-size: 14px;
+				color: var(--mut);
+			}
+			.ch .org {
+				font-size: 20px;
+				line-height: 1.2;
+				font-weight: 600;
+				position: relative;
+				align-self: flex-start;
+			}
+			.ch .org::after {
+				content: '';
+				position: absolute;
+				left: 0;
+				bottom: -4px;
+				height: 2px;
+				width: max(55%, 1.4em);
+				background: var(--acc);
+				transition: width 0.25s ease;
+			} /* same growing underline as the home links: says "clickable" */
+			.ch .w-role {
+				font-family: 'JetBrains Mono', monospace;
+				font-size: 12.5px;
+				line-height: 1.4;
+				color: var(--mut);
+			}
+			.ch:hover .mk,
+			.ch:has(:focus-visible) .mk {
+				transform: scale(1.2);
+			}
+			.ch:hover .org::after,
+			.ch:has(:focus-visible) .org::after {
+				width: 100%;
+			}
+			.ch:has(:checked) .mk {
+				background: var(--fg);
+				box-shadow: none;
+			}
+			.ch:has(:checked) .org::after {
+				width: 100%;
+			}
+			.ch.now .yr {
+				font-size: 17px;
+				font-weight: 700;
+				color: var(--acc);
+			}
+			.ch.now .org {
+				font-size: clamp(26px, 2.6vw, 36px);
+				letter-spacing: -0.03em;
+			}
+			.ch.now .mk {
+				background: var(--acc);
+				box-shadow: none;
+			}
+			.ch.now:has(:checked) .mk {
+				background: var(--acc);
+				box-shadow: 0 0 0 4px color-mix(in srgb, var(--acc) 25%, transparent);
+			}
 
-		.ch { position: absolute; top: 0; padding-top: 30px; display: flex; flex-direction: column; gap: 4px; }
-		.ch .mk { position: absolute; top: 0; left: 0; width: 14px; height: 14px; border-radius: 50%; background: var(--bg); box-shadow: inset 0 0 0 2px var(--stone); transition: background .2s, box-shadow .2s, transform .2s; }
-		.ch .yr { font-family: 'JetBrains Mono', monospace; font-size: 14px; color: var(--mut); }
-		.ch .org { font-size: 20px; line-height: 1.2; font-weight: 600; position: relative; align-self: flex-start; }
-		.ch .org::after { content: ""; position: absolute; left: 0; bottom: -4px; height: 2px; width: max(55%, 1.4em); background: var(--acc); transition: width .25s ease; } /* same growing underline as the home links: says "clickable" */
-		.ch .w-role { font-family: 'JetBrains Mono', monospace; font-size: 12.5px; line-height: 1.4; color: var(--mut); }
-		.ch:hover .mk, .ch:has(:focus-visible) .mk { transform: scale(1.2); }
-		.ch:hover .org::after, .ch:has(:focus-visible) .org::after { width: 100%; }
-		.ch:has(:checked) .mk { background: var(--fg); box-shadow: none; }
-		.ch:has(:checked) .org::after { width: 100%; }
-		.ch.now .yr { font-size: 17px; font-weight: 700; color: var(--acc); }
-		.ch.now .org { font-size: clamp(26px, 2.6vw, 36px); letter-spacing: -.03em; }
-		.ch.now .mk { background: var(--acc); box-shadow: none; }
-		.ch.now:has(:checked) .mk { background: var(--acc); box-shadow: 0 0 0 4px color-mix(in srgb, var(--acc) 25%, transparent); }
+			/* education: lighter, above the rail */
+			.ed {
+				position: absolute;
+				top: 0;
+				height: 44px;
+				width: max(var(--w), 12px);
+			}
+			.ed .ed-lbl {
+				position: absolute;
+				left: 0;
+				top: 0;
+				white-space: nowrap;
+				font-family: 'JetBrains Mono', monospace;
+				font-size: 12px;
+				color: var(--mut);
+				transition: color 0.2s;
+			}
+			.ed .ed-yr {
+				color: var(--stone);
+			}
+			.ed .ed-nm {
+				position: relative;
+			}
+			.ed .ed-nm::after {
+				content: '';
+				position: absolute;
+				left: 0;
+				bottom: -3px;
+				height: 1px;
+				width: max(55%, 1.4em);
+				background: var(--acc);
+				transition: width 0.25s ease;
+			}
+			.ed:hover .ed-nm::after,
+			.ed:has(:focus-visible) .ed-nm::after,
+			.ed:has(:checked) .ed-nm::after {
+				width: 100%;
+			}
+			/* Medium screens: the study labels collide on one line, so the year goes on its own line above the name */
+			@media (min-width: 861px) and (max-width: 1199px) {
+				.tlx {
+					height: 252px;
+				}
+				.lane-edu,
+				.ed {
+					height: 58px;
+				}
+				.rail {
+					top: 80px;
+				}
+				.lane-work {
+					top: 74px;
+				}
+				.ed .ed-yr {
+					display: block;
+					margin-bottom: 2px;
+				}
+				.ed .ed-sep {
+					display: none;
+				}
+			}
+			.ed .ed-mk {
+				position: absolute;
+				left: 0;
+				bottom: 6px;
+				height: 6px;
+				width: 100%;
+				border-radius: 3px;
+				background: var(--line);
+				transform-origin: 0 50%;
+				transition: background 0.2s;
+			}
+			.ed.pt .ed-mk {
+				width: 10px;
+				height: 10px;
+				bottom: 4px;
+				border-radius: 50%;
+				background: transparent;
+				box-shadow: inset 0 0 0 2px var(--stone);
+			}
+			.ed:hover .ed-lbl,
+			.ed:has(:checked) .ed-lbl {
+				color: var(--fg);
+			}
+			.ed:hover .ed-mk,
+			.ed:has(:checked) .ed-mk {
+				background: var(--stone);
+			}
+			.ed.pt:has(:checked) .ed-mk {
+				background: var(--stone);
+			}
 
-		/* education: lighter, above the rail */
-		.ed { position: absolute; top: 0; height: 44px; width: max(var(--w), 12px); }
-		.ed .ed-lbl { position: absolute; left: 0; top: 0; white-space: nowrap; font-family: 'JetBrains Mono', monospace; font-size: 12px; color: var(--mut); transition: color .2s; }
-		.ed .ed-yr { color: var(--stone); }
-		.ed .ed-nm { position: relative; }
-		.ed .ed-nm::after { content: ""; position: absolute; left: 0; bottom: -3px; height: 1px; width: max(55%, 1.4em); background: var(--acc); transition: width .25s ease; }
-		.ed:hover .ed-nm::after, .ed:has(:focus-visible) .ed-nm::after, .ed:has(:checked) .ed-nm::after { width: 100%; }
-		/* Medium screens: the study labels collide on one line, so the year goes on its own line above the name */
-		@media (min-width: 861px) and (max-width: 1199px) {
-			.tlx { height: 252px; }
-			.lane-edu, .ed { height: 58px; }
-			.rail { top: 80px; }
-			.lane-work { top: 74px; }
-			.ed .ed-yr { display: block; margin-bottom: 2px; }
-			.ed .ed-sep { display: none; }
-		}
-		.ed .ed-mk { position: absolute; left: 0; bottom: 6px; height: 6px; width: 100%; border-radius: 3px; background: var(--line); transform-origin: 0 50%; transition: background .2s; }
-		.ed.pt .ed-mk { width: 10px; height: 10px; bottom: 4px; border-radius: 50%; background: transparent; box-shadow: inset 0 0 0 2px var(--stone); }
-		.ed:hover .ed-lbl, .ed:has(:checked) .ed-lbl { color: var(--fg); }
-		.ed:hover .ed-mk, .ed:has(:checked) .ed-mk { background: var(--stone); }
-		.ed.pt:has(:checked) .ed-mk { background: var(--stone); }
+			/* detail panel */
+			.panel {
+				margin-top: 8px;
+				padding-top: 24px;
+				border-top: 1px solid var(--line);
+				min-height: 170px;
+			}
+			.pn {
+				display: none;
+				grid-template-columns: minmax(0, 1fr) minmax(0, 1.4fr);
+				gap: 32px;
+			}
+			@keyframes pn-in {
+				from {
+					opacity: 0;
+					transform: translateY(8px);
+				}
+				to {
+					opacity: 1;
+					transform: none;
+				}
+			}
+			.p-meta {
+				display: flex;
+				flex-direction: column;
+				gap: 4px;
+			}
+			.p-yr {
+				font-family: 'JetBrains Mono', monospace;
+				font-size: 15px;
+				font-weight: 700;
+				color: var(--acc);
+			}
+			.p-org {
+				font-size: 32px;
+				line-height: 1.1;
+				letter-spacing: -0.03em;
+				font-weight: 600;
+			}
+			.p-role {
+				font-family: 'JetBrains Mono', monospace;
+				font-size: 13px;
+				color: var(--mut);
+			}
+			.p-body p {
+				margin: 0;
+				font-size: 18px;
+				line-height: 1.5;
+				max-width: 620px;
+			}
+			.p-body .p-tl,
+			.m-body .p-tl {
+				opacity: 1;
+				margin: 16px 0 0;
+				font-family: 'JetBrains Mono', monospace;
+				font-size: 12.5px;
+				color: var(--mut);
+			}
+			.p-tags {
+				margin: 8px 0 0;
+				padding: 0;
+				list-style: none;
+				display: flex;
+				flex-wrap: wrap;
+				gap: 6px;
+				max-width: 640px;
+			}
+			.p-tags li {
+				padding: 4px 10px;
+				border-radius: 999px;
+				background: var(--line);
+				font-size: 14px;
+				line-height: 1.35;
+			}
+			.w-side {
+				margin: 48px 0 0;
+				padding-top: 18px;
+				border-top: 1px solid var(--line);
+			}
+			.w-side-lb {
+				margin: 0;
+				font-family: 'JetBrains Mono', monospace;
+				font-size: 15px;
+				font-weight: 700;
+				color: var(--acc);
+			}
+			.w-side-list {
+				margin: 12px 0 0;
+				padding: 0;
+				list-style: none;
+			}
+			.w-side-list li {
+				display: grid;
+				grid-template-columns: 96px minmax(0, 200px) minmax(0, 1fr);
+				gap: 4px 20px;
+				padding: 8px 0;
+				font-size: 16px;
+				line-height: 1.45;
+			}
+			.sd-yr {
+				font-family: 'JetBrains Mono', monospace;
+				font-size: 13px;
+				color: var(--mut);
+				padding-top: 2px;
+			}
+			.sd-name {
+				font-weight: 600;
+			}
+			.sd-txt {
+				color: var(--mut);
+			}
+			@media (max-width: 860px) {
+				.w-side-list li {
+					grid-template-columns: 1fr;
+					gap: 2px;
+				}
+			}
+			.p-proj {
+				list-style: disc;
+				margin: 14px 0 0;
+				padding: 0 0 0 1.1em;
+				font-size: 16px;
+				line-height: 1.5;
+				color: var(--mut);
+				max-width: 620px;
+			}
+			.p-proj li + li {
+				margin-top: 4px;
+			}
+			.p-proj li::marker {
+				color: var(--acc);
+			}
 
-		/* detail panel */
-		.panel { margin-top: 8px; padding-top: 24px; border-top: 1px solid var(--line); min-height: 170px; }
-		.pn { display: none; grid-template-columns: minmax(0, 1fr) minmax(0, 1.4fr); gap: 32px; }
-		@keyframes pn-in { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
-		.p-meta { display: flex; flex-direction: column; gap: 4px; }
-		.p-yr { font-family: 'JetBrains Mono', monospace; font-size: 15px; font-weight: 700; color: var(--acc); }
-		.p-org { font-size: 32px; line-height: 1.1; letter-spacing: -.03em; font-weight: 600; }
-		.p-role { font-family: 'JetBrains Mono', monospace; font-size: 13px; color: var(--mut); }
-		.p-body p { margin: 0; font-size: 18px; line-height: 1.5; max-width: 620px; }
-		.p-body .p-tl, .m-body .p-tl { opacity: 1; margin: 16px 0 0; font-family: 'JetBrains Mono', monospace; font-size: 12.5px; color: var(--mut); }
-		.p-tags { margin: 8px 0 0; padding: 0; list-style: none; display: flex; flex-wrap: wrap; gap: 6px; max-width: 640px; }
-		.p-tags li { padding: 4px 10px; border-radius: 999px; background: var(--line); font-size: 14px; line-height: 1.35; }
-		.w-side { margin: 48px 0 0; padding-top: 18px; border-top: 1px solid var(--line); }
-		.w-side-lb { margin: 0; font-family: 'JetBrains Mono', monospace; font-size: 15px; font-weight: 700; color: var(--acc); }
-		.w-side-list { margin: 12px 0 0; padding: 0; list-style: none; }
-		.w-side-list li { display: grid; grid-template-columns: 96px minmax(0, 200px) minmax(0, 1fr); gap: 4px 20px; padding: 8px 0; font-size: 16px; line-height: 1.45; }
-		.sd-yr { font-family: 'JetBrains Mono', monospace; font-size: 13px; color: var(--mut); padding-top: 2px; }
-		.sd-name { font-weight: 600; }
-		.sd-txt { color: var(--mut); }
-		@media (max-width: 860px) { .w-side-list li { grid-template-columns: 1fr; gap: 2px; } }
-		.p-proj { list-style: disc; margin: 14px 0 0; padding: 0 0 0 1.1em; font-size: 16px; line-height: 1.5; color: var(--mut); max-width: 620px; }
-		.p-proj li + li { margin-top: 4px; }
-		.p-proj li::marker { color: var(--acc); }
+			/* ---------- career milestones (anonymous) ---------- */
+			.ms {
+				margin-top: 88px;
+			}
+			.ms-title {
+				margin: 0;
+				font-size: clamp(30px, 3vw, 40px);
+				line-height: 1.05;
+				letter-spacing: -0.035em;
+				font-weight: 600;
+			}
+			.ms-note {
+				margin: 8px 0 0;
+				font-family: 'JetBrains Mono', monospace;
+				font-size: 13px;
+				color: var(--mut);
+			}
+			.ms-group {
+				margin-top: 40px;
+				padding-top: 18px;
+				border-top: 1px solid var(--line);
+				display: grid;
+				grid-template-columns: minmax(0, 1fr) minmax(0, 2.6fr);
+				gap: 32px;
+				scroll-margin-top: 24px;
+			}
+			.ms-lb {
+				margin: 0;
+				font-family: 'JetBrains Mono', monospace;
+				font-size: 19px;
+				font-weight: 700;
+				color: var(--acc);
+			}
+			.ms-line {
+				margin: 8px 0 0;
+				font-size: 16px;
+				line-height: 1.45;
+				color: var(--mut);
+				max-width: 300px;
+			}
+			.ms-grid {
+				margin: 0;
+				padding: 0;
+				list-style: none;
+				display: grid;
+				grid-template-columns: repeat(3, minmax(0, 1fr));
+				gap: 28px 32px;
+			}
+			.ms-tile {
+				display: flex;
+				flex-direction: column;
+				gap: 6px;
+			}
+			.ms-n {
+				white-space: nowrap;
+				font-size: clamp(26px, 2.5vw, 36px);
+				line-height: 1;
+				letter-spacing: -0.04em;
+				font-weight: 600;
+				font-variant-numeric: tabular-nums;
+			}
+			.ms-n.ms-wrap {
+				white-space: normal;
+				line-height: 1.05;
+			}
+			.ms-c {
+				font-size: 15px;
+				line-height: 1.4;
+				color: var(--mut);
+				max-width: 260px;
+			}
+			@media (max-width: 860px) {
+				.ms {
+					margin-top: 56px;
+				}
+				.ms-group {
+					grid-template-columns: 1fr;
+					gap: 18px;
+					margin-top: 32px;
+				}
+				.ms-line {
+					max-width: none;
+				}
+				.ms-grid {
+					grid-template-columns: repeat(2, minmax(0, 1fr));
+					gap: 22px 20px;
+				}
+			}
+			@media (max-width: 420px) {
+				.ms-grid {
+					grid-template-columns: 1fr;
+				}
+			}
 
-		/* ---------- career milestones (anonymous) ---------- */
-		.ms { margin-top: 88px; }
-		.ms-title { margin: 0; font-size: clamp(30px, 3vw, 40px); line-height: 1.05; letter-spacing: -.035em; font-weight: 600; }
-		.ms-note { margin: 8px 0 0; font-family: 'JetBrains Mono', monospace; font-size: 13px; color: var(--mut); }
-		.ms-group { margin-top: 40px; padding-top: 18px; border-top: 1px solid var(--line); display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 2.6fr); gap: 32px; scroll-margin-top: 24px; }
-		.ms-lb { margin: 0; font-family: 'JetBrains Mono', monospace; font-size: 19px; font-weight: 700; color: var(--acc); }
-		.ms-line { margin: 8px 0 0; font-size: 16px; line-height: 1.45; color: var(--mut); max-width: 300px; }
-		.ms-grid { margin: 0; padding: 0; list-style: none; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 28px 32px; }
-		.ms-tile { display: flex; flex-direction: column; gap: 6px; }
-		.ms-n { white-space: nowrap; font-size: clamp(26px, 2.5vw, 36px); line-height: 1; letter-spacing: -.04em; font-weight: 600; font-variant-numeric: tabular-nums; }
-		.ms-n.ms-wrap { white-space: normal; line-height: 1.05; }
-		.ms-c { font-size: 15px; line-height: 1.4; color: var(--mut); max-width: 260px; }
-		@media (max-width: 860px) {
-			.ms { margin-top: 56px; }
-			.ms-group { grid-template-columns: 1fr; gap: 18px; margin-top: 32px; }
-			.ms-line { max-width: none; }
-			.ms-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 22px 20px; }
-		}
-		@media (max-width: 420px) {
-			.ms-grid { grid-template-columns: 1fr; }
-		}
+			/* ---------- intro animation (like the logo: once, on load) ---------- */
+			.r-base {
+				animation: tl-draw 0.9s cubic-bezier(0.2, 0.7, 0.2, 1) 0.2s both;
+			}
+			.r-now {
+				animation: tl-draw 0.5s cubic-bezier(0.2, 0.7, 0.2, 1) 1.05s both;
+			}
+			.dot-now {
+				animation: tl-drop 0.8s linear 1.45s both;
+			}
+			.ch .mk {
+				animation: tl-pop 0.3s cubic-bezier(0.3, 1.6, 0.5, 1) var(--d) both;
+			}
+			.ch .yr,
+			.ch .org,
+			.ch .w-role {
+				animation: tl-up 0.45s cubic-bezier(0.2, 0.7, 0.2, 1) calc(var(--d) + 0.08s) both;
+			}
+			.ed .ed-mk {
+				animation: tl-draw 0.5s cubic-bezier(0.2, 0.7, 0.2, 1) var(--d) both;
+			}
+			.ed .ed-lbl {
+				animation: tl-up 0.4s ease calc(var(--d) + 0.1s) both;
+			}
+			.panel {
+				animation: tl-up 0.5s ease 1.6s both;
+			}
+			@keyframes tl-draw {
+				from {
+					transform: scaleX(0);
+				}
+				to {
+					transform: none;
+				}
+			}
+			@keyframes tl-pop {
+				from {
+					transform: scale(0);
+				}
+				to {
+					transform: none;
+				}
+			}
+			@keyframes tl-up {
+				from {
+					opacity: 0;
+					transform: translateY(6px);
+				}
+				to {
+					opacity: 1;
+					transform: none;
+				}
+			}
+			@keyframes tl-drop {
+				0% {
+					opacity: 0;
+					transform: translateY(-46px);
+					animation-timing-function: cubic-bezier(0.55, 0, 1, 0.45);
+				}
+				40% {
+					opacity: 1;
+					transform: none;
+					animation-timing-function: cubic-bezier(0, 0.55, 0.45, 1);
+				}
+				58% {
+					transform: translateY(-14px) scale(1);
+					animation-timing-function: cubic-bezier(0.55, 0, 1, 0.45);
+				}
+				74% {
+					transform: none;
+				}
+				77% {
+					transform: scale(1.2, 0.8);
+				}
+				82% {
+					transform: translateY(-4px);
+				}
+				92%,
+				100% {
+					transform: none;
+					opacity: 1;
+				}
+			}
 
-		/* ---------- intro animation (like the logo: once, on load) ---------- */
-		.r-base { animation: tl-draw .9s cubic-bezier(.2, .7, .2, 1) .2s both; }
-		.r-now { animation: tl-draw .5s cubic-bezier(.2, .7, .2, 1) 1.05s both; }
-		.dot-now { animation: tl-drop .8s linear 1.45s both; }
-		.ch .mk { animation: tl-pop .3s cubic-bezier(.3, 1.6, .5, 1) var(--d) both; }
-		.ch .yr, .ch .org, .ch .w-role { animation: tl-up .45s cubic-bezier(.2, .7, .2, 1) calc(var(--d) + .08s) both; }
-		.ed .ed-mk { animation: tl-draw .5s cubic-bezier(.2, .7, .2, 1) var(--d) both; }
-		.ed .ed-lbl { animation: tl-up .4s ease calc(var(--d) + .1s) both; }
-		.panel { animation: tl-up .5s ease 1.6s both; }
-		@keyframes tl-draw { from { transform: scaleX(0); } to { transform: none; } }
-		@keyframes tl-pop { from { transform: scale(0); } to { transform: none; } }
-		@keyframes tl-up { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
-		@keyframes tl-drop {
-			0% { opacity: 0; transform: translateY(-46px); animation-timing-function: cubic-bezier(.55, 0, 1, .45); }
-			40% { opacity: 1; transform: none; animation-timing-function: cubic-bezier(0, .55, .45, 1); }
-			58% { transform: translateY(-14px) scale(1); animation-timing-function: cubic-bezier(.55, 0, 1, .45); }
-			74% { transform: none; }
-			77% { transform: scale(1.2, .8); }
-			82% { transform: translateY(-4px); }
-			92%, 100% { transform: none; opacity: 1; }
-		}
+			/* ---------- mobile: vertical, newest first ---------- */
+			@media (max-width: 860px) {
+				.tlx,
+				.panel {
+					display: none;
+				}
+				.tlm {
+					display: block;
+					list-style: none;
+					margin: 40px 0 0;
+					padding: 0;
+					position: relative;
+				}
+				.tlm::before {
+					content: '';
+					position: absolute;
+					left: 6px;
+					top: 8px;
+					bottom: 8px;
+					width: 2px;
+					background: var(--line);
+					transform-origin: 50% 0;
+				}
+				.tlm > li {
+					position: relative;
+					padding: 0 0 22px 34px;
+				}
+				.m-sum {
+					display: flex;
+					flex-direction: column;
+					gap: 3px;
+					width: 100%;
+				}
+				.m-sum .mk {
+					position: absolute;
+					left: 0;
+					top: 4px;
+					width: 14px;
+					height: 14px;
+					border-radius: 50%;
+					background: var(--bg);
+					box-shadow: inset 0 0 0 2px var(--stone);
+				}
+				.m-sum .yr {
+					font-family: 'JetBrains Mono', monospace;
+					font-size: 13px;
+					color: var(--mut);
+				}
+				.m-sum .org {
+					font-size: 20px;
+					font-weight: 600;
+					line-height: 1.2;
+				}
+				.m-sum .w-role {
+					font-family: 'JetBrains Mono', monospace;
+					font-size: 12.5px;
+					color: var(--mut);
+				}
+				.m-ch:not(.now) .org::after {
+					content: ' +';
+					font-family: 'JetBrains Mono', monospace;
+					font-weight: 400;
+					color: var(--acc);
+				}
+				.m-ch:not(.now) details[open] .org::after {
+					content: ' −';
+				}
+				.m-ch.now .yr {
+					font-size: 16px;
+					font-weight: 700;
+					color: var(--acc);
+				}
+				.m-ch.now .org {
+					font-size: 30px;
+					letter-spacing: -0.03em;
+				}
+				.m-ch.now .mk {
+					background: var(--acc);
+					box-shadow: 0 0 0 4px color-mix(in srgb, var(--acc) 25%, transparent);
+				}
+				.m-ch.now::before {
+					content: '';
+					position: absolute;
+					left: 6px;
+					top: 8px;
+					bottom: 0;
+					width: 2px;
+					background: var(--acc);
+				}
+				.m-ed .mk {
+					width: 10px;
+					height: 10px;
+					left: 2px;
+					top: 5px;
+				}
+				.m-ed .org {
+					font-size: 16px;
+					font-weight: 500;
+				}
+				.m-ed .org::after {
+					content: ' +';
+					font-family: 'JetBrains Mono', monospace;
+					font-weight: 400;
+					color: var(--stone);
+				}
+				.m-ed details[open] .org::after {
+					content: ' −';
+				}
+				.m-body p {
+					margin: 10px 0 0;
+					font-size: 16px;
+					line-height: 1.5;
+					opacity: 0.85;
+				}
+				.tlm::before {
+					animation: tl-drawy 0.8s cubic-bezier(0.2, 0.7, 0.2, 1) 0.15s both;
+				}
+				.tlm > li {
+					animation: tl-up 0.45s cubic-bezier(0.2, 0.7, 0.2, 1) calc(0.2s + var(--i) * 0.07s) both;
+				}
+				@keyframes tl-drawy {
+					from {
+						transform: scaleY(0);
+					}
+					to {
+						transform: none;
+					}
+				}
+			}
 
-		/* ---------- mobile: vertical, newest first ---------- */
-		@media (max-width: 860px) {
-			.tlx, .panel { display: none; }
-			.tlm { display: block; list-style: none; margin: 40px 0 0; padding: 0; position: relative; }
-			.tlm::before { content: ""; position: absolute; left: 6px; top: 8px; bottom: 8px; width: 2px; background: var(--line); transform-origin: 50% 0; }
-			.tlm > li { position: relative; padding: 0 0 22px 34px; }
-			.m-sum { display: flex; flex-direction: column; gap: 3px; width: 100%; }
-			.m-sum .mk { position: absolute; left: 0; top: 4px; width: 14px; height: 14px; border-radius: 50%; background: var(--bg); box-shadow: inset 0 0 0 2px var(--stone); }
-			.m-sum .yr { font-family: 'JetBrains Mono', monospace; font-size: 13px; color: var(--mut); }
-			.m-sum .org { font-size: 20px; font-weight: 600; line-height: 1.2; }
-			.m-sum .w-role { font-family: 'JetBrains Mono', monospace; font-size: 12.5px; color: var(--mut); }
-			.m-ch:not(.now) .org::after { content: " +"; font-family: 'JetBrains Mono', monospace; font-weight: 400; color: var(--acc); }
-			.m-ch:not(.now) details[open] .org::after { content: " −"; }
-			.m-ch.now .yr { font-size: 16px; font-weight: 700; color: var(--acc); }
-			.m-ch.now .org { font-size: 30px; letter-spacing: -.03em; }
-			.m-ch.now .mk { background: var(--acc); box-shadow: 0 0 0 4px color-mix(in srgb, var(--acc) 25%, transparent); }
-			.m-ch.now::before { content: ""; position: absolute; left: 6px; top: 8px; bottom: 0; width: 2px; background: var(--acc); }
-			.m-ed .mk { width: 10px; height: 10px; left: 2px; top: 5px; }
-			.m-ed .org { font-size: 16px; font-weight: 500; }
-			.m-ed .org::after { content: " +"; font-family: 'JetBrains Mono', monospace; font-weight: 400; color: var(--stone); }
-			.m-ed details[open] .org::after { content: " −"; }
-			.m-body p { margin: 10px 0 0; font-size: 16px; line-height: 1.5; opacity: .85; }
-			.tlm::before { animation: tl-drawy .8s cubic-bezier(.2, .7, .2, 1) .15s both; }
-			.tlm > li { animation: tl-up .45s cubic-bezier(.2, .7, .2, 1) calc(.2s + var(--i) * .07s) both; }
-			@keyframes tl-drawy { from { transform: scaleY(0); } to { transform: none; } }
-		}
+			@media (prefers-reduced-motion: reduce) {
+				.tl *,
+				.tlm,
+				.tlm *,
+				.w-h1 {
+					animation: none !important;
+				}
+			}
 
-		@media (prefers-reduced-motion: reduce) {
-			.tl *, .tlm, .tlm *, .w-h1 { animation: none !important; }
-		}
+			/* Timeline selection without JavaScript: each chapter is a radio inside its label */
+			label.ch,
+			label.ed {
+				cursor: pointer;
+			}
+			.ch:has(:focus-visible),
+			.ed:has(:focus-visible) {
+				outline: 2px solid var(--focus);
+				outline-offset: 6px;
+				border-radius: 4px;
+			}
+			.pn.pn-default {
+				display: grid;
+			}
+			.tl:has(.ch-r:checked) .pn.pn-default {
+				display: none;
+			}
+			.tl:has(#r-iidac:checked) #pn-iidac,
+			.tl:has(#r-squadra:checked) #pn-squadra,
+			.tl:has(#r-iel:checked) #pn-iel,
+			.tl:has(#r-scalable:checked) #pn-scalable,
+			.tl:has(#r-sc:checked) #pn-sc,
+			.tl:has(#r-code:checked) #pn-code,
+			.tl:has(#r-bs:checked) #pn-bs,
+			.tl:has(#r-msc:checked) #pn-msc {
+				display: grid;
+				animation: pn-in 0.35s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+			}
+			.m-sum {
+				list-style: none;
+				cursor: pointer;
+			}
+			.m-sum::-webkit-details-marker {
+				display: none;
+			}
+			@media (max-width: 860px) {
+				.ch-r {
+					display: none;
+				}
+			}
+			@media (prefers-reduced-motion: reduce) {
+				.pn {
+					animation: none !important;
+				}
+			}
+			@media print {
+				.tlx {
+					display: none;
+				}
+				.pn {
+					display: grid !important;
+					break-inside: avoid;
+					margin-bottom: 16px;
+				}
+			}
+		</style>
+	</head>
+	<body>
+		<div class="page">
+			<header class="top">
+				<a class="tile" id="logo" href="/" aria-label="Home"
+					><img src="/assets/logo.svg" alt="" width="68" height="22"
+				/></a>
 
-		/* Timeline selection without JavaScript: each chapter is a radio inside its label */
-		label.ch, label.ed { cursor: pointer; }
-		.ch:has(:focus-visible), .ed:has(:focus-visible) { outline: 2px solid var(--focus); outline-offset: 6px; border-radius: 4px; }
-		.pn.pn-default { display: grid; }
-		.tl:has(.ch-r:checked) .pn.pn-default { display: none; }
-		.tl:has(#r-iidac:checked) #pn-iidac,
-		.tl:has(#r-squadra:checked) #pn-squadra,
-		.tl:has(#r-iel:checked) #pn-iel,
-		.tl:has(#r-scalable:checked) #pn-scalable,
-		.tl:has(#r-sc:checked) #pn-sc,
-		.tl:has(#r-code:checked) #pn-code,
-		.tl:has(#r-bs:checked) #pn-bs,
-		.tl:has(#r-msc:checked) #pn-msc {
-			display: grid;
-			animation: pn-in .35s cubic-bezier(.2, .7, .2, 1) both;
-		}
-		.m-sum { list-style: none; cursor: pointer; }
-		.m-sum::-webkit-details-marker { display: none; }
-		@media (max-width: 860px) {
-			.ch-r { display: none; }
-		}
-		@media (prefers-reduced-motion: reduce) {
-			.pn { animation: none !important; }
-		}
-		@media print {
-			.tlx { display: none; }
-			.pn { display: grid !important; break-inside: avoid; margin-bottom: 16px; }
-		}
-	</style>
-</head>
-<body>
-	<div class="page">
-		<header class="top">
-			<a class="tile" id="logo" href="/" aria-label="Home"><img src="/assets/logo.svg" alt="" width="68" height="22"></a>
+				<button type="button" class="tbtn" id="theme" aria-pressed="false">
+					<span class="sr-only">Dark mode</span>
+					<svg
+						class="i-sun"
+						width="0.8em"
+						height="0.8em"
+						viewBox="0 0 24 24"
+						aria-hidden="true"
+						fill="none"
+						stroke="currentColor"
+						stroke-width="2"
+						stroke-linecap="round"
+					>
+						<circle cx="12" cy="12" r="4.2" fill="var(--acc)" stroke="none"></circle>
+						<path
+							d="M12 2.5v2.2M12 19.3v2.2M2.5 12h2.2M19.3 12h2.2M5.3 5.3l1.55 1.55M17.15 17.15l1.55 1.55M5.3 18.7l1.55-1.55M17.15 6.85l1.55-1.55"
+						></path>
+					</svg>
+					<svg class="i-moon" width="0.8em" height="0.8em" viewBox="0 0 24 24" aria-hidden="true">
+						<defs>
+							<mask id="ms-moon">
+								<rect width="24" height="24" fill="#fff"></rect>
+								<circle cx="15.2" cy="8.8" r="8" fill="#000"></circle>
+							</mask>
+						</defs>
+						<circle cx="12" cy="12" r="9" fill="var(--acc)" mask="url(#ms-moon)"></circle>
+					</svg>
+				</button>
+			</header>
 
-			<button type="button" class="tbtn" id="theme" aria-pressed="false">
-				<span class="sr-only">Dark mode</span>
-				<svg class="i-sun" width="0.8em" height="0.8em" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4.2" fill="var(--acc)" stroke="none"></circle><path d="M12 2.5v2.2M12 19.3v2.2M2.5 12h2.2M19.3 12h2.2M5.3 5.3l1.55 1.55M17.15 17.15l1.55 1.55M5.3 18.7l1.55-1.55M17.15 6.85l1.55-1.55"></path></svg>
-				<svg class="i-moon" width="0.8em" height="0.8em" viewBox="0 0 24 24" aria-hidden="true"><defs><mask id="ms-moon"><rect width="24" height="24" fill="#fff"></rect><circle cx="15.2" cy="8.8" r="8" fill="#000"></circle></mask></defs><circle cx="12" cy="12" r="9" fill="var(--acc)" mask="url(#ms-moon)"></circle></svg>
-			</button>
-		</header>
+			<main class="main work">
+				<h1 class="w-h1"><span class="w-h1-sl" aria-hidden="true">/</span>work</h1>
 
-		<main class="main work">
-			<h1 class="w-h1"><span class="w-h1-sl" aria-hidden="true">/</span>work</h1>
+				<section class="tl" aria-label="Career timeline: pick a chapter to see the details">
+					<div class="tlx" style="--now: 63.492%">
+						<div class="lane-edu">
+							<label class="ed pt" style="left: 0%; --w: 0%; --d: 1.25s"
+								><input
+									class="ch-r sr-only"
+									type="radio"
+									name="chapter"
+									id="r-code"
+									value="code" /><span class="ed-lbl"
+									><span class="ed-yr">2006</span><span class="ed-sep"> · </span
+									><span class="ed-nm">self-taught</span></span
+								><span class="ed-mk"></span
+							></label>
+							<label class="ed bar" style="left: 13.228%; --w: 23.808999999999997%; --d: 1.37s"
+								><input class="ch-r sr-only" type="radio" name="chapter" id="r-bs" value="bs" /><span
+									class="ed-lbl"
+									><span class="ed-yr">2011–2015</span><span class="ed-sep"> · </span
+									><span class="ed-nm">B.S. Information Systems</span></span
+								><span class="ed-mk"></span
+							></label>
+							<label class="ed bar" style="left: 71.789%; --w: 12.445999999999998%; --d: 1.49s"
+								><input class="ch-r sr-only" type="radio" name="chapter" id="r-msc" value="msc" /><span
+									class="ed-lbl"
+									><span class="ed-yr">2020–2023</span><span class="ed-sep"> · </span
+									><span class="ed-nm">M.Sc. coursework · ITA</span></span
+								><span class="ed-mk"></span
+							></label>
+						</div>
+						<div class="rail" aria-hidden="true">
+							<span class="r-base"></span><span class="r-now"></span><span class="dot-now"></span>
+						</div>
+						<div class="lane-work">
+							<label class="ch" style="left: 2.646%; width: calc(13.227% - 24px); --d: 0.27s"
+								><input
+									class="ch-r sr-only"
+									type="radio"
+									name="chapter"
+									id="r-iidac"
+									value="iidac"
+								/><span class="mk"></span><span class="yr">2007</span><span class="org">IIDAC</span
+								><span class="w-role">Web developer</span></label
+							>
+							<label class="ch" style="left: 15.873%; width: calc(15.873% - 24px); --d: 0.39s"
+								><input
+									class="ch-r sr-only"
+									type="radio"
+									name="chapter"
+									id="r-squadra"
+									value="squadra"
+								/><span class="mk"></span><span class="yr">2012</span><span class="org">Squadra</span
+								><span class="w-role">Software engineer</span></label
+							>
+							<label class="ch" style="left: 31.746%; width: calc(15.873000000000001% - 24px); --d: 0.54s"
+								><input class="ch-r sr-only" type="radio" name="chapter" id="r-iel" value="iel" /><span
+									class="mk"
+								></span
+								><span class="yr">2014</span><span class="org">IEL</span
+								><span class="w-role">Technical architect</span></label
+							>
+							<label class="ch" style="left: 47.619%; width: calc(15.872999999999998% - 24px); --d: 0.68s"
+								><input
+									class="ch-r sr-only"
+									type="radio"
+									name="chapter"
+									id="r-scalable"
+									value="scalable"
+								/><span class="mk"></span><span class="yr">2017</span
+								><span class="org">Scalable Path</span
+								><span class="w-role">Engineer · remote, US</span></label
+							>
+							<label class="ch now" style="left: 63.492%; width: calc(36.508% - 24px); --d: 0.82s"
+								><input
+									class="ch-r sr-only"
+									type="radio"
+									name="chapter"
+									id="r-sc"
+									value="sc"
+									checked
+								/><span class="mk"></span><span class="yr">2018 — now</span
+								><span class="org">StartCHURCH</span
+								><span class="w-role">Software Architect &amp; Tech Lead</span></label
+							>
+						</div>
+					</div>
+					<div class="panel">
+						<div class="pn" id="pn-iidac">
+							<div class="p-meta">
+								<span class="p-yr">2007</span><span class="p-org">IIDAC</span
+								><span class="p-role">Web developer</span>
+							</div>
+							<div class="p-body">
+								<p>
+									My first job: web applications for social programs of a UN-partner NGO, reaching
+									young people across Brazil. Worked alongside UN Volunteers from five countries.
+								</p>
+								<p class="p-tl">Projects</p>
+								<ul class="p-tags" role="list">
+									<li>ODM Universidades</li>
+									<li>Voz dos Adolescentes</li>
+									<li>Rejupe</li>
+									<li>PPCAAM (federal program, Human Rights Secretariat)</li>
+									<li>IIDAC website</li>
+								</ul>
+								<ul class="p-proj">
+									<li>PHP and MySQL, from database to front end</li>
+								</ul>
+							</div>
+						</div>
+						<div class="pn" id="pn-squadra">
+							<div class="p-meta">
+								<span class="p-yr">2012</span><span class="p-org">Squadra</span
+								><span class="p-role">Software engineer</span>
+							</div>
+							<div class="p-body">
+								<p>Systems for Brazilian federal agencies and enterprise clients.</p>
+								<p class="p-tl">Projects</p>
+								<ul class="p-tags" role="list">
+									<li>SIMEC (Ministry of Education)</li>
+									<li>IPHAN (national heritage institute)</li>
+									<li>DNPM (national mining department)</li>
+								</ul>
+								<ul class="p-proj">
+									<li>PHP / Zend and Oracle, Java and .NET / SQL Server projects</li>
+									<li>A cross-platform quiz app for iOS and Android</li>
+								</ul>
+							</div>
+						</div>
+						<div class="pn" id="pn-iel">
+							<div class="p-meta">
+								<span class="p-yr">2014</span><span class="p-org">IEL</span
+								><span class="p-role">Technical architect</span>
+							</div>
+							<div class="p-body">
+								<p>
+									Started on ten Java systems already in production, improved them iteratively instead
+									of rewriting them, and became the bridge between development, infrastructure and
+									business.
+								</p>
+								<p class="p-tl">Projects</p>
+								<ul class="p-tags" role="list">
+									<li>Account sync with FIEG (Casa da Indústria)</li>
+									<li>Internship program website</li>
+								</ul>
+								<ul class="p-proj">
+									<li>Moved the systems to Linux on AWS and hardened SQL Server</li>
+									<li>
+										Designed a new microservices architecture: Java, Spring Boot, SQL Server,
+										messaging and queues
+									</li>
+									<li>Built on it the account synchronization between IEL-GO and FIEG systems</li>
+								</ul>
+							</div>
+						</div>
+						<div class="pn" id="pn-scalable">
+							<div class="p-meta">
+								<span class="p-yr">2017</span><span class="p-org">Scalable Path</span
+								><span class="p-role">Engineer · remote, US</span>
+							</div>
+							<div class="p-body">
+								<p>
+									Embedded in US client teams, fully remote from Brazil. One of those clients became
+									the next chapter.
+								</p>
+								<p class="p-tl">Clients &amp; projects</p>
+								<ul class="p-tags" role="list">
+									<li>Tempo (Scalable Path’s showcase site)</li>
+									<li>Timelinely</li>
+									<li>The Mission Zone</li>
+									<li>StartCHURCH</li>
+								</ul>
+								<ul class="p-proj">
+									<li>
+										Built The Mission Zone’s MVP single-handedly, mentoring a junior developer along
+										the way, 2018–2019
+									</li>
+									<li>Placed with StartCHURCH, which later hired me directly</li>
+								</ul>
+							</div>
+						</div>
+						<div class="pn pn-default" id="pn-sc">
+							<div class="p-meta">
+								<span class="p-yr">2018 — now</span><span class="p-org">StartCHURCH</span
+								><span class="p-role">Software Architect &amp; Tech Lead</span>
+							</div>
+							<div class="p-body">
+								<p>
+									Eight years owning the platform end to end: how it is built and deployed, what it
+									costs, and how AI helps the team.
+								</p>
+								<p class="p-tl">Products</p>
+								<ul class="p-tags" role="list">
+									<li>startchurch.com</li>
+									<li>Admin Console</li>
+									<li>StartSITES</li>
+									<li>Kingdom Steward</li>
+									<li>StartCHURCH University</li>
+									<li>Video Platform</li>
+									<li>AppletBuilder</li>
+									<li>Giving Halo</li>
+									<li>Launch Halo</li>
+									<li>Attorney Network</li>
+								</ul>
+								<ul class="p-proj">
+									<li>Architecture and day-to-day operation of every product above</li>
+									<li>
+										Re-platformed everything: DigitalOcean → AWS, Ansible and Vagrant → Docker and
+										Kubernetes, Bitbucket → GitHub with CI and tests on every push
+									</li>
+									<li>
+										Split a single all-or-nothing deploy into independent apps that scale
+										horizontally and deploy with zero downtime
+									</li>
+									<li>
+										Upgraded the core stack from Symfony 3.4 to 6.4 and PHP 8.3; ported Kingdom
+										Steward and StartCHURCH University from Zend to Symfony 6 with Claude Code
+										(rolling out)
+									</li>
+									<li>
+										Co-designed a microservices platform prototype with single sign-on (Keycloak)
+										across legacy and current Symfony apps and Next.js frontends, meant to host Halo
+										and later the whole suite, 2020–2021
+									</li>
+									<li>
+										Took over Giving Halo and Launch Halo to keep them running: release-based
+										deploys, tests on every PR, daily database backups
+									</li>
+									<li>
+										Built and maintained the Attorney Network’s console and APIs, connecting church
+										leaders with attorneys in every state, until the product was retired
+									</li>
+									<li>
+										Modernized AppletBuilder (PDF courses and visual guides) with single sign-on, S3
+										storage and snapshot publishing; moved the Video Platform (recorded courses) to
+										its own Next.js app
+									</li>
+									<li>
+										Built sc, the team’s CLI: one command sets up a dev machine and standardizes
+										daily work
+									</li>
+									<li>Runs the cloud cost program and automated manual billing work</li>
+									<li>Onboards and mentors developers, including bootcamp juniors</li>
+									<li>
+										Brought agents, Claude Code reviews and a self-hosted MCP server into the team’s
+										daily work
+									</li>
+								</ul>
+							</div>
+						</div>
+						<div class="pn" id="pn-code">
+							<div class="p-meta">
+								<span class="p-yr">2006</span><span class="p-org">Self-taught programmer</span
+								><span class="p-role">started at 13</span>
+							</div>
+							<div class="p-body">
+								<p>Started programming at 13, on my own. Everything after grew from that.</p>
+							</div>
+						</div>
+						<div class="pn" id="pn-bs">
+							<div class="p-meta">
+								<span class="p-yr">2011–2015</span><span class="p-org">B.S. Information Systems</span
+								><span class="p-role">Universidade Estadual de Goiás</span>
+							</div>
+							<div class="p-body">
+								<p>Bachelor’s degree in Information Systems, earned while working as a developer.</p>
+							</div>
+						</div>
+						<div class="pn" id="pn-msc">
+							<div class="p-meta">
+								<span class="p-yr">2020–2023</span><span class="p-org">M.Sc. Logistics Engineering</span
+								><span class="p-role">ITA · not completed</span>
+							</div>
+							<div class="p-body">
+								<p>
+									Aeronautics Institute of Technology (ITA). All coursework and credits finished; left
+									in 2023 before the thesis defense.
+								</p>
+								<p class="p-tl">Lab work</p>
+								<ul class="p-tags" role="list">
+									<li>AeroLogLabTOOL</li>
+								</ul>
+								<ul class="p-proj">
+									<li>Restructured the lab’s logistics-support planning tool (Go, MySQL), 2020</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</section>
 
-<section class="tl" aria-label="Career timeline: pick a chapter to see the details">
-<div class="tlx" style="--now:63.492%">
-<div class="lane-edu">
-<label class="ed pt" style="left:0.0%;--w:0%;--d:1.25s"><input class="ch-r sr-only" type="radio" name="chapter" id="r-code" value="code"><span class="ed-lbl"><span class="ed-yr">2006</span><span class="ed-sep"> · </span><span class="ed-nm">self-taught</span></span><span class="ed-mk"></span></label>
-<label class="ed bar" style="left:13.228%;--w:23.808999999999997%;--d:1.37s"><input class="ch-r sr-only" type="radio" name="chapter" id="r-bs" value="bs"><span class="ed-lbl"><span class="ed-yr">2011–2015</span><span class="ed-sep"> · </span><span class="ed-nm">B.S. Information Systems</span></span><span class="ed-mk"></span></label>
-<label class="ed bar" style="left:71.789%;--w:12.445999999999998%;--d:1.49s"><input class="ch-r sr-only" type="radio" name="chapter" id="r-msc" value="msc"><span class="ed-lbl"><span class="ed-yr">2020–2023</span><span class="ed-sep"> · </span><span class="ed-nm">M.Sc. coursework · ITA</span></span><span class="ed-mk"></span></label>
-</div>
-<div class="rail" aria-hidden="true"><span class="r-base"></span><span class="r-now"></span><span class="dot-now"></span></div>
-<div class="lane-work">
-<label class="ch" style="left:2.646%;width:calc(13.227% - 24px);--d:0.27s"><input class="ch-r sr-only" type="radio" name="chapter" id="r-iidac" value="iidac"><span class="mk"></span><span class="yr">2007</span><span class="org">IIDAC</span><span class="w-role">Web developer</span></label>
-<label class="ch" style="left:15.873%;width:calc(15.873% - 24px);--d:0.39s"><input class="ch-r sr-only" type="radio" name="chapter" id="r-squadra" value="squadra"><span class="mk"></span><span class="yr">2012</span><span class="org">Squadra</span><span class="w-role">Software engineer</span></label>
-<label class="ch" style="left:31.746%;width:calc(15.873000000000001% - 24px);--d:0.54s"><input class="ch-r sr-only" type="radio" name="chapter" id="r-iel" value="iel"><span class="mk"></span><span class="yr">2014</span><span class="org">IEL</span><span class="w-role">Technical architect</span></label>
-<label class="ch" style="left:47.619%;width:calc(15.872999999999998% - 24px);--d:0.68s"><input class="ch-r sr-only" type="radio" name="chapter" id="r-scalable" value="scalable"><span class="mk"></span><span class="yr">2017</span><span class="org">Scalable Path</span><span class="w-role">Engineer · remote, US</span></label>
-<label class="ch now" style="left:63.492%;width:calc(36.508% - 24px);--d:0.82s"><input class="ch-r sr-only" type="radio" name="chapter" id="r-sc" value="sc" checked><span class="mk"></span><span class="yr">2018 — now</span><span class="org">StartCHURCH</span><span class="w-role">Software Architect &amp; Tech Lead</span></label>
-</div>
-</div>
-<div class="panel">
-<div class="pn" id="pn-iidac"><div class="p-meta"><span class="p-yr">2007</span><span class="p-org">IIDAC</span><span class="p-role">Web developer</span></div><div class="p-body"><p>My first job: web applications for social programs of a UN-partner NGO, reaching young people across Brazil. Worked alongside UN Volunteers from five countries.</p><p class="p-tl">Projects</p><ul class="p-tags" role="list"><li>ODM Universidades</li><li>Voz dos Adolescentes</li><li>Rejupe</li><li>PPCAAM (federal program, Human Rights Secretariat)</li><li>IIDAC website</li></ul><ul class="p-proj"><li>PHP and MySQL, from database to front end</li></ul></div></div>
-<div class="pn" id="pn-squadra"><div class="p-meta"><span class="p-yr">2012</span><span class="p-org">Squadra</span><span class="p-role">Software engineer</span></div><div class="p-body"><p>Systems for Brazilian federal agencies and enterprise clients.</p><p class="p-tl">Projects</p><ul class="p-tags" role="list"><li>SIMEC (Ministry of Education)</li><li>IPHAN (national heritage institute)</li><li>DNPM (national mining department)</li></ul><ul class="p-proj"><li>PHP / Zend and Oracle, Java and .NET / SQL Server projects</li><li>A cross-platform quiz app for iOS and Android</li></ul></div></div>
-<div class="pn" id="pn-iel"><div class="p-meta"><span class="p-yr">2014</span><span class="p-org">IEL</span><span class="p-role">Technical architect</span></div><div class="p-body"><p>Started on ten Java systems already in production, improved them iteratively instead of rewriting them, and became the bridge between development, infrastructure and business.</p><p class="p-tl">Projects</p><ul class="p-tags" role="list"><li>Account sync with FIEG (Casa da Indústria)</li><li>Internship program website</li></ul><ul class="p-proj"><li>Moved the systems to Linux on AWS and hardened SQL Server</li><li>Designed a new microservices architecture: Java, Spring Boot, SQL Server, messaging and queues</li><li>Built on it the account synchronization between IEL-GO and FIEG systems</li></ul></div></div>
-<div class="pn" id="pn-scalable"><div class="p-meta"><span class="p-yr">2017</span><span class="p-org">Scalable Path</span><span class="p-role">Engineer · remote, US</span></div><div class="p-body"><p>Embedded in US client teams, fully remote from Brazil. One of those clients became the next chapter.</p><p class="p-tl">Clients &amp; projects</p><ul class="p-tags" role="list"><li>Tempo (Scalable Path’s showcase site)</li><li>Timelinely</li><li>The Mission Zone</li><li>StartCHURCH</li></ul><ul class="p-proj"><li>Built The Mission Zone’s MVP single-handedly, mentoring a junior developer along the way, 2018–2019</li><li>Placed with StartCHURCH, which later hired me directly</li></ul></div></div>
-<div class="pn pn-default" id="pn-sc"><div class="p-meta"><span class="p-yr">2018 — now</span><span class="p-org">StartCHURCH</span><span class="p-role">Software Architect &amp; Tech Lead</span></div><div class="p-body"><p>Eight years owning the platform end to end: how it is built and deployed, what it costs, and how AI helps the team.</p><p class="p-tl">Products</p><ul class="p-tags" role="list"><li>startchurch.com</li><li>Admin Console</li><li>StartSITES</li><li>Kingdom Steward</li><li>StartCHURCH University</li><li>Video Platform</li><li>AppletBuilder</li><li>Giving Halo</li><li>Launch Halo</li><li>Attorney Network</li></ul><ul class="p-proj"><li>Architecture and day-to-day operation of every product above</li><li>Re-platformed everything: DigitalOcean → AWS, Ansible and Vagrant → Docker and Kubernetes, Bitbucket → GitHub with CI and tests on every push</li><li>Split a single all-or-nothing deploy into independent apps that scale horizontally and deploy with zero downtime</li><li>Upgraded the core stack from Symfony 3.4 to 6.4 and PHP 8.3; ported Kingdom Steward and StartCHURCH University from Zend to Symfony 6 with Claude Code (rolling out)</li><li>Co-designed a microservices platform prototype with single sign-on (Keycloak) across legacy and current Symfony apps and Next.js frontends, meant to host Halo and later the whole suite, 2020–2021</li><li>Took over Giving Halo and Launch Halo to keep them running: release-based deploys, tests on every PR, daily database backups</li><li>Built and maintained the Attorney Network’s console and APIs, connecting church leaders with attorneys in every state, until the product was retired</li><li>Modernized AppletBuilder (PDF courses and visual guides) with single sign-on, S3 storage and snapshot publishing; moved the Video Platform (recorded courses) to its own Next.js app</li><li>Built sc, the team’s CLI: one command sets up a dev machine and standardizes daily work</li><li>Runs the cloud cost program and automated manual billing work</li><li>Onboards and mentors developers, including bootcamp juniors</li><li>Brought agents, Claude Code reviews and a self-hosted MCP server into the team’s daily work</li></ul></div></div>
-<div class="pn" id="pn-code"><div class="p-meta"><span class="p-yr">2006</span><span class="p-org">Self-taught programmer</span><span class="p-role">started at 13</span></div><div class="p-body"><p>Started programming at 13, on my own. Everything after grew from that.</p></div></div>
-<div class="pn" id="pn-bs"><div class="p-meta"><span class="p-yr">2011–2015</span><span class="p-org">B.S. Information Systems</span><span class="p-role">Universidade Estadual de Goiás</span></div><div class="p-body"><p>Bachelor’s degree in Information Systems, earned while working as a developer.</p></div></div>
-<div class="pn" id="pn-msc"><div class="p-meta"><span class="p-yr">2020–2023</span><span class="p-org">M.Sc. Logistics Engineering</span><span class="p-role">ITA · not completed</span></div><div class="p-body"><p>Aeronautics Institute of Technology (ITA). All coursework and credits finished; left in 2023 before the thesis defense.</p><p class="p-tl">Lab work</p><ul class="p-tags" role="list"><li>AeroLogLabTOOL</li></ul><ul class="p-proj"><li>Restructured the lab’s logistics-support planning tool (Go, MySQL), 2020</li></ul></div></div>
-</div>
-</section>
+				<ol class="tlm" aria-label="Career timeline, newest first">
+					<li class="m-ch now" style="--i: 0">
+						<details open>
+							<summary class="m-sum">
+								<span class="mk"></span><span class="yr">2018 — now</span
+								><span class="org">StartCHURCH</span
+								><span class="w-role">Software Architect &amp; Tech Lead</span>
+							</summary>
+							<div class="m-body">
+								<p>
+									Eight years owning the platform end to end: how it is built and deployed, what it
+									costs, and how AI helps the team.
+								</p>
+								<p class="p-tl">Products</p>
+								<ul class="p-tags" role="list">
+									<li>startchurch.com</li>
+									<li>Admin Console</li>
+									<li>StartSITES</li>
+									<li>Kingdom Steward</li>
+									<li>StartCHURCH University</li>
+									<li>Video Platform</li>
+									<li>AppletBuilder</li>
+									<li>Giving Halo</li>
+									<li>Launch Halo</li>
+									<li>Attorney Network</li>
+								</ul>
+								<ul class="p-proj">
+									<li>Architecture and day-to-day operation of every product above</li>
+									<li>
+										Re-platformed everything: DigitalOcean → AWS, Ansible and Vagrant → Docker and
+										Kubernetes, Bitbucket → GitHub with CI and tests on every push
+									</li>
+									<li>
+										Split a single all-or-nothing deploy into independent apps that scale
+										horizontally and deploy with zero downtime
+									</li>
+									<li>
+										Upgraded the core stack from Symfony 3.4 to 6.4 and PHP 8.3; ported Kingdom
+										Steward and StartCHURCH University from Zend to Symfony 6 with Claude Code
+										(rolling out)
+									</li>
+									<li>
+										Co-designed a microservices platform prototype with single sign-on (Keycloak)
+										across legacy and current Symfony apps and Next.js frontends, meant to host Halo
+										and later the whole suite, 2020–2021
+									</li>
+									<li>
+										Took over Giving Halo and Launch Halo to keep them running: release-based
+										deploys, tests on every PR, daily database backups
+									</li>
+									<li>
+										Built and maintained the Attorney Network’s console and APIs, connecting church
+										leaders with attorneys in every state, until the product was retired
+									</li>
+									<li>
+										Modernized AppletBuilder (PDF courses and visual guides) with single sign-on, S3
+										storage and snapshot publishing; moved the Video Platform (recorded courses) to
+										its own Next.js app
+									</li>
+									<li>
+										Built sc, the team’s CLI: one command sets up a dev machine and standardizes
+										daily work
+									</li>
+									<li>Runs the cloud cost program and automated manual billing work</li>
+									<li>Onboards and mentors developers, including bootcamp juniors</li>
+									<li>
+										Brought agents, Claude Code reviews and a self-hosted MCP server into the team’s
+										daily work
+									</li>
+								</ul>
+							</div>
+						</details>
+					</li>
+					<li class="m-ed" style="--i: 1">
+						<details>
+							<summary class="m-sum">
+								<span class="mk"></span><span class="yr">2020–2023</span
+								><span class="org">M.Sc. Logistics Engineering</span
+								><span class="w-role">ITA · not completed</span>
+							</summary>
+							<div class="m-body">
+								<p>
+									Aeronautics Institute of Technology (ITA). All coursework and credits finished; left
+									in 2023 before the thesis defense.
+								</p>
+								<p class="p-tl">Lab work</p>
+								<ul class="p-tags" role="list">
+									<li>AeroLogLabTOOL</li>
+								</ul>
+								<ul class="p-proj">
+									<li>Restructured the lab’s logistics-support planning tool (Go, MySQL), 2020</li>
+								</ul>
+							</div>
+						</details>
+					</li>
+					<li class="m-ch" style="--i: 2">
+						<details>
+							<summary class="m-sum">
+								<span class="mk"></span><span class="yr">2017</span
+								><span class="org">Scalable Path</span><span class="w-role">Engineer · remote, US</span>
+							</summary>
+							<div class="m-body">
+								<p>
+									Embedded in US client teams, fully remote from Brazil. One of those clients became
+									the next chapter.
+								</p>
+								<p class="p-tl">Clients &amp; projects</p>
+								<ul class="p-tags" role="list">
+									<li>Tempo (Scalable Path’s showcase site)</li>
+									<li>Timelinely</li>
+									<li>The Mission Zone</li>
+									<li>StartCHURCH</li>
+								</ul>
+								<ul class="p-proj">
+									<li>
+										Built The Mission Zone’s MVP single-handedly, mentoring a junior developer along
+										the way, 2018–2019
+									</li>
+									<li>Placed with StartCHURCH, which later hired me directly</li>
+								</ul>
+							</div>
+						</details>
+					</li>
+					<li class="m-ch" style="--i: 3">
+						<details>
+							<summary class="m-sum">
+								<span class="mk"></span><span class="yr">2014</span><span class="org">IEL</span
+								><span class="w-role">Technical architect</span>
+							</summary>
+							<div class="m-body">
+								<p>
+									Started on ten Java systems already in production, improved them iteratively instead
+									of rewriting them, and became the bridge between development, infrastructure and
+									business.
+								</p>
+								<p class="p-tl">Projects</p>
+								<ul class="p-tags" role="list">
+									<li>Account sync with FIEG (Casa da Indústria)</li>
+									<li>Internship program website</li>
+								</ul>
+								<ul class="p-proj">
+									<li>Moved the systems to Linux on AWS and hardened SQL Server</li>
+									<li>
+										Designed a new microservices architecture: Java, Spring Boot, SQL Server,
+										messaging and queues
+									</li>
+									<li>Built on it the account synchronization between IEL-GO and FIEG systems</li>
+								</ul>
+							</div>
+						</details>
+					</li>
+					<li class="m-ch" style="--i: 4">
+						<details>
+							<summary class="m-sum">
+								<span class="mk"></span><span class="yr">2012</span><span class="org">Squadra</span
+								><span class="w-role">Software engineer</span>
+							</summary>
+							<div class="m-body">
+								<p>Systems for Brazilian federal agencies and enterprise clients.</p>
+								<p class="p-tl">Projects</p>
+								<ul class="p-tags" role="list">
+									<li>SIMEC (Ministry of Education)</li>
+									<li>IPHAN (national heritage institute)</li>
+									<li>DNPM (national mining department)</li>
+								</ul>
+								<ul class="p-proj">
+									<li>PHP / Zend and Oracle, Java and .NET / SQL Server projects</li>
+									<li>A cross-platform quiz app for iOS and Android</li>
+								</ul>
+							</div>
+						</details>
+					</li>
+					<li class="m-ed" style="--i: 5">
+						<details>
+							<summary class="m-sum">
+								<span class="mk"></span><span class="yr">2011–2015</span
+								><span class="org">B.S. Information Systems</span
+								><span class="w-role">Universidade Estadual de Goiás</span>
+							</summary>
+							<div class="m-body">
+								<p>Bachelor’s degree in Information Systems, earned while working as a developer.</p>
+							</div>
+						</details>
+					</li>
+					<li class="m-ch" style="--i: 6">
+						<details>
+							<summary class="m-sum">
+								<span class="mk"></span><span class="yr">2007</span><span class="org">IIDAC</span
+								><span class="w-role">Web developer</span>
+							</summary>
+							<div class="m-body">
+								<p>
+									My first job: web applications for social programs of a UN-partner NGO, reaching
+									young people across Brazil. Worked alongside UN Volunteers from five countries.
+								</p>
+								<p class="p-tl">Projects</p>
+								<ul class="p-tags" role="list">
+									<li>ODM Universidades</li>
+									<li>Voz dos Adolescentes</li>
+									<li>Rejupe</li>
+									<li>PPCAAM (federal program, Human Rights Secretariat)</li>
+									<li>IIDAC website</li>
+								</ul>
+								<ul class="p-proj">
+									<li>PHP and MySQL, from database to front end</li>
+								</ul>
+							</div>
+						</details>
+					</li>
+					<li class="m-ed" style="--i: 7">
+						<details>
+							<summary class="m-sum">
+								<span class="mk"></span><span class="yr">2006</span
+								><span class="org">Self-taught programmer</span
+								><span class="w-role">started at 13</span>
+							</summary>
+							<div class="m-body">
+								<p>Started programming at 13, on my own. Everything after grew from that.</p>
+							</div>
+						</details>
+					</li>
+				</ol>
 
-<ol class="tlm" aria-label="Career timeline, newest first">
-<li class="m-ch now" style="--i:0"><details open><summary class="m-sum"><span class="mk"></span><span class="yr">2018 — now</span><span class="org">StartCHURCH</span><span class="w-role">Software Architect &amp; Tech Lead</span></summary><div class="m-body"><p>Eight years owning the platform end to end: how it is built and deployed, what it costs, and how AI helps the team.</p><p class="p-tl">Products</p><ul class="p-tags" role="list"><li>startchurch.com</li><li>Admin Console</li><li>StartSITES</li><li>Kingdom Steward</li><li>StartCHURCH University</li><li>Video Platform</li><li>AppletBuilder</li><li>Giving Halo</li><li>Launch Halo</li><li>Attorney Network</li></ul><ul class="p-proj"><li>Architecture and day-to-day operation of every product above</li><li>Re-platformed everything: DigitalOcean → AWS, Ansible and Vagrant → Docker and Kubernetes, Bitbucket → GitHub with CI and tests on every push</li><li>Split a single all-or-nothing deploy into independent apps that scale horizontally and deploy with zero downtime</li><li>Upgraded the core stack from Symfony 3.4 to 6.4 and PHP 8.3; ported Kingdom Steward and StartCHURCH University from Zend to Symfony 6 with Claude Code (rolling out)</li><li>Co-designed a microservices platform prototype with single sign-on (Keycloak) across legacy and current Symfony apps and Next.js frontends, meant to host Halo and later the whole suite, 2020–2021</li><li>Took over Giving Halo and Launch Halo to keep them running: release-based deploys, tests on every PR, daily database backups</li><li>Built and maintained the Attorney Network’s console and APIs, connecting church leaders with attorneys in every state, until the product was retired</li><li>Modernized AppletBuilder (PDF courses and visual guides) with single sign-on, S3 storage and snapshot publishing; moved the Video Platform (recorded courses) to its own Next.js app</li><li>Built sc, the team’s CLI: one command sets up a dev machine and standardizes daily work</li><li>Runs the cloud cost program and automated manual billing work</li><li>Onboards and mentors developers, including bootcamp juniors</li><li>Brought agents, Claude Code reviews and a self-hosted MCP server into the team’s daily work</li></ul></div></details></li>
-<li class="m-ed" style="--i:1"><details><summary class="m-sum"><span class="mk"></span><span class="yr">2020–2023</span><span class="org">M.Sc. Logistics Engineering</span><span class="w-role">ITA · not completed</span></summary><div class="m-body"><p>Aeronautics Institute of Technology (ITA). All coursework and credits finished; left in 2023 before the thesis defense.</p><p class="p-tl">Lab work</p><ul class="p-tags" role="list"><li>AeroLogLabTOOL</li></ul><ul class="p-proj"><li>Restructured the lab’s logistics-support planning tool (Go, MySQL), 2020</li></ul></div></details></li>
-<li class="m-ch" style="--i:2"><details><summary class="m-sum"><span class="mk"></span><span class="yr">2017</span><span class="org">Scalable Path</span><span class="w-role">Engineer · remote, US</span></summary><div class="m-body"><p>Embedded in US client teams, fully remote from Brazil. One of those clients became the next chapter.</p><p class="p-tl">Clients &amp; projects</p><ul class="p-tags" role="list"><li>Tempo (Scalable Path’s showcase site)</li><li>Timelinely</li><li>The Mission Zone</li><li>StartCHURCH</li></ul><ul class="p-proj"><li>Built The Mission Zone’s MVP single-handedly, mentoring a junior developer along the way, 2018–2019</li><li>Placed with StartCHURCH, which later hired me directly</li></ul></div></details></li>
-<li class="m-ch" style="--i:3"><details><summary class="m-sum"><span class="mk"></span><span class="yr">2014</span><span class="org">IEL</span><span class="w-role">Technical architect</span></summary><div class="m-body"><p>Started on ten Java systems already in production, improved them iteratively instead of rewriting them, and became the bridge between development, infrastructure and business.</p><p class="p-tl">Projects</p><ul class="p-tags" role="list"><li>Account sync with FIEG (Casa da Indústria)</li><li>Internship program website</li></ul><ul class="p-proj"><li>Moved the systems to Linux on AWS and hardened SQL Server</li><li>Designed a new microservices architecture: Java, Spring Boot, SQL Server, messaging and queues</li><li>Built on it the account synchronization between IEL-GO and FIEG systems</li></ul></div></details></li>
-<li class="m-ch" style="--i:4"><details><summary class="m-sum"><span class="mk"></span><span class="yr">2012</span><span class="org">Squadra</span><span class="w-role">Software engineer</span></summary><div class="m-body"><p>Systems for Brazilian federal agencies and enterprise clients.</p><p class="p-tl">Projects</p><ul class="p-tags" role="list"><li>SIMEC (Ministry of Education)</li><li>IPHAN (national heritage institute)</li><li>DNPM (national mining department)</li></ul><ul class="p-proj"><li>PHP / Zend and Oracle, Java and .NET / SQL Server projects</li><li>A cross-platform quiz app for iOS and Android</li></ul></div></details></li>
-<li class="m-ed" style="--i:5"><details><summary class="m-sum"><span class="mk"></span><span class="yr">2011–2015</span><span class="org">B.S. Information Systems</span><span class="w-role">Universidade Estadual de Goiás</span></summary><div class="m-body"><p>Bachelor’s degree in Information Systems, earned while working as a developer.</p></div></details></li>
-<li class="m-ch" style="--i:6"><details><summary class="m-sum"><span class="mk"></span><span class="yr">2007</span><span class="org">IIDAC</span><span class="w-role">Web developer</span></summary><div class="m-body"><p>My first job: web applications for social programs of a UN-partner NGO, reaching young people across Brazil. Worked alongside UN Volunteers from five countries.</p><p class="p-tl">Projects</p><ul class="p-tags" role="list"><li>ODM Universidades</li><li>Voz dos Adolescentes</li><li>Rejupe</li><li>PPCAAM (federal program, Human Rights Secretariat)</li><li>IIDAC website</li></ul><ul class="p-proj"><li>PHP and MySQL, from database to front end</li></ul></div></details></li>
-<li class="m-ed" style="--i:7"><details><summary class="m-sum"><span class="mk"></span><span class="yr">2006</span><span class="org">Self-taught programmer</span><span class="w-role">started at 13</span></summary><div class="m-body"><p>Started programming at 13, on my own. Everything after grew from that.</p></div></details></li>
-</ol>
+				<section class="w-side" aria-labelledby="side-title">
+					<h2 class="w-side-lb" id="side-title">On the side</h2>
+					<ul class="w-side-list" role="list">
+						<li>
+							<span class="sd-yr">2017–2018</span><span class="sd-name">SimUEG</span
+							><span class="sd-txt"
+								>Indicators and monitoring system for Universidade Estadual de Goiás (Laravel,
+								PostgreSQL).</span
+							>
+						</li>
+						<li>
+							<span class="sd-yr">2022</span><span class="sd-name">SAZ Saúde</span
+							><span class="sd-txt"
+								>Designed the health-benefits platform’s architecture from scratch (Laravel API,
+								Next.js, Docker, CI/CD) and handed it over to their internal dev team.</span
+							>
+						</li>
+						<li>
+							<span class="sd-yr">2023</span><span class="sd-name">Emigh Livestock</span
+							><span class="sd-txt"
+								>Short contribution: reworked the infrastructure of a Symfony app still running on
+								Ansible and Vagrant.</span
+							>
+						</li>
+						<li>
+							<span class="sd-yr">2024</span><span class="sd-name">Wonder Journal</span
+							><span class="sd-txt">Short contribution to a web and mobile app (Laravel, Inertia).</span>
+						</li>
+					</ul>
+				</section>
 
-<section class="w-side" aria-labelledby="side-title">
-<h2 class="w-side-lb" id="side-title">On the side</h2>
-<ul class="w-side-list" role="list">
-<li><span class="sd-yr">2017–2018</span><span class="sd-name">SimUEG</span><span class="sd-txt">Indicators and monitoring system for Universidade Estadual de Goiás (Laravel, PostgreSQL).</span></li>
-<li><span class="sd-yr">2022</span><span class="sd-name">SAZ Saúde</span><span class="sd-txt">Designed the health-benefits platform’s architecture from scratch (Laravel API, Next.js, Docker, CI/CD) and handed it over to their internal dev team.</span></li>
-<li><span class="sd-yr">2023</span><span class="sd-name">Emigh Livestock</span><span class="sd-txt">Short contribution: reworked the infrastructure of a Symfony app still running on Ansible and Vagrant.</span></li>
-<li><span class="sd-yr">2024</span><span class="sd-name">Wonder Journal</span><span class="sd-txt">Short contribution to a web and mobile app (Laravel, Inertia).</span></li>
-</ul>
-</section>
+				<section class="ms" id="milestones" aria-labelledby="ms-title">
+					<h2 class="ms-title" id="ms-title">Outcomes</h2>
+					<p class="ms-note">As of Oct 2026.</p>
+					<section class="ms-group" id="engineering" aria-labelledby="ms-engineering">
+						<div class="ms-head">
+							<h3 class="ms-lb" id="ms-engineering">engineering</h3>
+							<p class="ms-line">
+								Systems and teams that outlast me: documented, shared and handed over.
+							</p>
+						</div>
+						<ul class="ms-grid" role="list">
+							<li class="ms-tile">
+								<span class="ms-n">18% → 3%</span
+								><span class="ms-c"
+									>of deploys could break the live site while rolling out, before vs. after I
+									redesigned how changes ship</span
+								>
+							</li>
+							<li class="ms-tile">
+								<span class="ms-n">1h+ → ~5 min</span
+								><span class="ms-c"
+									>production deploy time after moving from Ansible on fixed servers to containers and
+									CI/CD, so shipping up to 10 times a day became routine</span
+								>
+							</li>
+							<li class="ms-tile">
+								<span class="ms-n ms-wrap">0 “works on my machine”</span
+								><span class="ms-c"
+									>bugs since dev, staging and production started running the exact same images</span
+								>
+							</li>
+							<li class="ms-tile">
+								<span class="ms-n">1 command</span
+								><span class="ms-c"
+									>to set up a dev machine on macOS, Linux or Windows: clone, run one script, the rest
+									lives in containers</span
+								>
+							</li>
+							<li class="ms-tile">
+								<span class="ms-n">&lt; 5 min</span
+								><span class="ms-c">of downtime across eight Kubernetes version upgrades</span>
+							</li>
+							<li class="ms-tile">
+								<span class="ms-n">40 min → secs</span
+								><span class="ms-c"
+									>to give every branch on staging its own copy of the database, so each change is
+									tested against realistic data</span
+								>
+							</li>
+							<li class="ms-tile">
+								<span class="ms-n ms-wrap">~20 years of data</span
+								><span class="ms-c"
+									>millions of records migrated into a two-way CRM sync, keeping sales and finance on
+									one source of truth</span
+								>
+							</li>
+							<li class="ms-tile">
+								<span class="ms-n">14 apps</span
+								><span class="ms-c">running on one shared platform, each deployed on its own</span>
+							</li>
+							<li class="ms-tile">
+								<span class="ms-n">10+ mentees</span
+								><span class="ms-c"
+									>engineers across four companies, from bootcamp juniors to senior hires</span
+								>
+							</li>
+						</ul>
+					</section>
+					<section class="ms-group" id="business" aria-labelledby="ms-business">
+						<div class="ms-head">
+							<h3 class="ms-lb" id="ms-business">business</h3>
+							<p class="ms-line">Tradeoffs explained in numbers — to engineers and to the CFO.</p>
+						</div>
+						<ul class="ms-grid" role="list">
+							<li class="ms-tile">
+								<span class="ms-n">8 figures</span
+								><span class="ms-c"
+									>yearly revenue of a business running on a platform I architect and operate</span
+								>
+							</li>
+							<li class="ms-tile">
+								<span class="ms-n">−30%</span><span class="ms-c">cloud bill in a single month</span>
+							</li>
+							<li class="ms-tile">
+								<span class="ms-n">~80%</span
+								><span class="ms-c"
+									>less spent on testing infrastructure, same coverage: refactored code, restructured
+									infrastructure, right-sized every service</span
+								>
+							</li>
+							<li class="ms-tile">
+								<span class="ms-n">−22%</span
+								><span class="ms-c">database cost in production on AWS</span>
+							</li>
+							<li class="ms-tile">
+								<span class="ms-n">~90%</span
+								><span class="ms-c">less load-balancer cost for preview environments</span>
+							</li>
+							<li class="ms-tile">
+								<span class="ms-n">3 days</span
+								><span class="ms-c"
+									>of the whole billing team’s manual work, done by one automation instead</span
+								>
+							</li>
+						</ul>
+					</section>
+					<section class="ms-group" id="ai" aria-labelledby="ms-ai">
+						<div class="ms-head">
+							<h3 class="ms-lb" id="ms-ai">ai</h3>
+							<p class="ms-line">LLMs in the product, agents for the team — shipped, not demoed.</p>
+						</div>
+						<ul class="ms-grid" role="list">
+							<li class="ms-tile">
+								<span class="ms-n">MCP</span
+								><span class="ms-c"
+									>self-hosted server: the team asks an AI assistant about production data,
+									read-only</span
+								>
+							</li>
+							<li class="ms-tile">
+								<span class="ms-n">Agents</span
+								><span class="ms-c"
+									>in the daily dev loop; this site was designed and built with them</span
+								>
+							</li>
+						</ul>
+					</section>
+				</section>
 
-<section class="ms" id="milestones" aria-labelledby="ms-title"><h2 class="ms-title" id="ms-title">Outcomes</h2><p class="ms-note">As of Oct 2026.</p><section class="ms-group" id="engineering" aria-labelledby="ms-engineering"><div class="ms-head"><h3 class="ms-lb" id="ms-engineering">engineering</h3><p class="ms-line">Systems and teams that outlast me: documented, shared and handed over.</p></div><ul class="ms-grid" role="list"><li class="ms-tile"><span class="ms-n">18% → 3%</span><span class="ms-c">of deploys could break the live site while rolling out, before vs. after I redesigned how changes ship</span></li><li class="ms-tile"><span class="ms-n">1h+ → ~5 min</span><span class="ms-c">production deploy time after moving from Ansible on fixed servers to containers and CI/CD, so shipping up to 10 times a day became routine</span></li><li class="ms-tile"><span class="ms-n ms-wrap">0 “works on my machine”</span><span class="ms-c">bugs since dev, staging and production started running the exact same images</span></li><li class="ms-tile"><span class="ms-n">1 command</span><span class="ms-c">to set up a dev machine on macOS, Linux or Windows: clone, run one script, the rest lives in containers</span></li><li class="ms-tile"><span class="ms-n">&lt; 5 min</span><span class="ms-c">of downtime across eight Kubernetes version upgrades</span></li><li class="ms-tile"><span class="ms-n">40 min → secs</span><span class="ms-c">to give every branch on staging its own copy of the database, so each change is tested against realistic data</span></li><li class="ms-tile"><span class="ms-n ms-wrap">~20 years of data</span><span class="ms-c">millions of records migrated into a two-way CRM sync, keeping sales and finance on one source of truth</span></li><li class="ms-tile"><span class="ms-n">14 apps</span><span class="ms-c">running on one shared platform, each deployed on its own</span></li><li class="ms-tile"><span class="ms-n">10+ mentees</span><span class="ms-c">engineers across four companies, from bootcamp juniors to senior hires</span></li></ul></section><section class="ms-group" id="business" aria-labelledby="ms-business"><div class="ms-head"><h3 class="ms-lb" id="ms-business">business</h3><p class="ms-line">Tradeoffs explained in numbers — to engineers and to the CFO.</p></div><ul class="ms-grid" role="list"><li class="ms-tile"><span class="ms-n">8 figures</span><span class="ms-c">yearly revenue of a business running on a platform I architect and operate</span></li><li class="ms-tile"><span class="ms-n">−30%</span><span class="ms-c">cloud bill in a single month</span></li><li class="ms-tile"><span class="ms-n">~80%</span><span class="ms-c">less spent on testing infrastructure, same coverage: refactored code, restructured infrastructure, right-sized every service</span></li><li class="ms-tile"><span class="ms-n">−22%</span><span class="ms-c">database cost in production on AWS</span></li><li class="ms-tile"><span class="ms-n">~90%</span><span class="ms-c">less load-balancer cost for preview environments</span></li><li class="ms-tile"><span class="ms-n">3 days</span><span class="ms-c">of the whole billing team’s manual work, done by one automation instead</span></li></ul></section><section class="ms-group" id="ai" aria-labelledby="ms-ai"><div class="ms-head"><h3 class="ms-lb" id="ms-ai">ai</h3><p class="ms-line">LLMs in the product, agents for the team — shipped, not demoed.</p></div><ul class="ms-grid" role="list"><li class="ms-tile"><span class="ms-n">MCP</span><span class="ms-c">self-hosted server: the team asks an AI assistant about production data, read-only</span></li><li class="ms-tile"><span class="ms-n">Agents</span><span class="ms-c">in the daily dev loop; this site was designed and built with them</span></li></ul></section></section>
-
-			<p class="w-foot">Full history on <a href="https://www.linkedin.com/in/matheus-salmi/" target="_blank" rel="noopener">LinkedIn<span class="sr-only"> (opens in new tab)</span></a> <span aria-hidden="true">·</span> <a href="/resume.pdf" target="_blank" rel="noopener">Résumé (PDF)<span class="sr-only"> (opens in new tab)</span></a></p>
-		</main>
-	</div>
-</body>
+				<p class="w-foot">
+					Full history on
+					<a href="https://www.linkedin.com/in/matheus-salmi/" target="_blank" rel="noopener"
+						>LinkedIn<span class="sr-only"> (opens in new tab)</span></a
+					>
+					<span aria-hidden="true">·</span>
+					<a href="/resume.pdf" target="_blank" rel="noopener"
+						>Résumé (PDF)<span class="sr-only"> (opens in new tab)</span></a
+					>
+				</p>
+			</main>
+		</div>
+	</body>
 </html>
