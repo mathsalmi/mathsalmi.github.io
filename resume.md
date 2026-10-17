@@ -1,4 +1,4 @@
-# Matheus Salmi — CV
+# Matheus Salmi — Résumé
 
 Software Architect & Tech Lead · Remote from Brazil
 
@@ -6,7 +6,7 @@ Software Architect & Tech Lead · Remote from Brazil
 - Site: https://msalmi.com
 - LinkedIn: https://www.linkedin.com/in/matheus-salmi/
 - GitHub: https://github.com/mathsalmi
-- PDF version: https://msalmi.com/cv.pdf
+- PDF version: https://msalmi.com/resume.pdf
 
 I design systems end to end: how they’re built and scale, what they cost and return, and how AI helps them do more and know more.
 

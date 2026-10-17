@@ -17,29 +17,30 @@ The same facts are repeated across many files. When one changes, update **all** 
 ### Name, title, employer, location
 - `index.html`: `<title>`, `meta description`, `og:title`, `og:description`, `og:image:alt`, `twitter:title`, `twitter:description`, JSON-LD (`jobTitle`, `worksFor`, `homeLocation`), `.role`
 - `404.html`: `<title>`
-- `cv.md` header, and `cv.pdf`
+- `resume.md` header, and `resume.pdf`
 - `llms.txt` and `llms-full.txt` (summary paragraph)
 - `matheus.vcf` (`TITLE`, `ADR`)
 - `og.png` (the image text; regenerate it)
 
 ### Tagline ("I design systems end to end: …")
 - `index.html`: `meta description`, `og:description`, `twitter:description`, `.tagline`
-- `cv.md`, `cv.pdf`, `llms.txt`, `llms-full.txt`, `matheus.vcf` (`NOTE`, with commas escaped as `\,`)
+- `resume.md`, `resume.pdf`, `llms.txt`, `llms-full.txt`, `matheus.vcf` (`NOTE`, with commas escaped as `\,`)
 
-### Email and profile links (LinkedIn, GitHub, 500px, CV)
+### Email and profile links (LinkedIn, GitHub, 500px, Résumé)
 - `index.html`: contact `<nav>` links, the `.print-only` address line, JSON-LD `sameAs`
-- `404.html`: links (CV, broken-link email)
+- `404.html`: links (Résumé, broken-link email)
 - `llms.txt`, `llms-full.txt`, `matheus.vcf`
-- `cv.md` and `cv.pdf`: email, site, LinkedIn and GitHub only. 500px (photography) is intentionally left out of the CV.
+- `resume.md` and `resume.pdf`: email, site, LinkedIn and GitHub only. 500px (photography) is intentionally left out of the résumé.
 - `.well-known/security.txt` (`Contact`)
 
 ### The three blocks (engineering, business, ai)
 - `index.html` `.own-grid`, and the matching bullets in `llms.txt` and `llms-full.txt`
 
-### CV
-- `cv.md` is the source. `cv.pdf` must say the same thing; regenerate it whenever `cv.md` changes.
-- `cv.pdf` is printed from an HTML layout with Chromium; that HTML is not in this repo.
-- `llms-full.txt` = `llms.txt` + `---` + the body of `cv.md` (from `## Experience` on). Keep both halves identical to their sources.
+### Résumé
+- Terminology (US audience): visible text says **Résumé** (with accents: it can't be read as the verb "resume"); URLs and file names say `resume` (no accents). Never "CV" or "curriculum vitae", which in the US means a long academic document.
+- `resume.md` is the source. `resume.pdf` must say the same thing (A4); regenerate it whenever `resume.md` changes.
+- `resume.pdf` is printed from an HTML layout with Chromium; that HTML is not in this repo.
+- `llms-full.txt` = `llms.txt` + `---` + the body of `resume.md` (from `## Experience` on). Keep both halves identical to their sources.
 
 ### Pages and dates
 - New public page or file meant for crawlers: add it to `sitemap.xml`.
