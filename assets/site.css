@@ -339,12 +339,12 @@ address {
 	user-select: none;
 }
 
-/* 1em = 1000 font units in the SVG; the shift keeps the baseline where the text logo had it */
+/* 1em = 1000 font units in the SVG, drawn 1.4× (40% bigger) inside the same 1.7em tile; the shift keeps the baseline */
 .tile img, .tile svg {
 	display: block;
-	width: 3.105em;
-	height: .98em;
-	margin-top: -.2em;
+	width: 4.347em;
+	height: 1.372em;
+	margin-top: -.28em;
 }
 
 /* Reduced motion: the SVG shows a static "ms." on its own */
