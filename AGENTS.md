@@ -17,6 +17,7 @@ The same facts are repeated across many files. When one changes, update **all** 
 ### Name, title, employer, location
 - `index.html`: `<title>`, `meta description`, `og:title`, `og:description`, `og:image:alt`, `twitter:title`, `twitter:description`, JSON-LD (`jobTitle`, `worksFor`, `homeLocation`), `.role`
 - `404.html`: `<title>`
+- `work/index.html`: the StartCHURCH chapter role, `meta description`
 - `resume.md` header, and `resume.pdf`
 - `llms.txt` and `llms-full.txt` (summary paragraph)
 - `matheus.vcf` (`TITLE`, `ADR`)
@@ -27,7 +28,8 @@ The same facts are repeated across many files. When one changes, update **all** 
 - `resume.md`, `resume.pdf`, `llms.txt`, `llms-full.txt`, `matheus.vcf` (`NOTE`, with commas escaped as `\,`)
 
 ### Email and profile links (LinkedIn, GitHub, 500px, Résumé)
-- `index.html`: contact `<nav>` links, the `.print-only` address line, JSON-LD `sameAs`
+- `index.html`: the "Links" `<nav>`, the `<address class="print-only">` line, JSON-LD `sameAs`
+- `work/index.html`: footer (LinkedIn, Résumé)
 - `404.html`: links (Résumé, broken-link email)
 - `llms.txt`, `llms-full.txt`, `matheus.vcf`
 - `resume.md` and `resume.pdf`: email, site, LinkedIn and GitHub only. 500px (photography) is intentionally left out of the résumé.
@@ -35,6 +37,14 @@ The same facts are repeated across many files. When one changes, update **all** 
 
 ### The three blocks (engineering, business, ai)
 - `index.html` `.own-grid`, and the matching bullets in `llms.txt` and `llms-full.txt`
+- Each block links to its group on `/work/` (`#engineering`, `#business`, `#ai`). The link text quotes a number from that group: keep them in sync.
+- The block sentence is repeated as the group intro in `work/index.html` (Outcomes).
+
+### /work (`work/index.html`)
+- Timeline: every company (description, projects, what I did) and the studies; "On the side" lists freelance work.
+- Outcomes are **anonymous**: no company, client or system names, percentages and rounded figures only, never $ or revenue amounts (an "8 figures" bracket is the only revenue mention). Keep the date line ("As of …") current and refresh the numbers every 3–6 months.
+- No JavaScript: chapters are `<input type="radio">` inside each label, the panel is picked with `:has()`; the phone layout uses `<details>`. Keep it that way.
+- Links into the page from elsewhere use `/work/` (trailing slash, as GitHub Pages serves it).
 
 ### Résumé
 - Terminology (US audience): visible text says **Résumé** (with accents: it can't be read as the verb "resume"); URLs and file names say `resume` (no accents). Never "CV" or "curriculum vitae", which in the US means a long academic document.
@@ -48,8 +58,8 @@ The same facts are repeated across many files. When one changes, update **all** 
 - `.well-known/security.txt` `Expires` must stay in the future (renew yearly).
 
 ### Colors and fonts
-- Palette lives in `assets/site.css` `:root`. Hex values are also hard-coded in: `meta theme-color` (`index.html`, `404.html`), `assets/site.js` (theme-color update), `favicon.svg`, `assets/logo.svg` (fallbacks), `favicon-32.png`, `apple-touch-icon.png`, `og.png`.
-- Fonts are self-hosted in `assets/fonts/` (`@font-face` in `assets/site.css`). The font `preload` links must be identical in `index.html` and `404.html`.
+- Palette lives in `assets/site.css` `:root`. Hex values are also hard-coded in: `meta theme-color` (`index.html`, `404.html`, `work/index.html`), `assets/site.js` (theme-color update), `favicon.svg`, `assets/logo.svg` (fallbacks), `favicon-32.png`, `apple-touch-icon.png`, `og.png`.
+- Fonts are self-hosted in `assets/fonts/` (`@font-face` in `assets/site.css`). The font `preload` links must be identical in `index.html`, `404.html` and `work/index.html`.
 
 ## Conventions
 
@@ -71,7 +81,7 @@ The same facts are repeated across many files. When one changes, update **all** 
 
 ## Quality bar (every page, no exceptions)
 
-Applies to every HTML page in the repo (today `index.html` and `404.html`) and to every new one. A page that misses any item is not done.
+Applies to every HTML page in the repo (today `index.html`, `404.html` and `work/index.html`) and to every new one. A page that misses any item is not done.
 
 ### Screens and inputs
 - Works from **320 px to 4K**: phones (portrait and landscape), tablets (portrait and landscape), laptops, desktops and large monitors. No horizontal scroll at any width.
@@ -99,8 +109,8 @@ Tools run outside the repo (no dependencies are added here), for example:
 python3 -m http.server 8000
 npx lighthouse http://localhost:8000/ --preset=desktop
 npx lighthouse http://localhost:8000/ --form-factor=mobile --screenEmulation.mobile
-npx @axe-core/cli http://localhost:8000/ http://localhost:8000/404.html
-npx vnu-jar index.html 404.html   # or paste into validator.w3.org/nu
+npx @axe-core/cli http://localhost:8000/ http://localhost:8000/work/ http://localhost:8000/404.html
+npx vnu-jar index.html work/index.html 404.html   # or paste into validator.w3.org/nu
 ```
 
 ## Before committing
