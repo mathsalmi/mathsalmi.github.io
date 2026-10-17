@@ -33,16 +33,6 @@
 	<meta name="twitter:description" content="The work of Matheus Salmi, Software Architect &amp; Tech Lead: every company and project since 2007, and the outcomes they produced.">
 	<meta name="twitter:image" content="https://msalmi.com/og.png">
 
-	<script type="application/ld+json">
-		{
-			"@context": "https://schema.org",
-			"@type": "BreadcrumbList",
-			"itemListElement": [
-				{ "@type": "ListItem", "position": 1, "name": "Matheus Salmi", "item": "https://msalmi.com/" },
-				{ "@type": "ListItem", "position": 2, "name": "Work", "item": "https://msalmi.com/work/" }
-			]
-		}
-	</script>
 
 	<!-- Theme chosen with the toggle (saved only on a manual change), applied before first paint so navigation never flashes -->
 	<script>try { const t = localStorage.getItem('theme'); if (t === 'light' || t === 'dark') document.documentElement.setAttribute('data-theme', t); } catch (e) {}</script>
@@ -54,25 +44,20 @@
 	<script type="module" src="/assets/site.js"></script>
 
 	<style>
-		/* /work: career timeline, side projects and outcomes. Works without JavaScript: chapters are radios, the phone view uses <details>. */
+		/* /work: page title, career timeline, side projects and outcomes. Works without JavaScript: chapters are radios, the phone view uses <details>. */
 		.work { justify-content: flex-start; gap: 0; padding-top: clamp(24px, 5vh, 64px); }
-		/* breadcrumb: "ms. / work" — the logo is the way home on every subpage */
-		.crumbs { display: flex; align-items: center; margin: 0; padding: 0; list-style: none; }
-		.crumbs li { display: flex; align-items: center; }
-		.crumbs li + li { position: relative; top: .23em; margin-left: -1.8em; transition: opacity .2s ease; } /* sits on the logo baseline, next to "ms." (the SVG box keeps room for "msalmi") */
-		.crumbs li + li { animation: crumb-in .35s ease 1.85s backwards; } /* appears once the logo has collapsed to "ms." */
-		.cycling .crumbs li + li { opacity: 0; } /* steps aside while the logo replays as "msalmi" */
-		@keyframes crumb-in { from { opacity: 0; transform: translateX(-6px); } to { opacity: 1; transform: none; } }
-		.crumbs li + li::before { content: "/" / ""; margin-right: 0; font-family: 'JetBrains Mono', monospace; font-size: 20px; color: var(--stone); }
-		.crumbs a.tile { position: relative; color: inherit; padding-right: 0; }
-		.crumbs a.tile::after { content: ""; position: absolute; inset: -4px 0; } /* 44px touch target, no layout shift */
-		.crumb-cur { font-family: 'JetBrains Mono', monospace; font-size: 20px; font-weight: 700; color: var(--acc); }
+		/* the logo is the way home on every subpage */
+		.top a.tile { position: relative; color: inherit; }
+		.top a.tile::after { content: ""; position: absolute; inset: -4px 0; } /* 44px touch target, no layout shift */
+		/* page title "/work": slash in stone, word in accent, a step above the Outcomes heading */
+		.w-h1 { margin: 0; font-family: 'JetBrains Mono', monospace; font-size: clamp(36px, 3.8vw, 52px); line-height: 1.05; font-weight: 700; letter-spacing: -.02em; color: var(--acc); }
+		.w-h1-sl { color: var(--stone); font-weight: 400; }
 		.w-foot { margin: 56px 0 0; padding-top: 16px; border-top: 1px solid var(--line); font-family: 'JetBrains Mono', monospace; font-size: 14px; color: var(--mut); }
 		.w-foot a { color: var(--fg); }
 
 		/* ---------- desktop timeline ---------- */
 		.tlm { display: none; }
-		.tlx { position: relative; margin-top: 24px; height: 236px; }
+		.tlx { position: relative; margin-top: 48px; height: 236px; }
 		.lane-edu { position: absolute; left: 0; right: 0; top: 0; height: 44px; }
 		.rail { position: absolute; left: 0; right: 0; top: 64px; height: 2px; }
 		.r-base { position: absolute; inset: 0; background: var(--line); transform-origin: 0 50%; }
@@ -210,7 +195,7 @@
 		}
 
 		@media (prefers-reduced-motion: reduce) {
-			.tl *, .tlm, .tlm *, .crumbs li { animation: none !important; }
+			.tl *, .tlm, .tlm *, .w-h1 { animation: none !important; }
 		}
 
 		/* Timeline selection without JavaScript: each chapter is a radio inside its label */
@@ -238,7 +223,7 @@
 			.pn { animation: none !important; }
 		}
 		@media print {
-			.tlx, .crumbs li + li::before { display: none; }
+			.tlx { display: none; }
 			.pn { display: grid !important; break-inside: avoid; margin-bottom: 16px; }
 		}
 	</style>
@@ -246,12 +231,7 @@
 <body>
 	<div class="page">
 		<header class="top">
-			<nav aria-label="Breadcrumb">
-				<ol class="crumbs">
-					<li><a class="tile" id="logo" href="/" aria-label="Home"><img src="/assets/logo.svg" alt="" width="68" height="22"></a></li>
-					<li><span class="crumb-cur" aria-current="page">work</span></li>
-				</ol>
-			</nav>
+			<a class="tile" id="logo" href="/" aria-label="Home"><img src="/assets/logo.svg" alt="" width="68" height="22"></a>
 
 			<button type="button" class="tbtn" id="theme" aria-pressed="false">
 				<span class="sr-only">Dark mode</span>
@@ -261,7 +241,7 @@
 		</header>
 
 		<main class="main work">
-			<h1 class="sr-only">Work</h1>
+			<h1 class="w-h1"><span class="w-h1-sl" aria-hidden="true">/</span>work</h1>
 
 <section class="tl" aria-label="Career timeline: pick a chapter to see the details">
 <div class="tlx" style="--now:63.492%">
