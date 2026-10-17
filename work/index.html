@@ -69,10 +69,10 @@
 		.ch .mk { position: absolute; top: 0; left: 0; width: 14px; height: 14px; border-radius: 50%; background: var(--bg); box-shadow: inset 0 0 0 2px var(--stone); transition: background .2s, box-shadow .2s, transform .2s; }
 		.ch .yr { font-family: 'JetBrains Mono', monospace; font-size: 14px; color: var(--mut); }
 		.ch .org { font-size: 20px; line-height: 1.2; font-weight: 600; position: relative; align-self: flex-start; }
-		.ch .org::after { content: ""; position: absolute; left: 0; bottom: -4px; height: 2px; width: 0; background: var(--acc); transition: width .25s ease; }
+		.ch .org::after { content: ""; position: absolute; left: 0; bottom: -4px; height: 2px; width: max(55%, 1.4em); background: var(--acc); transition: width .25s ease; } /* same growing underline as the home links: says "clickable" */
 		.ch .w-role { font-family: 'JetBrains Mono', monospace; font-size: 12.5px; line-height: 1.4; color: var(--mut); }
 		.ch:hover .mk, .ch:has(:focus-visible) .mk { transform: scale(1.2); }
-		.ch:hover .org::after, .ch:has(:focus-visible) .org::after { width: 40%; }
+		.ch:hover .org::after, .ch:has(:focus-visible) .org::after { width: 100%; }
 		.ch:has(:checked) .mk { background: var(--fg); box-shadow: none; }
 		.ch:has(:checked) .org::after { width: 100%; }
 		.ch.now .yr { font-size: 17px; font-weight: 700; color: var(--acc); }
@@ -84,6 +84,9 @@
 		.ed { position: absolute; top: 0; height: 44px; width: max(var(--w), 12px); }
 		.ed .ed-lbl { position: absolute; left: 0; top: 0; white-space: nowrap; font-family: 'JetBrains Mono', monospace; font-size: 12px; color: var(--mut); transition: color .2s; }
 		.ed .ed-yr { color: var(--stone); }
+		.ed .ed-nm { position: relative; }
+		.ed .ed-nm::after { content: ""; position: absolute; left: 0; bottom: -3px; height: 1px; width: max(55%, 1.4em); background: var(--acc); transition: width .25s ease; }
+		.ed:hover .ed-nm::after, .ed:has(:focus-visible) .ed-nm::after, .ed:has(:checked) .ed-nm::after { width: 100%; }
 		/* Medium screens: the study labels collide on one line, so the year goes on its own line above the name */
 		@media (min-width: 861px) and (max-width: 1199px) {
 			.tlx { height: 252px; }
