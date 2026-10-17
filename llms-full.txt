@@ -77,9 +77,8 @@ Aug 2014 – Jul 2017 · Goiânia, Brazil
 
 Industry Federation of Goiás (FIEG) organization for corporate management, entrepreneurial education and careers.
 
-- Started as senior engineer maintaining ten legacy Java systems; became the bridge between development, infrastructure and business.
-- Moved the legacy systems to Linux on AWS and hardened SQL Server.
-- Designed a microservices architecture with Angular and React proofs of concept; projects included the internship program website and accounts integration.
+- Started as senior engineer on ten Java systems already in production; improved them iteratively instead of rewriting them, and became the bridge between development, infrastructure and business.
+- Moved the systems to Linux on AWS and hardened SQL Server; designed a new microservices architecture (Java, Spring Boot, SQL Server, messaging and queues) and built on it the account synchronization between IEL-GO and FIEG (Casa da Indústria); also the internship program website.
 
 ### Squadra Tecnologia — Software Engineer
 Oct 2012 – Jul 2014 · Anápolis, Brazil
@@ -95,14 +94,14 @@ Jul 2007 – Oct 2012 · Anápolis, Brazil
 
 ## Freelance
 
-- **SAZ Saúde (2022):** designed the health-benefits platform’s architecture from scratch (Laravel API, Next.js, Docker, CI/CD) and handed it to a junior team.
+- **SAZ Saúde (2022):** designed the health-benefits platform’s architecture from scratch (Laravel API, Next.js, Docker, CI/CD) and handed it over to their internal dev team.
 - **SimUEG (2017–2018):** indicators and monitoring system for Universidade Estadual de Goiás.
-- **Emigh Livestock (2023), Wonder Journal (2024):** short contributions, including reworking the infrastructure of a Symfony app still running on Ansible and Vagrant.
+- **Emigh Livestock (2023), Wonder Journal (2024):** short contributions.
 
 ## Skills
 
 - **Cloud & platform:** AWS (EKS, ECS, RDS, ALB, Parameter Store), Kubernetes, Karpenter, Docker, Terraform, GitHub Actions, Cloudflare, Linux
-- **Backend:** PHP / Symfony, Go, Node.js / TypeScript, Java, C#; REST APIs, RabbitMQ, Redis
+- **Backend:** PHP / Symfony, Go, Node.js / TypeScript, Java / Spring Boot, C#; REST APIs, RabbitMQ, Redis
 - **Data:** MySQL, PostgreSQL, SQL Server, Oracle; migrations, performance tuning, reporting
 - **Front end:** React, React Native, TypeScript
 - **Integrations:** HubSpot, Stripe, Authorize.net, Sentry
@@ -110,6 +109,6 @@ Jul 2007 – Oct 2012 · Anápolis, Brazil
 
 ## Education & languages
 
-- **M.Sc.:** Logistics Engineering, Instituto Tecnológico de Aeronáutica (ITA) · not completed: all coursework and credits finished; left in 2023 before the thesis defense. Restructured the lab’s AeroLogLabTOOL, a logistics-support planning tool (Go, MySQL), in 2020.
+- **M.Sc.:** Logistics Engineering, Instituto Tecnológico de Aeronáutica (ITA) · not completed: all coursework and credits finished; left in 2023 before the thesis defense. Restructured the lab’s AeroLogLabTOOL (Go, MySQL) in 2020.
 - **B.S.:** Information Systems, Universidade Estadual de Goiás · 2011 – 2015
 - **Languages:** Portuguese (native), English (professional working), Spanish (limited working), Italian and French (elementary)
