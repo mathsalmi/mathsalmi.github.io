@@ -109,9 +109,14 @@ function cycle() {
 	cycling = true;
 	clearTimeout(t2);
 	clearTimeout(t3);
+	/* .cycling lets a page react while the logo spells "msalmi" again (the /work breadcrumb steps aside) */
+	root.classList.add('cycling');
 	play(svg, -1);
 	t2 = setTimeout(() => play(svg, 1), 1600);
-	t3 = setTimeout(() => { cycling = false; }, 2900);
+	t3 = setTimeout(() => {
+		cycling = false;
+		root.classList.remove('cycling');
+	}, 2900);
 }
 
 /* The <img> works without JS; inlining lets the SVG use the page's --fg/--acc and react to the pointer.
