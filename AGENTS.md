@@ -68,9 +68,44 @@ The same facts are repeated across many files. When one changes, update **all** 
 - Icon-only buttons get a `.sr-only` text name.
 - Respect `prefers-reduced-motion` for every animation.
 
+## Quality bar (every page, no exceptions)
+
+Applies to every HTML page in the repo (today `index.html` and `404.html`) and to every new one. A page that misses any item is not done.
+
+### Screens and inputs
+- Works from **320 px to 4K**: phones (portrait and landscape), tablets (portrait and landscape), laptops, desktops and large monitors. No horizontal scroll at any width.
+- Reflows at **200% and 400% zoom** (WCAG 1.4.10) and with **text-only zoom**; nothing clipped or overlapping.
+- Usable with **mouse, touch and keyboard only**. Touch targets at least 44 × 44 px; hover is never the only way to reach anything.
+- Fully usable **without JavaScript** and in a **text browser** (lynx).
+- Respects `prefers-color-scheme`, `prefers-reduced-motion` and forced colors / Windows High Contrast.
+- Print (`@media print`) stays clean and readable.
+
+### Accessibility
+- **WCAG 2.2 AA** at minimum: contrast (4.5:1 text, 3:1 large text, UI parts and focus rings), visible focus everywhere, logical heading order, one `<h1>`, landmarks (`header`, `main`, `nav`, `footer` where present), `lang` set, meaningful link text.
+- Tested with a **screen reader**: VoiceOver on macOS and iOS at least (NVDA or TalkBack when available). Reading order matches the visual order; nothing decorative is announced; nothing important is hidden.
+- **ARIA: native HTML first.** Use ARIA only when no element does the job, follow the WAI-ARIA Authoring Practices patterns, and never put a role or handler on a `div`/`span` that should be a `button` or `a`. No ARIA is better than wrong ARIA.
+
+### Automated checks (all must pass, for every page)
+- **Lighthouse** (mobile and desktop): 100 in Accessibility, Best Practices and SEO; Performance 95+.
+- **W3C Nu HTML Checker** (validator.w3.org/nu): zero errors. **W3C CSS Validator** on `assets/site.css`: zero errors (modern properties the validator does not know yet are the only accepted warnings).
+- **axe-core** (or pa11y with axe): zero violations, light and dark theme.
+- **JSON-LD**: valid in the Schema.org validator and Google Rich Results Test.
+- **Links**: no broken internal links; `sitemap.xml` lists every public page.
+
+Tools run outside the repo (no dependencies are added here), for example:
+
+```sh
+python3 -m http.server 8000
+npx lighthouse http://localhost:8000/ --preset=desktop
+npx lighthouse http://localhost:8000/ --form-factor=mobile --screenEmulation.mobile
+npx @axe-core/cli http://localhost:8000/ http://localhost:8000/404.html
+npx vnu-jar index.html 404.html   # or paste into validator.w3.org/nu
+```
+
 ## Before committing
 
 - Re-check the sync lists above for anything you touched.
+- Run the **Quality bar** checks above on every page you touched (and on all pages when CSS or JS changes).
 - Print preview (`@media print`) must still fit on one A4 page.
 - Sanity-check in a text browser: `lynx -display_charset=utf-8 http://localhost:8000`.
 - Serve locally with `python3 -m http.server` (ES modules don't run from `file://`).
