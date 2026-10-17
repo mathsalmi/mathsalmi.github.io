@@ -6,7 +6,7 @@ Matheus has been building software professionally since 2007. Since 2018 he has 
 
 His work is organized around three areas (anonymous outcomes for each are on https://msalmi.com/work/):
 
-- **Engineering:** systems and teams that don’t depend on a single hero. Re-platformed infrastructure to AWS, Docker and Kubernetes, modernized the framework stack, made deploys zero-downtime, and gave dev, staging and production the same images.
+- **Engineering:** systems and teams that outlast him: documented, shared and handed over. Re-platformed infrastructure to AWS, Docker and Kubernetes, modernized the framework stack, made deploys zero-downtime, and gave dev, staging and production the same images.
 - **Business:** tradeoffs explained in numbers, to engineers and to the CFO. Runs the cloud cost program, keeps billing and payments reliable, and automates manual work.
 - **AI:** LLMs in the product, agents for the team, shipped rather than demoed. Built a self-hosted MCP server giving the team read-only, AI-assisted access to production data, and brought agents and Claude Code reviews into daily work.
 
