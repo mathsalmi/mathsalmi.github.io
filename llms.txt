@@ -4,11 +4,11 @@
 
 Matheus has been building software professionally since 2007. Since 2018 he has owned the architecture and operation of StartCHURCH’s platform (billing, CRM integration, sites and admin tools) across infrastructure, backend, data and front end.
 
-His work is organized around three areas:
+His work is organized around three areas (anonymous outcomes for each are on https://msalmi.com/work/):
 
-- **Engineering:** systems and teams that don’t depend on a single hero. Re-platformed infrastructure to AWS and Kubernetes, modernized the framework stack, and made deploys zero-downtime.
-- **Business:** tradeoffs explained in numbers, to engineers and to the CFO. Runs the AWS cost program (staging compute down ~80–87%, a ~30% month-over-month drop in the AWS bill) and keeps billing and payments reliable.
-- **AI:** LLMs in the product, agents for the team, shipped rather than demoed. Built a self-hosted MCP server giving the team read-only, AI-assisted access to production data.
+- **Engineering:** systems and teams that don’t depend on a single hero. Re-platformed infrastructure to AWS, Docker and Kubernetes, modernized the framework stack, made deploys zero-downtime, and gave dev, staging and production the same images.
+- **Business:** tradeoffs explained in numbers, to engineers and to the CFO. Runs the cloud cost program, keeps billing and payments reliable, and automates manual work.
+- **AI:** LLMs in the product, agents for the team, shipped rather than demoed. Built a self-hosted MCP server giving the team read-only, AI-assisted access to production data, and brought agents and Claude Code reviews into daily work.
 
 Contact: mathsalmi@gmail.com.
 
