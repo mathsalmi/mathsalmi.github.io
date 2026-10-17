@@ -217,6 +217,11 @@ address {
 	vertical-align: -.08em;
 }
 
+/* a little air between "Email" and the paper plane */
+.lk[href^="mailto:"] .ic {
+	margin-left: 4px;
+}
+
 .print-only {
 	display: none;
 }
