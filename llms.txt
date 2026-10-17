@@ -16,7 +16,8 @@ Contact: mathsalmi@gmail.com.
 
 - [Résumé (Markdown)](https://msalmi.com/resume.md): full experience, skills, education and languages as plain text
 - [Résumé (PDF)](https://msalmi.com/resume.pdf): the same résumé, formatted for printing
-- [Site](https://msalmi.com/): one-page profile
+- [Site](https://msalmi.com/): profile
+- [Work](https://msalmi.com/work/): career timeline, projects per company, and outcomes
 
 ## Elsewhere
 
