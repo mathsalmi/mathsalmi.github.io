@@ -332,7 +332,8 @@ address {
 	display: inline-flex;
 	align-items: center;
 	height: 1.7em;
-	padding: 0 .7em;
+	padding: 0 .7em 0 0; /* no left padding: "ms." lines up with the text below */
+	margin-left: -.09em; /* the glyphs start 64 units into the SVG; pull them onto the text edge */
 	font-size: 22px;
 	cursor: pointer;
 	-webkit-tap-highlight-color: transparent;
