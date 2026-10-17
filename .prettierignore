@@ -1,0 +1,17 @@
+# ignore all extensions
+*.*
+
+# except these
+!*.html
+!*.css
+!*.js
+!*.json
+!*.md
+!*.yml
+
+# *.* also matches dot-folders; keep .github
+!.github
+
+# but ignore these specific ones
+node_modules
+TODO.md

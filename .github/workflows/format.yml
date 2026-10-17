@@ -1,0 +1,50 @@
+name: Auto/Format all files
+
+on:
+    push:
+        branches:
+            - master
+        paths:
+            - "**.html"
+            - "**.css"
+            - "**.js"
+            - "**.json"
+            - "**.md"
+            - "**.yml"
+            - ".prettierrc"
+            - ".prettierignore"
+
+permissions:
+    contents: write
+
+concurrency:
+    group: format-${{ github.ref }}
+    cancel-in-progress: true
+
+jobs:
+    run_prettier:
+        name: Run Prettier
+        runs-on: ubuntu-24.04
+        if: ${{ !contains(github.event.head_commit.message, 'Auto format (Prettier)') }}
+        steps:
+            - name: Checkout
+              uses: actions/checkout@v6.0.2
+
+            - name: Set up node
+              uses: actions/setup-node@v6.3.0
+              with:
+                  node-version: "24.x"
+
+            - name: Format code
+              run: npx --yes prettier@3.9.10 --write .
+
+            - name: Commit and push
+              run: |
+                  if git diff --quiet; then
+                    echo "Nothing to format."
+                    exit 0
+                  fi
+                  git config user.name "github-actions[bot]"
+                  git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+                  git commit -am "Auto format (Prettier)"
+                  git push
