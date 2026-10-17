@@ -4,7 +4,7 @@ Rules for AI agents (and humans) working on msalmi.com.
 
 ## What this repo is
 
-- Static personal site served by **GitHub Pages** from `master`, custom domain in `CNAME` (msalmi.com).
+- Static personal site served by **GitHub Pages** from `main` (protected: no force-push, no deletion), custom domain in `CNAME` (msalmi.com).
 - **No build step, no dependencies, no framework.** Files are served exactly as committed.
 - `.nojekyll` is present, so **every committed file is public**, including dotfiles and this file. Never commit secrets, drafts or private notes.
 - `TODO.md` is local only (listed in `.git/info/exclude`). Never commit it.
@@ -74,7 +74,7 @@ The same facts are repeated across many files. When one changes, update **all** 
 - **American English** in all content and comments.
 - **Prettier** formats HTML, CSS, JS, JSON, Markdown and YAML (`.prettierrc`, `.prettierignore`: an allowlist of extensions). JS has no semicolons.
 - **Indent with tabs in every file**, comments included. Only where tabs are not allowed (YAML) use 4 spaces, never 2. `.editorconfig` sets this for editors.
-- CI (`.github/workflows/format.yml`, free on a public repo) runs Prettier on every push to `master` and commits the result as `Auto format (Prettier)`. Run `git pull` after pushing, before the next commit.
+- CI (`.github/workflows/format.yml`, free on a public repo) runs Prettier on every push to `main` and commits the result as `Auto format (Prettier)`. Run `git pull` after pushing, before the next commit.
 - Prettier is never added to the repo: run it with `npx prettier@<version in format.yml> --write .`, ideally before committing.
 - **Keep JavaScript to a minimum.** Do not add new JS; prefer HTML/CSS. `assets/site.js` is an ES module (`<script type="module">`) using modern syntax, and the site must stay fully usable without it.
 - Theme: CSS follows `prefers-color-scheme` until the visitor uses the toggle; only then is the choice saved in `localStorage` (`theme`), and a tiny inline script in each page's `<head>` re-applies it before first paint (no flash between pages). Every new page needs that inline script.

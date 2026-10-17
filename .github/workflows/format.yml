@@ -3,7 +3,7 @@ name: Auto/Format all files
 on:
     push:
         branches:
-            - master
+            - main
         paths:
             - "**.html"
             - "**.css"
