@@ -270,6 +270,19 @@ address {
 	opacity: .82;
 }
 
+/* Links from the home blocks to /work */
+.own-lk {
+	align-self: flex-start;
+	margin-top: auto;
+	padding: 12px 0 4px;
+	font-size: 16px;
+}
+
+.more {
+	margin: 18px 0 0;
+	font-size: 18px;
+}
+
 /* Hidden on screen, still read by screen readers and text browsers */
 .sr-only {
 	position: absolute;
@@ -381,7 +394,7 @@ address {
 	.tbtn, .js .tbtn {
 		display: none !important;
 	}
-	.links {
+	.links, .own-lk, .more {
 		display: none !important;
 	}
 	.print-only {
