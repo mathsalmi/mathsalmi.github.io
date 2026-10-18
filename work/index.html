@@ -771,54 +771,180 @@
 			}
 
 			/* ---------- mobile: horizontal swipe rows (scroll-snap, CSS only) ---------- */
-		.sw-hint, .sw { display: none; }
-		@media (max-width: 860px) {
-			.sw-hint { display: flex; justify-content: space-between; margin: 8px 0 0; font-family: 'JetBrains Mono', monospace; font-size: 12.5px; color: var(--mut); }
-			.sw-arr { color: var(--acc); }
-			.sw, .ms-grid.ms-sw {
-				--gut: clamp(20px, 5vw, 64px);
-				display: grid; grid-auto-flow: column; grid-template-columns: none; grid-auto-columns: 82%; gap: 12px; align-items: start;
-				overflow-x: auto; overscroll-behavior-x: contain; scroll-snap-type: x mandatory; scrollbar-width: none;
-				list-style: none; margin: 10px 0 0; padding: 2px 0 6px;
+			.sw-hint,
+			.sw {
+				display: none;
 			}
-			.ms-grid.ms-sw { margin-inline: calc(-1 * var(--gut)); padding-inline: var(--gut); scroll-padding-inline: var(--gut); grid-auto-columns: 64%; align-items: stretch; }
-			.sw::-webkit-scrollbar, .ms-grid.ms-sw::-webkit-scrollbar { display: none; }
-			.sw:focus-visible, .ms-grid.ms-sw:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
-			.sw-card, .ms-sw .ms-tile { scroll-snap-align: start; border: 1px solid var(--line); border-radius: 12px; padding: 14px 16px; }
-			.sw-card .p-proj { margin-top: 8px; font-size: 15px; }
-			.sw-lb { margin: 0; font-weight: 600; font-size: 16px; }
-			.sw-n { font-family: 'JetBrains Mono', monospace; font-weight: 400; font-size: 12.5px; color: var(--mut); }
-			.ms-sw .ms-tile { gap: 10px; }
-			.ms-sw .ms-n { font-size: 30px; }
-			/* long pill lists: one line that scrolls sideways, fading at the edge */
-			.p-tags.sw-tags { flex-wrap: nowrap; overflow-x: auto; scrollbar-width: none; overscroll-behavior-x: contain; scroll-snap-type: x proximity; padding-right: 24px;
-				-webkit-mask-image: linear-gradient(to right, #000 calc(100% - 32px), transparent); mask-image: linear-gradient(to right, #000 calc(100% - 32px), transparent); }
-			.p-tags.sw-tags::-webkit-scrollbar { display: none; }
-			.p-tags.sw-tags li { flex: none; white-space: nowrap; scroll-snap-align: start; }
-			.p-tags.sw-tags:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
-			/* tablet portrait (e.g. iPad 744–834px): narrower cards so 2–3 show at once; pills have room to wrap */
-			@media (min-width: 600px) {
-				.sw { grid-auto-columns: 46%; }
-				.ms-grid.ms-sw { grid-auto-columns: 30%; }
-				.w-side-list { grid-auto-columns: 40%; }
+			@media (max-width: 860px) {
+				.sw-hint {
+					display: flex;
+					justify-content: space-between;
+					margin: 8px 0 0;
+					font-family: 'JetBrains Mono', monospace;
+					font-size: 12.5px;
+					color: var(--mut);
+				}
+				.sw-arr {
+					color: var(--acc);
+				}
+				.sw,
+				.ms-grid.ms-sw {
+					--gut: clamp(20px, 5vw, 64px);
+					display: grid;
+					grid-auto-flow: column;
+					grid-template-columns: none;
+					grid-auto-columns: 82%;
+					gap: 12px;
+					align-items: start;
+					overflow-x: auto;
+					overscroll-behavior-x: contain;
+					scroll-snap-type: x mandatory;
+					scrollbar-width: none;
+					list-style: none;
+					margin: 10px 0 0;
+					padding: 2px 0 6px;
+				}
+				.ms-grid.ms-sw {
+					margin-inline: calc(-1 * var(--gut));
+					padding-inline: var(--gut);
+					scroll-padding-inline: var(--gut);
+					grid-auto-columns: 64%;
+					align-items: stretch;
+				}
+				.sw::-webkit-scrollbar,
+				.ms-grid.ms-sw::-webkit-scrollbar {
+					display: none;
+				}
+				.sw:focus-visible,
+				.ms-grid.ms-sw:focus-visible {
+					outline: 2px solid var(--focus);
+					outline-offset: 2px;
+				}
+				.sw-card,
+				.ms-sw .ms-tile {
+					scroll-snap-align: start;
+					border: 1px solid var(--line);
+					border-radius: 12px;
+					padding: 14px 16px;
+				}
+				.sw-card .p-proj {
+					margin-top: 8px;
+					font-size: 15px;
+				}
+				.sw-lb {
+					margin: 0;
+					font-weight: 600;
+					font-size: 16px;
+				}
+				.sw-n {
+					font-family: 'JetBrains Mono', monospace;
+					font-weight: 400;
+					font-size: 12.5px;
+					color: var(--mut);
+				}
+				.ms-sw .ms-tile {
+					gap: 10px;
+				}
+				.ms-sw .ms-n {
+					font-size: 30px;
+				}
+				/* long pill lists: one line that scrolls sideways, fading at the edge */
+				.p-tags.sw-tags {
+					flex-wrap: nowrap;
+					overflow-x: auto;
+					scrollbar-width: none;
+					overscroll-behavior-x: contain;
+					scroll-snap-type: x proximity;
+					padding-right: 24px;
+					-webkit-mask-image: linear-gradient(to right, #000 calc(100% - 32px), transparent);
+					mask-image: linear-gradient(to right, #000 calc(100% - 32px), transparent);
+				}
+				.p-tags.sw-tags::-webkit-scrollbar {
+					display: none;
+				}
+				.p-tags.sw-tags li {
+					flex: none;
+					white-space: nowrap;
+					scroll-snap-align: start;
+				}
+				.p-tags.sw-tags:focus-visible {
+					outline: 2px solid var(--focus);
+					outline-offset: 2px;
+				}
+				/* tablet portrait (e.g. iPad 744–834px): narrower cards so 2–3 show at once; pills have room to wrap */
+				@media (min-width: 600px) {
+					.sw {
+						grid-auto-columns: 46%;
+					}
+					.ms-grid.ms-sw {
+						grid-auto-columns: 30%;
+					}
+					.w-side-list {
+						grid-auto-columns: 40%;
+					}
+				}
+				.sw-one .sw-txt {
+					margin: 0;
+					font-size: 15px;
+					line-height: 1.5;
+					color: var(--mut);
+					opacity: 1;
+				}
+				/* On the side: same swipe row, bleeding to the screen edge like Outcomes */
+				.w-side-list {
+					--gut: clamp(20px, 5vw, 64px);
+					display: grid;
+					grid-auto-flow: column;
+					grid-auto-columns: 72%;
+					gap: 12px;
+					align-items: stretch;
+					overflow-x: auto;
+					overscroll-behavior-x: contain;
+					scroll-snap-type: x mandatory;
+					scrollbar-width: none;
+					margin: 10px calc(-1 * var(--gut)) 0;
+					padding: 2px var(--gut) 6px;
+					scroll-padding-inline: var(--gut);
+				}
+				.w-side-list::-webkit-scrollbar {
+					display: none;
+				}
+				.w-side-list:focus-visible {
+					outline: 2px solid var(--focus);
+					outline-offset: 2px;
+				}
+				.w-side-list li {
+					scroll-snap-align: start;
+					align-content: start;
+					border: 1px solid var(--line);
+					border-radius: 12px;
+					padding: 14px 16px;
+				}
+				/* with JS, "swipe →" and the edge fade only show when the row really overflows (checked on load and resize) */
+				.js .sw-hint:not(.ovf) .sw-arr {
+					visibility: hidden;
+				}
+				.js .p-tags.sw-tags:not(.ovf) {
+					-webkit-mask-image: none;
+					mask-image: none;
+					padding-right: 0;
+				}
+				.m-body .sw-hint {
+					margin: 6px 0 0;
+					font-size: 12.5px;
+					opacity: 1;
+				}
+				.m-body .sw-lb {
+					margin: 0;
+					font-size: 16px;
+					opacity: 1;
+				}
+				.m-body .sw-hint + .sw {
+					margin-top: 8px;
+				}
 			}
-			.sw-one .sw-txt { margin: 0; font-size: 15px; line-height: 1.5; color: var(--mut); opacity: 1; }
-			/* On the side: same swipe row, bleeding to the screen edge like Outcomes */
-			.w-side-list { --gut: clamp(20px, 5vw, 64px); display: grid; grid-auto-flow: column; grid-auto-columns: 72%; gap: 12px; align-items: stretch;
-				overflow-x: auto; overscroll-behavior-x: contain; scroll-snap-type: x mandatory; scrollbar-width: none;
-				margin: 10px calc(-1 * var(--gut)) 0; padding: 2px var(--gut) 6px; scroll-padding-inline: var(--gut); }
-			.w-side-list::-webkit-scrollbar { display: none; }
-			.w-side-list:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
-			.w-side-list li { scroll-snap-align: start; align-content: start; border: 1px solid var(--line); border-radius: 12px; padding: 14px 16px; }
-			/* with JS, "swipe →" and the edge fade only show when the row really overflows (checked on load and resize) */
-			.js .sw-hint:not(.ovf) .sw-arr { visibility: hidden; }
-			.js .p-tags.sw-tags:not(.ovf) { -webkit-mask-image: none; mask-image: none; padding-right: 0; }
-			.m-body .sw-hint { margin: 6px 0 0; font-size: 12.5px; opacity: 1; }
-			.m-body .sw-lb { margin: 0; font-size: 16px; opacity: 1; }
-			.m-body .sw-hint + .sw { margin-top: 8px; }
-		}
 
-		@media (prefers-reduced-motion: reduce) {
+			@media (prefers-reduced-motion: reduce) {
 				.tl *,
 				.tlm,
 				.tlm *,
@@ -1074,7 +1200,10 @@
 										Designed a new microservices architecture: Java, Spring Boot, SQL Server,
 										messaging and queues
 									</li>
-									<li>Built on it the sync of accounting data (payables, receivables and more) between IEL-GO and FIEG systems</li>
+									<li>
+										Built on it the sync of accounting data (payables, receivables and more) between
+										IEL-GO and FIEG systems
+									</li>
 								</ul>
 							</div>
 						</div>
@@ -1214,30 +1343,456 @@
 				</section>
 
 				<ol class="tlm" aria-label="Career timeline, newest first">
-<li class="m-ch now" style="--i:0"><details open><summary class="m-sum"><span class="mk"></span><span class="yr">2018 — now</span><span class="org">StartCHURCH</span><span class="w-role">Software Architect &amp; Tech Lead</span></summary><div class="m-body"><p>Eight years owning the platform end to end: how it is built and deployed, what it costs, and how AI helps the team.</p><p class="p-tl">Products <span class="sw-n">10</span></p><ul class="p-tags sw-tags" role="list" tabindex="0" aria-label="StartCHURCH: products"><li>startchurch.com</li><li>Admin Console</li><li>StartSITES</li><li>Kingdom Steward</li><li>StartCHURCH University</li><li>Video Platform</li><li>AppletBuilder</li><li>Giving Halo</li><li>Launch Halo</li><li>Attorney Network</li></ul><p class="p-tl">What I did</p><p class="sw-hint" aria-hidden="true"><span>4 themes</span><span class="sw-arr">swipe →</span></p><ul class="sw" role="list" tabindex="0" aria-label="StartCHURCH: what I did, by theme"><li class="sw-card"><p class="sw-lb">Platform <span class="sw-n">3</span></p><ul class="p-proj"><li>Architecture and day-to-day operation of every product above</li><li>Re-platformed everything: DigitalOcean → AWS, Ansible and Vagrant → Docker and Kubernetes, Bitbucket → GitHub with CI and tests on every push</li><li>Split a single all-or-nothing deploy into independent apps that scale horizontally and deploy with zero downtime</li></ul></li><li class="sw-card"><p class="sw-lb">Stack &amp; tooling <span class="sw-n">2</span></p><ul class="p-proj"><li>Upgraded the core stack from Symfony 3.4 to 6.4 and PHP 8.3; ported Kingdom Steward and StartCHURCH University from Zend to Symfony 6 with Claude Code (rolling out)</li><li>Built sc, the team’s CLI: one command sets up a dev machine and standardizes daily work</li></ul></li><li class="sw-card"><p class="sw-lb">Products <span class="sw-n">4</span></p><ul class="p-proj"><li>Co-designed a microservices platform prototype with single sign-on (Keycloak) across legacy and current Symfony apps and Next.js frontends, meant to host Halo and later the whole suite, 2020–2021</li><li>Took over Giving Halo and Launch Halo to keep them running: release-based deploys, tests on every PR, daily database backups</li><li>Built and maintained the Attorney Network’s console and APIs, connecting church leaders with attorneys in every state, until the product was retired</li><li>Modernized AppletBuilder (PDF courses and visual guides) with single sign-on, S3 storage and snapshot publishing; moved the Video Platform (recorded courses) to its own Next.js app</li></ul></li><li class="sw-card"><p class="sw-lb">Cost, team &amp; AI <span class="sw-n">3</span></p><ul class="p-proj"><li>Runs the cloud cost program and automated manual billing work</li><li>Onboards and mentors developers, including bootcamp juniors</li><li>Brought agents, Claude Code reviews and a self-hosted MCP server into the team’s daily work</li></ul></li></ul></div></details></li>
-<li class="m-ed" style="--i:1"><details><summary class="m-sum"><span class="mk"></span><span class="yr">2020–2023</span><span class="org">M.Sc. Logistics Engineering</span><span class="w-role">ITA · not completed</span></summary><div class="m-body"><p>Aeronautics Institute of Technology (ITA). All coursework and credits finished; left in 2023 before the thesis defense.</p><p class="p-tl">Lab work</p><ul class="p-tags" role="list"><li>AeroLogLabTOOL</li></ul><ul class="p-proj"><li>Restructured the lab’s logistics-support planning tool (Go, MySQL), 2020</li></ul></div></details></li>
-<li class="m-ch" style="--i:2"><details><summary class="m-sum"><span class="mk"></span><span class="yr">2017</span><span class="org">Scalable Path</span><span class="w-role">Engineer · remote, US</span></summary><div class="m-body"><p>Embedded in US client teams, fully remote from Brazil. One of those clients became the next chapter.</p><p class="p-tl">Clients &amp; projects <span class="sw-n">4</span></p><ul class="p-tags sw-tags" role="list" tabindex="0" aria-label="Scalable Path: clients &amp; projects"><li>Tempo (Scalable Path’s showcase site)</li><li>Timelinely</li><li>The Mission Zone</li><li>StartCHURCH</li></ul><p class="p-tl">What I did</p><p class="sw-hint" aria-hidden="true"><span>2 highlights</span><span class="sw-arr">swipe →</span></p><ul class="sw" role="list" tabindex="0" aria-label="Scalable Path: what I did"><li class="sw-card sw-one"><p class="sw-txt">Built The Mission Zone’s MVP single-handedly, mentoring a junior developer along the way, 2018–2019</p></li><li class="sw-card sw-one"><p class="sw-txt">Placed with StartCHURCH, which later hired me directly</p></li></ul></div></details></li>
-<li class="m-ch" style="--i:3"><details><summary class="m-sum"><span class="mk"></span><span class="yr">2014</span><span class="org">IEL</span><span class="w-role">Technical architect</span></summary><div class="m-body"><p>Started on ten Java systems already in production, improved them iteratively instead of rewriting them, and became the bridge between development, infrastructure and business.</p><p class="p-tl">Projects</p><ul class="p-tags" role="list"><li>Accounting sync with FIEG (Casa da Indústria)</li><li>Internship program website</li></ul><p class="p-tl">What I did</p><p class="sw-hint" aria-hidden="true"><span>3 highlights</span><span class="sw-arr">swipe →</span></p><ul class="sw" role="list" tabindex="0" aria-label="IEL: what I did"><li class="sw-card sw-one"><p class="sw-txt">Moved the systems to Linux on AWS and hardened SQL Server</p></li><li class="sw-card sw-one"><p class="sw-txt">Designed a new microservices architecture: Java, Spring Boot, SQL Server, messaging and queues</p></li><li class="sw-card sw-one"><p class="sw-txt">Built on it the sync of accounting data (payables, receivables and more) between IEL-GO and FIEG systems</p></li></ul></div></details></li>
-<li class="m-ch" style="--i:4"><details><summary class="m-sum"><span class="mk"></span><span class="yr">2012</span><span class="org">Squadra</span><span class="w-role">Software engineer</span></summary><div class="m-body"><p>Systems for Brazilian federal agencies and enterprise clients.</p><p class="p-tl">Projects</p><ul class="p-tags" role="list"><li>SIMEC (Ministry of Education)</li><li>IPHAN (national heritage institute)</li><li>DNPM (national mining department)</li></ul><p class="p-tl">What I did</p><p class="sw-hint" aria-hidden="true"><span>2 highlights</span><span class="sw-arr">swipe →</span></p><ul class="sw" role="list" tabindex="0" aria-label="Squadra: what I did"><li class="sw-card sw-one"><p class="sw-txt">PHP / Zend and Oracle, Java and .NET / SQL Server projects</p></li><li class="sw-card sw-one"><p class="sw-txt">A cross-platform quiz app for iOS and Android</p></li></ul></div></details></li>
-<li class="m-ed" style="--i:5"><details><summary class="m-sum"><span class="mk"></span><span class="yr">2011–2015</span><span class="org">B.S. Information Systems</span><span class="w-role">Universidade Estadual de Goiás</span></summary><div class="m-body"><p>Bachelor’s degree in Information Systems, earned while working as a developer.</p></div></details></li>
-<li class="m-ch" style="--i:6"><details><summary class="m-sum"><span class="mk"></span><span class="yr">2007</span><span class="org">IIDAC</span><span class="w-role">Web developer</span></summary><div class="m-body"><p>My first job: web applications for social programs of a UN-partner NGO, reaching young people across Brazil. Worked alongside UN Volunteers from five countries.</p><p class="p-tl">Projects <span class="sw-n">5</span></p><ul class="p-tags sw-tags" role="list" tabindex="0" aria-label="IIDAC: projects"><li>ODM Universidades</li><li>Voz dos Adolescentes</li><li>Rejupe</li><li>PPCAAM (federal program, Human Rights Secretariat)</li><li>IIDAC website</li></ul><ul class="p-proj"><li>PHP and MySQL, from database to front end</li></ul></div></details></li>
-<li class="m-ed" style="--i:7"><details><summary class="m-sum"><span class="mk"></span><span class="yr">2006</span><span class="org">Self-taught programmer</span><span class="w-role">started at 13</span></summary><div class="m-body"><p>Started programming at 13, on my own. Everything after grew from that.</p></div></details></li>
-</ol>
+					<li class="m-ch now" style="--i: 0">
+						<details open>
+							<summary class="m-sum">
+								<span class="mk"></span><span class="yr">2018 — now</span
+								><span class="org">StartCHURCH</span
+								><span class="w-role">Software Architect &amp; Tech Lead</span>
+							</summary>
+							<div class="m-body">
+								<p>
+									Eight years owning the platform end to end: how it is built and deployed, what it
+									costs, and how AI helps the team.
+								</p>
+								<p class="p-tl">Products <span class="sw-n">10</span></p>
+								<ul class="p-tags sw-tags" role="list" tabindex="0" aria-label="StartCHURCH: products">
+									<li>startchurch.com</li>
+									<li>Admin Console</li>
+									<li>StartSITES</li>
+									<li>Kingdom Steward</li>
+									<li>StartCHURCH University</li>
+									<li>Video Platform</li>
+									<li>AppletBuilder</li>
+									<li>Giving Halo</li>
+									<li>Launch Halo</li>
+									<li>Attorney Network</li>
+								</ul>
+								<p class="p-tl">What I did</p>
+								<p class="sw-hint" aria-hidden="true">
+									<span>4 themes</span><span class="sw-arr">swipe →</span>
+								</p>
+								<ul class="sw" role="list" tabindex="0" aria-label="StartCHURCH: what I did, by theme">
+									<li class="sw-card">
+										<p class="sw-lb">Platform <span class="sw-n">3</span></p>
+										<ul class="p-proj">
+											<li>Architecture and day-to-day operation of every product above</li>
+											<li>
+												Re-platformed everything: DigitalOcean → AWS, Ansible and Vagrant →
+												Docker and Kubernetes, Bitbucket → GitHub with CI and tests on every
+												push
+											</li>
+											<li>
+												Split a single all-or-nothing deploy into independent apps that scale
+												horizontally and deploy with zero downtime
+											</li>
+										</ul>
+									</li>
+									<li class="sw-card">
+										<p class="sw-lb">Stack &amp; tooling <span class="sw-n">2</span></p>
+										<ul class="p-proj">
+											<li>
+												Upgraded the core stack from Symfony 3.4 to 6.4 and PHP 8.3; ported
+												Kingdom Steward and StartCHURCH University from Zend to Symfony 6 with
+												Claude Code (rolling out)
+											</li>
+											<li>
+												Built sc, the team’s CLI: one command sets up a dev machine and
+												standardizes daily work
+											</li>
+										</ul>
+									</li>
+									<li class="sw-card">
+										<p class="sw-lb">Products <span class="sw-n">4</span></p>
+										<ul class="p-proj">
+											<li>
+												Co-designed a microservices platform prototype with single sign-on
+												(Keycloak) across legacy and current Symfony apps and Next.js frontends,
+												meant to host Halo and later the whole suite, 2020–2021
+											</li>
+											<li>
+												Took over Giving Halo and Launch Halo to keep them running:
+												release-based deploys, tests on every PR, daily database backups
+											</li>
+											<li>
+												Built and maintained the Attorney Network’s console and APIs, connecting
+												church leaders with attorneys in every state, until the product was
+												retired
+											</li>
+											<li>
+												Modernized AppletBuilder (PDF courses and visual guides) with single
+												sign-on, S3 storage and snapshot publishing; moved the Video Platform
+												(recorded courses) to its own Next.js app
+											</li>
+										</ul>
+									</li>
+									<li class="sw-card">
+										<p class="sw-lb">Cost, team &amp; AI <span class="sw-n">3</span></p>
+										<ul class="p-proj">
+											<li>Runs the cloud cost program and automated manual billing work</li>
+											<li>Onboards and mentors developers, including bootcamp juniors</li>
+											<li>
+												Brought agents, Claude Code reviews and a self-hosted MCP server into
+												the team’s daily work
+											</li>
+										</ul>
+									</li>
+								</ul>
+							</div>
+						</details>
+					</li>
+					<li class="m-ed" style="--i: 1">
+						<details>
+							<summary class="m-sum">
+								<span class="mk"></span><span class="yr">2020–2023</span
+								><span class="org">M.Sc. Logistics Engineering</span
+								><span class="w-role">ITA · not completed</span>
+							</summary>
+							<div class="m-body">
+								<p>
+									Aeronautics Institute of Technology (ITA). All coursework and credits finished; left
+									in 2023 before the thesis defense.
+								</p>
+								<p class="p-tl">Lab work</p>
+								<ul class="p-tags" role="list">
+									<li>AeroLogLabTOOL</li>
+								</ul>
+								<ul class="p-proj">
+									<li>Restructured the lab’s logistics-support planning tool (Go, MySQL), 2020</li>
+								</ul>
+							</div>
+						</details>
+					</li>
+					<li class="m-ch" style="--i: 2">
+						<details>
+							<summary class="m-sum">
+								<span class="mk"></span><span class="yr">2017</span
+								><span class="org">Scalable Path</span><span class="w-role">Engineer · remote, US</span>
+							</summary>
+							<div class="m-body">
+								<p>
+									Embedded in US client teams, fully remote from Brazil. One of those clients became
+									the next chapter.
+								</p>
+								<p class="p-tl">Clients &amp; projects <span class="sw-n">4</span></p>
+								<ul
+									class="p-tags sw-tags"
+									role="list"
+									tabindex="0"
+									aria-label="Scalable Path: clients &amp; projects"
+								>
+									<li>Tempo (Scalable Path’s showcase site)</li>
+									<li>Timelinely</li>
+									<li>The Mission Zone</li>
+									<li>StartCHURCH</li>
+								</ul>
+								<p class="p-tl">What I did</p>
+								<p class="sw-hint" aria-hidden="true">
+									<span>2 highlights</span><span class="sw-arr">swipe →</span>
+								</p>
+								<ul class="sw" role="list" tabindex="0" aria-label="Scalable Path: what I did">
+									<li class="sw-card sw-one">
+										<p class="sw-txt">
+											Built The Mission Zone’s MVP single-handedly, mentoring a junior developer
+											along the way, 2018–2019
+										</p>
+									</li>
+									<li class="sw-card sw-one">
+										<p class="sw-txt">Placed with StartCHURCH, which later hired me directly</p>
+									</li>
+								</ul>
+							</div>
+						</details>
+					</li>
+					<li class="m-ch" style="--i: 3">
+						<details>
+							<summary class="m-sum">
+								<span class="mk"></span><span class="yr">2014</span><span class="org">IEL</span
+								><span class="w-role">Technical architect</span>
+							</summary>
+							<div class="m-body">
+								<p>
+									Started on ten Java systems already in production, improved them iteratively instead
+									of rewriting them, and became the bridge between development, infrastructure and
+									business.
+								</p>
+								<p class="p-tl">Projects</p>
+								<ul class="p-tags" role="list">
+									<li>Accounting sync with FIEG (Casa da Indústria)</li>
+									<li>Internship program website</li>
+								</ul>
+								<p class="p-tl">What I did</p>
+								<p class="sw-hint" aria-hidden="true">
+									<span>3 highlights</span><span class="sw-arr">swipe →</span>
+								</p>
+								<ul class="sw" role="list" tabindex="0" aria-label="IEL: what I did">
+									<li class="sw-card sw-one">
+										<p class="sw-txt">Moved the systems to Linux on AWS and hardened SQL Server</p>
+									</li>
+									<li class="sw-card sw-one">
+										<p class="sw-txt">
+											Designed a new microservices architecture: Java, Spring Boot, SQL Server,
+											messaging and queues
+										</p>
+									</li>
+									<li class="sw-card sw-one">
+										<p class="sw-txt">
+											Built on it the sync of accounting data (payables, receivables and more)
+											between IEL-GO and FIEG systems
+										</p>
+									</li>
+								</ul>
+							</div>
+						</details>
+					</li>
+					<li class="m-ch" style="--i: 4">
+						<details>
+							<summary class="m-sum">
+								<span class="mk"></span><span class="yr">2012</span><span class="org">Squadra</span
+								><span class="w-role">Software engineer</span>
+							</summary>
+							<div class="m-body">
+								<p>Systems for Brazilian federal agencies and enterprise clients.</p>
+								<p class="p-tl">Projects</p>
+								<ul class="p-tags" role="list">
+									<li>SIMEC (Ministry of Education)</li>
+									<li>IPHAN (national heritage institute)</li>
+									<li>DNPM (national mining department)</li>
+								</ul>
+								<p class="p-tl">What I did</p>
+								<p class="sw-hint" aria-hidden="true">
+									<span>2 highlights</span><span class="sw-arr">swipe →</span>
+								</p>
+								<ul class="sw" role="list" tabindex="0" aria-label="Squadra: what I did">
+									<li class="sw-card sw-one">
+										<p class="sw-txt">PHP / Zend and Oracle, Java and .NET / SQL Server projects</p>
+									</li>
+									<li class="sw-card sw-one">
+										<p class="sw-txt">A cross-platform quiz app for iOS and Android</p>
+									</li>
+								</ul>
+							</div>
+						</details>
+					</li>
+					<li class="m-ed" style="--i: 5">
+						<details>
+							<summary class="m-sum">
+								<span class="mk"></span><span class="yr">2011–2015</span
+								><span class="org">B.S. Information Systems</span
+								><span class="w-role">Universidade Estadual de Goiás</span>
+							</summary>
+							<div class="m-body">
+								<p>Bachelor’s degree in Information Systems, earned while working as a developer.</p>
+							</div>
+						</details>
+					</li>
+					<li class="m-ch" style="--i: 6">
+						<details>
+							<summary class="m-sum">
+								<span class="mk"></span><span class="yr">2007</span><span class="org">IIDAC</span
+								><span class="w-role">Web developer</span>
+							</summary>
+							<div class="m-body">
+								<p>
+									My first job: web applications for social programs of a UN-partner NGO, reaching
+									young people across Brazil. Worked alongside UN Volunteers from five countries.
+								</p>
+								<p class="p-tl">Projects <span class="sw-n">5</span></p>
+								<ul class="p-tags sw-tags" role="list" tabindex="0" aria-label="IIDAC: projects">
+									<li>ODM Universidades</li>
+									<li>Voz dos Adolescentes</li>
+									<li>Rejupe</li>
+									<li>PPCAAM (federal program, Human Rights Secretariat)</li>
+									<li>IIDAC website</li>
+								</ul>
+								<ul class="p-proj">
+									<li>PHP and MySQL, from database to front end</li>
+								</ul>
+							</div>
+						</details>
+					</li>
+					<li class="m-ed" style="--i: 7">
+						<details>
+							<summary class="m-sum">
+								<span class="mk"></span><span class="yr">2006</span
+								><span class="org">Self-taught programmer</span
+								><span class="w-role">started at 13</span>
+							</summary>
+							<div class="m-body">
+								<p>Started programming at 13, on my own. Everything after grew from that.</p>
+							</div>
+						</details>
+					</li>
+				</ol>
 
 				<section class="w-side" aria-labelledby="side-title">
-<h2 class="w-side-lb" id="side-title">On the side</h2>
-<p class="sw-hint" aria-hidden="true"><span>4 projects</span><span class="sw-arr">swipe →</span></p>
-<ul class="w-side-list" role="list" tabindex="0" aria-label="Side projects">
-<li><span class="sd-yr">2017–2018</span><span class="sd-name">SimUEG</span><span class="sd-txt">Indicators and monitoring system for Universidade Estadual de Goiás (Laravel, PostgreSQL).</span></li>
-<li><span class="sd-yr">2022</span><span class="sd-name">SAZ Saúde</span><span class="sd-txt">Designed the health-benefits platform’s architecture from scratch (Laravel API, Next.js, Docker, CI/CD) and handed it over to their internal dev team.</span></li>
-<li><span class="sd-yr">2023</span><span class="sd-name">Emigh Livestock</span><span class="sd-txt">Short contribution: reworked the infrastructure of a Symfony app still running on Ansible and Vagrant.</span></li>
-<li><span class="sd-yr">2024</span><span class="sd-name">Wonder Journal</span><span class="sd-txt">Short contribution to a web and mobile app (Laravel, Inertia).</span></li>
-</ul>
-</section>
+					<h2 class="w-side-lb" id="side-title">On the side</h2>
+					<p class="sw-hint" aria-hidden="true"><span>4 projects</span><span class="sw-arr">swipe →</span></p>
+					<ul class="w-side-list" role="list" tabindex="0" aria-label="Side projects">
+						<li>
+							<span class="sd-yr">2017–2018</span><span class="sd-name">SimUEG</span
+							><span class="sd-txt"
+								>Indicators and monitoring system for Universidade Estadual de Goiás (Laravel,
+								PostgreSQL).</span
+							>
+						</li>
+						<li>
+							<span class="sd-yr">2022</span><span class="sd-name">SAZ Saúde</span
+							><span class="sd-txt"
+								>Designed the health-benefits platform’s architecture from scratch (Laravel API,
+								Next.js, Docker, CI/CD) and handed it over to their internal dev team.</span
+							>
+						</li>
+						<li>
+							<span class="sd-yr">2023</span><span class="sd-name">Emigh Livestock</span
+							><span class="sd-txt"
+								>Short contribution: reworked the infrastructure of a Symfony app still running on
+								Ansible and Vagrant.</span
+							>
+						</li>
+						<li>
+							<span class="sd-yr">2024</span><span class="sd-name">Wonder Journal</span
+							><span class="sd-txt">Short contribution to a web and mobile app (Laravel, Inertia).</span>
+						</li>
+					</ul>
+				</section>
 
-				<section class="ms" id="milestones" aria-labelledby="ms-title"><h2 class="ms-title" id="ms-title">Outcomes</h2><p class="ms-note">As of Oct 2026.</p><section class="ms-group" id="engineering" aria-labelledby="ms-engineering"><div class="ms-head"><h3 class="ms-lb" id="ms-engineering">engineering</h3><p class="ms-line">Systems and teams that outlast me: documented, shared and handed over.</p></div><p class="sw-hint" aria-hidden="true"><span>9 outcomes</span><span class="sw-arr">swipe →</span></p><ul class="ms-grid ms-sw" role="list" tabindex="0" aria-label="engineering outcomes"><li class="ms-tile"><span class="ms-n">18% → 3%</span><span class="ms-c">of deploys could break the live site while rolling out, before vs. after I redesigned how changes ship</span></li><li class="ms-tile"><span class="ms-n">1h+ → ~5 min</span><span class="ms-c">production deploy time after moving from Ansible on fixed servers to containers and CI/CD, so shipping up to 10 times a day became routine</span></li><li class="ms-tile"><span class="ms-n ms-wrap">0 “works on my machine”</span><span class="ms-c">bugs since dev, staging and production started running the exact same images</span></li><li class="ms-tile"><span class="ms-n">1 command</span><span class="ms-c">to set up a dev machine on macOS, Linux or Windows: clone, run one script, the rest lives in containers</span></li><li class="ms-tile"><span class="ms-n">&lt; 5 min</span><span class="ms-c">of downtime across eight Kubernetes version upgrades</span></li><li class="ms-tile"><span class="ms-n">40 min → secs</span><span class="ms-c">to give every branch on staging its own copy of the database, so each change is tested against realistic data</span></li><li class="ms-tile"><span class="ms-n ms-wrap">~20 years of data</span><span class="ms-c">millions of records migrated into a two-way CRM sync, keeping sales and finance on one source of truth</span></li><li class="ms-tile"><span class="ms-n">14 apps</span><span class="ms-c">running on one shared platform, each deployed on its own</span></li><li class="ms-tile"><span class="ms-n">10+ mentees</span><span class="ms-c">engineers across four companies, from bootcamp juniors to senior hires</span></li></ul></section><section class="ms-group" id="business" aria-labelledby="ms-business"><div class="ms-head"><h3 class="ms-lb" id="ms-business">business</h3><p class="ms-line">Tradeoffs explained in numbers — to engineers and to the CFO.</p></div><p class="sw-hint" aria-hidden="true"><span>6 outcomes</span><span class="sw-arr">swipe →</span></p><ul class="ms-grid ms-sw" role="list" tabindex="0" aria-label="business outcomes"><li class="ms-tile"><span class="ms-n">8 figures</span><span class="ms-c">yearly revenue of a business running on a platform I architect and operate</span></li><li class="ms-tile"><span class="ms-n">−30%</span><span class="ms-c">cloud bill in a single month</span></li><li class="ms-tile"><span class="ms-n">~80%</span><span class="ms-c">less spent on testing infrastructure, same coverage: refactored code, restructured infrastructure, right-sized every service</span></li><li class="ms-tile"><span class="ms-n">−22%</span><span class="ms-c">database cost in production on AWS</span></li><li class="ms-tile"><span class="ms-n">~90%</span><span class="ms-c">less load-balancer cost for preview environments</span></li><li class="ms-tile"><span class="ms-n">3 days</span><span class="ms-c">of the whole billing team’s manual work, done by one automation instead</span></li></ul></section><section class="ms-group" id="ai" aria-labelledby="ms-ai"><div class="ms-head"><h3 class="ms-lb" id="ms-ai">ai</h3><p class="ms-line">LLMs in the product, agents for the team — shipped, not demoed.</p></div><ul class="ms-grid" role="list" tabindex="0" aria-label="ai outcomes"><li class="ms-tile"><span class="ms-n">MCP</span><span class="ms-c">self-hosted server: the team asks an AI assistant about production data, read-only</span></li><li class="ms-tile"><span class="ms-n">Agents</span><span class="ms-c">in the daily dev loop; this site was designed and built with them</span></li></ul></section></section>
+				<section class="ms" id="milestones" aria-labelledby="ms-title">
+					<h2 class="ms-title" id="ms-title">Outcomes</h2>
+					<p class="ms-note">As of Oct 2026.</p>
+					<section class="ms-group" id="engineering" aria-labelledby="ms-engineering">
+						<div class="ms-head">
+							<h3 class="ms-lb" id="ms-engineering">engineering</h3>
+							<p class="ms-line">
+								Systems and teams that outlast me: documented, shared and handed over.
+							</p>
+						</div>
+						<p class="sw-hint" aria-hidden="true">
+							<span>9 outcomes</span><span class="sw-arr">swipe →</span>
+						</p>
+						<ul class="ms-grid ms-sw" role="list" tabindex="0" aria-label="engineering outcomes">
+							<li class="ms-tile">
+								<span class="ms-n">18% → 3%</span
+								><span class="ms-c"
+									>of deploys could break the live site while rolling out, before vs. after I
+									redesigned how changes ship</span
+								>
+							</li>
+							<li class="ms-tile">
+								<span class="ms-n">1h+ → ~5 min</span
+								><span class="ms-c"
+									>production deploy time after moving from Ansible on fixed servers to containers and
+									CI/CD, so shipping up to 10 times a day became routine</span
+								>
+							</li>
+							<li class="ms-tile">
+								<span class="ms-n ms-wrap">0 “works on my machine”</span
+								><span class="ms-c"
+									>bugs since dev, staging and production started running the exact same images</span
+								>
+							</li>
+							<li class="ms-tile">
+								<span class="ms-n">1 command</span
+								><span class="ms-c"
+									>to set up a dev machine on macOS, Linux or Windows: clone, run one script, the rest
+									lives in containers</span
+								>
+							</li>
+							<li class="ms-tile">
+								<span class="ms-n">&lt; 5 min</span
+								><span class="ms-c">of downtime across eight Kubernetes version upgrades</span>
+							</li>
+							<li class="ms-tile">
+								<span class="ms-n">40 min → secs</span
+								><span class="ms-c"
+									>to give every branch on staging its own copy of the database, so each change is
+									tested against realistic data</span
+								>
+							</li>
+							<li class="ms-tile">
+								<span class="ms-n ms-wrap">~20 years of data</span
+								><span class="ms-c"
+									>millions of records migrated into a two-way CRM sync, keeping sales and finance on
+									one source of truth</span
+								>
+							</li>
+							<li class="ms-tile">
+								<span class="ms-n">14 apps</span
+								><span class="ms-c">running on one shared platform, each deployed on its own</span>
+							</li>
+							<li class="ms-tile">
+								<span class="ms-n">10+ mentees</span
+								><span class="ms-c"
+									>engineers across four companies, from bootcamp juniors to senior hires</span
+								>
+							</li>
+						</ul>
+					</section>
+					<section class="ms-group" id="business" aria-labelledby="ms-business">
+						<div class="ms-head">
+							<h3 class="ms-lb" id="ms-business">business</h3>
+							<p class="ms-line">Tradeoffs explained in numbers — to engineers and to the CFO.</p>
+						</div>
+						<p class="sw-hint" aria-hidden="true">
+							<span>6 outcomes</span><span class="sw-arr">swipe →</span>
+						</p>
+						<ul class="ms-grid ms-sw" role="list" tabindex="0" aria-label="business outcomes">
+							<li class="ms-tile">
+								<span class="ms-n">8 figures</span
+								><span class="ms-c"
+									>yearly revenue of a business running on a platform I architect and operate</span
+								>
+							</li>
+							<li class="ms-tile">
+								<span class="ms-n">−30%</span><span class="ms-c">cloud bill in a single month</span>
+							</li>
+							<li class="ms-tile">
+								<span class="ms-n">~80%</span
+								><span class="ms-c"
+									>less spent on testing infrastructure, same coverage: refactored code, restructured
+									infrastructure, right-sized every service</span
+								>
+							</li>
+							<li class="ms-tile">
+								<span class="ms-n">−22%</span
+								><span class="ms-c">database cost in production on AWS</span>
+							</li>
+							<li class="ms-tile">
+								<span class="ms-n">~90%</span
+								><span class="ms-c">less load-balancer cost for preview environments</span>
+							</li>
+							<li class="ms-tile">
+								<span class="ms-n">3 days</span
+								><span class="ms-c"
+									>of the whole billing team’s manual work, done by one automation instead</span
+								>
+							</li>
+						</ul>
+					</section>
+					<section class="ms-group" id="ai" aria-labelledby="ms-ai">
+						<div class="ms-head">
+							<h3 class="ms-lb" id="ms-ai">ai</h3>
+							<p class="ms-line">LLMs in the product, agents for the team — shipped, not demoed.</p>
+						</div>
+						<ul class="ms-grid" role="list" tabindex="0" aria-label="ai outcomes">
+							<li class="ms-tile">
+								<span class="ms-n">MCP</span
+								><span class="ms-c"
+									>self-hosted server: the team asks an AI assistant about production data,
+									read-only</span
+								>
+							</li>
+							<li class="ms-tile">
+								<span class="ms-n">Agents</span
+								><span class="ms-c"
+									>in the daily dev loop; this site was designed and built with them</span
+								>
+							</li>
+						</ul>
+					</section>
+				</section>
 
-			<p class="w-foot">
+				<p class="w-foot">
 					Full history on
 					<a href="https://www.linkedin.com/in/matheus-salmi/" target="_blank" rel="noopener"
 						>LinkedIn<span class="sr-only"> (opens in new tab)</span></a
@@ -1249,26 +1804,26 @@
 				</p>
 			</main>
 		</div>
-	
-	<script>
-		/* Swipe rows (phones and tablets): show "swipe →" and the edge fade only when a row really overflows. Without JS they always show. */
-		(() => {
-			const rows = [...document.querySelectorAll('.sw, .ms-sw, .sw-tags, .w-side-list')]
-			const mark = () =>
-				rows.forEach((r) => {
-					const o = r.scrollWidth > r.clientWidth + 1
-					r.classList.toggle('ovf', o)
-					const h = r.previousElementSibling
-					if (h && h.classList.contains('sw-hint')) h.classList.toggle('ovf', o)
-				})
-			document.fonts.ready.then(mark)
-			if (window.ResizeObserver) {
-				const ro = new ResizeObserver(mark)
-				rows.forEach((r) => ro.observe(r))
-			} else {
-				addEventListener('resize', mark)
-			}
-		})()
-	</script>
-</body>
+
+		<script>
+			/* Swipe rows (phones and tablets): show "swipe →" and the edge fade only when a row really overflows. Without JS they always show. */
+			(() => {
+				const rows = [...document.querySelectorAll('.sw, .ms-sw, .sw-tags, .w-side-list')];
+				const mark = () =>
+					rows.forEach((r) => {
+						const o = r.scrollWidth > r.clientWidth + 1;
+						r.classList.toggle('ovf', o);
+						const h = r.previousElementSibling;
+						if (h && h.classList.contains('sw-hint')) h.classList.toggle('ovf', o);
+					});
+				document.fonts.ready.then(mark);
+				if (window.ResizeObserver) {
+					const ro = new ResizeObserver(mark);
+					rows.forEach((r) => ro.observe(r));
+				} else {
+					addEventListener('resize', mark);
+				}
+			})();
+		</script>
+	</body>
 </html>
