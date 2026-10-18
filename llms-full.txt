@@ -81,7 +81,7 @@ Aug 2014 – Jul 2017 · Goiânia, Brazil
 Industry Federation of Goiás (FIEG) organization for corporate management, entrepreneurial education and careers.
 
 - Started as senior engineer on ten Java systems already in production; improved them iteratively instead of rewriting them, and became the bridge between development, infrastructure and business.
-- Moved the systems to Linux on AWS and hardened SQL Server; designed a new microservices architecture (Java, Spring Boot, SQL Server, messaging and queues) and built on it the account synchronization between IEL-GO and FIEG (Casa da Indústria); also the internship program website.
+- Moved the systems to Linux on AWS and hardened SQL Server; designed a new microservices architecture (Java, Spring Boot, SQL Server, messaging and queues) and built on it the accounting data sync (payables, receivables) between IEL-GO and FIEG (Casa da Indústria); also the internship program website.
 
 ### Squadra Tecnologia — Software Engineer
 
