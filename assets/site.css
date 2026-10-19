@@ -26,6 +26,8 @@
 	--dusk: #34302b;
 	--ink: #1e1c1a;
 	--acc: #c2410c;
+	/* accent as text color: #c2410c only reaches 3.28:1 on ink, so dark mode uses a lighter step (4.77:1) */
+	--acc-tx: var(--acc);
 	--bg: var(--paper);
 	--fg: var(--ink);
 	--mut: var(--slate);
@@ -51,6 +53,7 @@
 	--photo: var(--dusk);
 	--sel-bg: var(--sand);
 	--sel-fg: var(--ink);
+	--acc-tx: #ea580c;
 	color-scheme: dark;
 }
 
@@ -66,6 +69,7 @@
 		--photo: var(--dusk);
 		--sel-bg: var(--sand);
 		--sel-fg: var(--ink);
+		--acc-tx: #ea580c;
 		color-scheme: dark;
 	}
 }
@@ -98,7 +102,7 @@ a {
 }
 
 a:hover {
-	color: var(--acc);
+	color: var(--acc-tx);
 }
 
 :focus-visible {
@@ -217,7 +221,7 @@ address {
 }
 
 .lk .ic {
-	color: var(--acc);
+	color: var(--acc-tx);
 	display: inline-flex;
 	vertical-align: -0.08em;
 }
@@ -270,7 +274,7 @@ address {
 	font-size: 19px;
 	font-weight: 700;
 	line-height: 1.15;
-	color: var(--acc);
+	color: var(--acc-tx);
 }
 
 .own p {

@@ -81,7 +81,7 @@
 				line-height: 1.05;
 				font-weight: 700;
 				letter-spacing: -0.02em;
-				color: var(--acc);
+				color: var(--acc-tx);
 			}
 			.w-h1-sl {
 				color: var(--stone);
@@ -222,7 +222,7 @@
 			.ch.now .yr {
 				font-size: 17px;
 				font-weight: 700;
-				color: var(--acc);
+				color: var(--acc-tx);
 			}
 			.ch.now .org {
 				font-size: clamp(26px, 2.6vw, 36px);
@@ -253,9 +253,6 @@
 				font-size: 12px;
 				color: var(--mut);
 				transition: color 0.2s;
-			}
-			.ed .ed-yr {
-				color: var(--stone);
 			}
 			.ed .ed-nm {
 				position: relative;
@@ -360,7 +357,7 @@
 				font-family: 'JetBrains Mono', monospace;
 				font-size: 15px;
 				font-weight: 700;
-				color: var(--acc);
+				color: var(--acc-tx);
 			}
 			.p-org {
 				font-size: 32px;
@@ -413,7 +410,7 @@
 				font-family: 'JetBrains Mono', monospace;
 				font-size: 15px;
 				font-weight: 700;
-				color: var(--acc);
+				color: var(--acc-tx);
 			}
 			.w-side-list {
 				margin: 12px 0 0;
@@ -459,7 +456,7 @@
 				margin-top: 4px;
 			}
 			.p-proj li::marker {
-				color: var(--acc);
+				color: var(--acc-tx);
 			}
 
 			/* ---------- career milestones (anonymous) ---------- */
@@ -493,7 +490,7 @@
 				font-family: 'JetBrains Mono', monospace;
 				font-size: 19px;
 				font-weight: 700;
-				color: var(--acc);
+				color: var(--acc-tx);
 			}
 			.ms-line {
 				margin: 8px 0 0;
@@ -702,7 +699,7 @@
 					content: ' +';
 					font-family: 'JetBrains Mono', monospace;
 					font-weight: 400;
-					color: var(--acc);
+					color: var(--acc-tx);
 				}
 				.m-ch:not(.now) details[open] .org::after {
 					content: ' −';
@@ -710,7 +707,7 @@
 				.m-ch.now .yr {
 					font-size: 16px;
 					font-weight: 700;
-					color: var(--acc);
+					color: var(--acc-tx);
 				}
 				.m-ch.now .org {
 					font-size: 30px;
@@ -886,7 +883,7 @@
 				color: var(--mut);
 			}
 			.sw-arr {
-				color: var(--acc);
+				color: var(--acc-tx);
 			}
 			/* with JS, "swipe →", the arrows and the edge fade only show when the row really overflows (checked on load and resize) */
 			.js .sw-hint:not(.ovf) .sw-arr {
@@ -947,8 +944,8 @@
 					opacity 0.2s;
 			}
 			.sw-btn:hover:not(:disabled) {
-				border-color: var(--acc);
-				color: var(--acc);
+				border-color: var(--acc-tx);
+				color: var(--acc-tx);
 			}
 			.sw-btn:disabled {
 				opacity: 0.3;
@@ -961,10 +958,9 @@
 			}
 			.sw-dots {
 				display: flex;
-				gap: 2px;
 			}
 			.sw-dot {
-				width: 16px;
+				width: 24px;
 				height: 24px;
 				padding: 0;
 				border: 0;
@@ -2045,6 +2041,11 @@
 					c.querySelectorAll('.sw-btn').forEach((b) =>
 						b.addEventListener('click', () => go(r, page(r) + Number(b.dataset.d))),
 					);
+					/* the hint text stays hidden from screen readers, but the controls inside it must not be */
+					if (h.getAttribute('aria-hidden') === 'true') {
+						h.removeAttribute('aria-hidden');
+						[...h.children].forEach((t) => t.setAttribute('aria-hidden', 'true'));
+					}
 					h.classList.add('sw-head');
 					h.appendChild(c);
 					r._ctl = c;
