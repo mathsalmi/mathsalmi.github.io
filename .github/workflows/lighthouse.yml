@@ -1,0 +1,85 @@
+name: Quality/Lighthouse
+
+on:
+    push:
+        branches:
+            - main
+        paths:
+            - "**.html"
+            - "**.css"
+            - "**.js"
+            - "**.svg"
+            - "assets/**"
+            - ".github/workflows/lighthouse.yml"
+    workflow_dispatch:
+
+permissions:
+    contents: read
+
+concurrency:
+    group: lighthouse-${{ github.ref }}
+    cancel-in-progress: true
+
+jobs:
+    lighthouse:
+        name: Lighthouse (${{ matrix.device }}, ${{ matrix.scheme }})
+        runs-on: ubuntu-24.04
+        if: ${{ !contains(github.event.head_commit.message, 'Auto format (Prettier)') }}
+        strategy:
+            fail-fast: false
+            matrix:
+                device: [desktop, mobile]
+                scheme: [light, dark]
+        steps:
+            - name: Checkout
+              uses: actions/checkout@v6.0.2
+
+            - name: Set up node
+              uses: actions/setup-node@v6.3.0
+              with:
+                  node-version: "24.x"
+
+            - name: Serve the site
+              run: |
+                  python3 -m http.server 8000 >/dev/null 2>&1 &
+                  until curl -sf http://localhost:8000/ >/dev/null; do sleep 0.2; done
+
+            # Quality bar (AGENTS.md): 100 in Accessibility, Best Practices and SEO, Performance 95+.
+            # 404.html is noindex on purpose, so its SEO score is not checked.
+            # Agentic Browsing is still changing upstream: reported, not enforced.
+            - name: Run Lighthouse
+              env:
+                  DEVICE: ${{ matrix.device }}
+                  SCHEME: ${{ matrix.scheme }}
+              run: |
+                  if [ "$DEVICE" = desktop ]; then preset="--preset=desktop"; else preset="--form-factor=mobile --screenEmulation.mobile"; fi
+                  if [ "$SCHEME" = light ]; then pref=1; else pref=0; fi
+                  mkdir -p reports
+                  fail=0
+                  echo "### Lighthouse: $DEVICE, $SCHEME" >> "$GITHUB_STEP_SUMMARY"
+                  echo "| Page | Performance | Accessibility | Best Practices | SEO | Agentic |" >> "$GITHUB_STEP_SUMMARY"
+                  echo "|---|---|---|---|---|---|" >> "$GITHUB_STEP_SUMMARY"
+                  for page in / /work/ /404.html; do
+                      name=$(echo "$page" | tr -dc 'a-z0-9'); name=${name:-home}
+                      npx --yes lighthouse@13.5.0 "http://localhost:8000$page" $preset \
+                          --chrome-flags="--headless=new --no-sandbox --blink-settings=preferredColorScheme=$pref" \
+                          --output=json --output=html --output-path="reports/$name" --quiet
+                      json="reports/$name.report.json"
+                      score() { jq -r ".categories[\"$1\"].score // 0 | . * 100 | round" "$json"; }
+                      perf=$(score performance); a11y=$(score accessibility); bp=$(score best-practices); seo=$(score seo); agent=$(score agentic-browsing)
+                      echo "| \`$page\` | $perf | $a11y | $bp | $seo | $agent |" >> "$GITHUB_STEP_SUMMARY"
+                      [ "$perf" -ge 95 ] || { echo "::error::$page performance $perf < 95"; fail=1; }
+                      [ "$a11y" -eq 100 ] || { echo "::error::$page accessibility $a11y < 100"; fail=1; }
+                      [ "$bp" -eq 100 ] || { echo "::error::$page best practices $bp < 100"; fail=1; }
+                      [ "$page" = /404.html ] || [ "$seo" -eq 100 ] || { echo "::error::$page SEO $seo < 100"; fail=1; }
+                      # List every failing audit so the log says what to fix
+                      jq -r --arg p "$page" '.audits[] | select(.scoreDisplayMode == "binary" and .score == 0) | "\($p): \(.id) — \(.title)"' "$json"
+                  done
+                  exit $fail
+
+            - name: Upload reports
+              if: ${{ always() }}
+              uses: actions/upload-artifact@v7.0.0
+              with:
+                  name: lighthouse-${{ matrix.device }}-${{ matrix.scheme }}
+                  path: reports/

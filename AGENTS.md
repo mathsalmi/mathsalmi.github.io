@@ -66,7 +66,7 @@ The same facts are repeated across many files. When one changes, update **all** 
 
 ### Colors and fonts
 
-- Palette lives in `assets/site.css` `:root`. Hex values are also hard-coded in: `meta theme-color` (`index.html`, `404.html`, `work/index.html`), `assets/site.js` (theme-color update), `favicon.svg`, `assets/logo.svg` (fallbacks), `favicon-32.png`, `apple-touch-icon.png`, `og.png`.
+- Palette lives in `assets/site.css` `:root`. Text in the accent color uses `--acc-tx`, never `--acc`: `#c2410c` fails contrast on the dark background, so dark mode switches `--acc-tx` to `#ea580c`. Hex values are also hard-coded in: `meta theme-color` (`index.html`, `404.html`, `work/index.html`), `assets/site.js` (theme-color update), `favicon.svg`, `assets/logo.svg` (fallbacks), `favicon-32.png`, `apple-touch-icon.png`, `og.png`.
 - Fonts are self-hosted in `assets/fonts/` (`@font-face` in `assets/site.css`). The font `preload` links must be identical in `index.html`, `404.html` and `work/index.html`.
 
 ## Conventions
@@ -111,7 +111,7 @@ Applies to every HTML page in the repo (today `index.html`, `404.html` and `work
 
 ### Automated checks (all must pass, for every page)
 
-- **Lighthouse** (mobile and desktop): 100 in Accessibility, Best Practices and SEO; Performance 95+.
+- **Lighthouse** (mobile and desktop, light and dark): 100 in Accessibility, Best Practices and SEO; Performance 95+. `404.html` is `noindex` on purpose, so its SEO score is exempt. CI (`.github/workflows/lighthouse.yml`) checks this on every push to `main` with the same Lighthouse version as PageSpeed; a red run means the page is not done.
 - **W3C Nu HTML Checker** (validator.w3.org/nu): zero errors. **W3C CSS Validator** on `assets/site.css`: zero errors (modern properties the validator does not know yet are the only accepted warnings).
 - **axe-core** (or pa11y with axe): zero violations, light and dark theme.
 - **JSON-LD**: valid in the Schema.org validator and Google Rich Results Test.
