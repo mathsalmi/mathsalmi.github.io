@@ -896,6 +896,7 @@
 			}
 			.sw-head {
 				display: flex;
+				flex-wrap: wrap; /* narrow screens with a mouse: the arrows and dots drop below the count instead of overflowing */
 				justify-content: flex-start;
 				align-items: center;
 				gap: 6px;
@@ -986,13 +987,16 @@
 				background: var(--acc);
 				transform: scale(1.2);
 			}
-			@media (min-width: 861px) {
+			/* with a mouse, arrows and dots replace "swipe →" at any width; touch screens keep the hint */
+			@media (hover: hover) and (pointer: fine) {
 				.js .sw-hint.ovf .sw-arr {
 					display: none;
 				}
 				.sw-head.ovf .sw-ctl {
 					display: inline-flex;
 				}
+			}
+			@media (min-width: 861px) {
 				.pn .p-body .sw-hint {
 					margin-top: 14px;
 				}
