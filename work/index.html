@@ -771,296 +771,78 @@
 			}
 
 			/* ---------- swipe rows on every screen (scroll-snap); on desktop JS adds arrows and dots ---------- */
-			.sw,
-			.ms-grid.ms-sw,
-			.w-side-list {
-				display: grid;
-				grid-auto-flow: column;
-				grid-template-columns: none;
-				gap: 14px;
-				overflow-x: auto;
-				overscroll-behavior-x: contain;
-				scroll-snap-type: x mandatory;
-				scrollbar-width: none;
-				list-style: none;
-				margin: 10px 0 0;
-				padding: 2px 0 6px;
+		.sw, .ms-grid.ms-sw, .w-side-list {
+			display: grid; grid-auto-flow: column; grid-template-columns: none; gap: 14px;
+			overflow-x: auto; overscroll-behavior-x: contain; scroll-snap-type: x mandatory; scrollbar-width: none;
+			list-style: none; margin: 10px 0 0; padding: 2px 0 6px;
+		}
+		.sw { grid-auto-columns: 46%; align-items: start; }
+		.ms-grid.ms-sw { grid-auto-columns: 31%; align-items: stretch; }
+		.w-side-list { grid-auto-columns: 31%; align-items: stretch; }
+		.sw::-webkit-scrollbar, .ms-grid.ms-sw::-webkit-scrollbar, .w-side-list::-webkit-scrollbar, .p-tags.sw-tags::-webkit-scrollbar { display: none; }
+		.sw:focus-visible, .ms-grid.ms-sw:focus-visible, .w-side-list:focus-visible, .p-tags.sw-tags:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
+		.sw-card, .ms-sw .ms-tile, .w-side-list li { scroll-snap-align: start; border: 1px solid var(--line); border-radius: 12px; padding: 14px 16px; }
+		.w-side-list li { display: flex; flex-direction: column; gap: 4px; padding: 14px 16px; }
+		.sw-card .p-proj { margin-top: 8px; font-size: 15px; }
+		.sw-lb { margin: 0; font-weight: 600; font-size: 16px; }
+		.sw-n { font-family: 'JetBrains Mono', monospace; font-weight: 400; font-size: 12.5px; color: var(--mut); }
+		.sw-one .sw-txt { margin: 0; font-size: 15px; line-height: 1.5; color: var(--mut); opacity: 1; }
+		.ms-sw .ms-tile { gap: 10px; container-type: inline-size; }
+		/* the number scales with its card so "~20 years of data" stays on one line and nothing spills out */
+		.ms-sw .ms-n { font-size: 26px; font-size: clamp(21px, 13cqi, 34px); }
+		.ms-sw .ms-c { max-width: none; }
+		/* long pill lists: one line that scrolls sideways, fading at the edge */
+		.p-tags.sw-tags { flex-wrap: nowrap; max-width: none; overflow-x: auto; scrollbar-width: none; overscroll-behavior-x: contain; scroll-snap-type: x proximity; padding-right: 24px;
+			-webkit-mask-image: linear-gradient(to right, #000 calc(100% - 32px), transparent); mask-image: linear-gradient(to right, #000 calc(100% - 32px), transparent); }
+		.p-tags.sw-tags li { flex: none; white-space: nowrap; scroll-snap-align: start; }
+		.sw-hint { display: flex; justify-content: space-between; align-items: center; margin: 8px 0 0; font-family: 'JetBrains Mono', monospace; font-size: 12.5px; color: var(--mut); }
+		.sw-arr { color: var(--acc); }
+		/* with JS, "swipe →", the arrows and the edge fade only show when the row really overflows (checked on load and resize) */
+		.js .sw-hint:not(.ovf) .sw-arr { visibility: hidden; }
+		.js .p-tags.sw-tags:not(.ovf) { -webkit-mask-image: none; mask-image: none; padding-right: 0; }
+		.sw-head { display: flex; justify-content: flex-start; align-items: center; gap: 6px; }
+		.sw-head > .sw-arr, .sw-head > .sw-ctl { margin-left: auto; }
+		/* inside the desktop panel, card text keeps card sizes (not the panel's 18px paragraph) */
+		.p-body .sw-hint { margin: 14px 0 0; font-size: 12.5px; line-height: 1.4; max-width: none; }
+		.p-body .sw-lb { margin: 0; font-size: 16px; line-height: 1.4; }
+		.p-body .sw-one .sw-txt { font-size: 15px; max-width: none; }
+		.sw-ctl { display: none; align-items: center; gap: 10px; }
+		.sw-btn { width: 30px; height: 30px; display: grid; place-items: center; padding: 0; border: 1px solid var(--line); border-radius: 50%; background: none; color: var(--fg); font: 16px/1 'JetBrains Mono', monospace; cursor: pointer; transition: border-color .2s, opacity .2s; }
+		.sw-btn:hover:not(:disabled) { border-color: var(--acc); color: var(--acc); }
+		.sw-btn:disabled { opacity: .3; cursor: default; }
+		.sw-btn:focus-visible, .sw-dot:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
+		.sw-dots { display: flex; gap: 2px; }
+		.sw-dot { width: 16px; height: 24px; padding: 0; border: 0; background: none; cursor: pointer; display: grid; place-items: center; }
+		.sw-dot::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: var(--line); transition: background .2s, transform .2s; }
+		.sw-dot:hover::before { background: var(--stone); }
+		.sw-dot[aria-current="true"]::before { background: var(--acc); transform: scale(1.2); }
+		@media (min-width: 861px) {
+			.js .sw-hint.ovf .sw-arr { display: none; }
+			.sw-head.ovf .sw-ctl { display: inline-flex; }
+			.pn .p-body .sw-hint { margin-top: 14px; }
+			/* Outcomes: label and line on the left, the hint and the row share the right column */
+			.ms-group { row-gap: 0; }
+			.ms-group > .ms-head { grid-row: span 2; }
+			.ms-group > .sw-hint, .ms-group > .ms-grid { grid-column: 2; }
+			.ms-group > .sw-hint { margin: 0 0 6px; }
+		}
+		@media (max-width: 860px) {
+			/* phones: one card and a peek of the next; Outcomes and On the side bleed to the screen edge */
+			.ms-grid.ms-sw, .w-side-list { --gut: clamp(20px, 5vw, 64px); margin-inline: calc(-1 * var(--gut)); padding-inline: var(--gut); scroll-padding-inline: var(--gut); }
+			.sw, .ms-grid.ms-sw, .w-side-list { gap: 12px; }
+			.sw { grid-auto-columns: 82%; }
+			.ms-grid.ms-sw { grid-auto-columns: 64%; }
+			.w-side-list { grid-auto-columns: 72%; }
+			/* tablet portrait (e.g. iPad 744–834px): narrower cards so 2–3 show at once */
+			@media (min-width: 600px) {
+				.sw { grid-auto-columns: 46%; }
+				.ms-grid.ms-sw { grid-auto-columns: 30%; }
+				.w-side-list { grid-auto-columns: 40%; }
 			}
-			.sw {
-				grid-auto-columns: 46%;
-				align-items: start;
-			}
-			.ms-grid.ms-sw {
-				grid-auto-columns: 31%;
-				align-items: stretch;
-			}
-			.w-side-list {
-				grid-auto-columns: 31%;
-				align-items: stretch;
-			}
-			.sw::-webkit-scrollbar,
-			.ms-grid.ms-sw::-webkit-scrollbar,
-			.w-side-list::-webkit-scrollbar,
-			.p-tags.sw-tags::-webkit-scrollbar {
-				display: none;
-			}
-			.sw:focus-visible,
-			.ms-grid.ms-sw:focus-visible,
-			.w-side-list:focus-visible,
-			.p-tags.sw-tags:focus-visible {
-				outline: 2px solid var(--focus);
-				outline-offset: 2px;
-			}
-			.sw-card,
-			.ms-sw .ms-tile,
-			.w-side-list li {
-				scroll-snap-align: start;
-				border: 1px solid var(--line);
-				border-radius: 12px;
-				padding: 14px 16px;
-			}
-			.w-side-list li {
-				display: flex;
-				flex-direction: column;
-				gap: 4px;
-				padding: 14px 16px;
-			}
-			.sw-card .p-proj {
-				margin-top: 8px;
-				font-size: 15px;
-			}
-			.sw-lb {
-				margin: 0;
-				font-weight: 600;
-				font-size: 16px;
-			}
-			.sw-n {
-				font-family: 'JetBrains Mono', monospace;
-				font-weight: 400;
-				font-size: 12.5px;
-				color: var(--mut);
-			}
-			.sw-one .sw-txt {
-				margin: 0;
-				font-size: 15px;
-				line-height: 1.5;
-				color: var(--mut);
-				opacity: 1;
-			}
-			.ms-sw .ms-tile {
-				gap: 10px;
-			}
-			.ms-sw .ms-c {
-				max-width: none;
-			}
-			/* long pill lists: one line that scrolls sideways, fading at the edge */
-			.p-tags.sw-tags {
-				flex-wrap: nowrap;
-				max-width: none;
-				overflow-x: auto;
-				scrollbar-width: none;
-				overscroll-behavior-x: contain;
-				scroll-snap-type: x proximity;
-				padding-right: 24px;
-				-webkit-mask-image: linear-gradient(to right, #000 calc(100% - 32px), transparent);
-				mask-image: linear-gradient(to right, #000 calc(100% - 32px), transparent);
-			}
-			.p-tags.sw-tags li {
-				flex: none;
-				white-space: nowrap;
-				scroll-snap-align: start;
-			}
-			.sw-hint {
-				display: flex;
-				justify-content: space-between;
-				align-items: center;
-				margin: 8px 0 0;
-				font-family: 'JetBrains Mono', monospace;
-				font-size: 12.5px;
-				color: var(--mut);
-			}
-			.sw-arr {
-				color: var(--acc);
-			}
-			/* with JS, "swipe →", the arrows and the edge fade only show when the row really overflows (checked on load and resize) */
-			.js .sw-hint:not(.ovf) .sw-arr {
-				visibility: hidden;
-			}
-			.js .p-tags.sw-tags:not(.ovf) {
-				-webkit-mask-image: none;
-				mask-image: none;
-				padding-right: 0;
-			}
-			.sw-head {
-				display: flex;
-				justify-content: flex-start;
-				align-items: center;
-				gap: 6px;
-			}
-			.sw-head > .sw-arr,
-			.sw-head > .sw-ctl {
-				margin-left: auto;
-			}
-			/* inside the desktop panel, card text keeps card sizes (not the panel's 18px paragraph) */
-			.p-body .sw-hint {
-				margin: 14px 0 0;
-				font-size: 12.5px;
-				line-height: 1.4;
-				max-width: none;
-			}
-			.p-body .sw-lb {
-				margin: 0;
-				font-size: 16px;
-				line-height: 1.4;
-			}
-			.p-body .sw-one .sw-txt {
-				font-size: 15px;
-				max-width: none;
-			}
-			.sw-ctl {
-				display: none;
-				align-items: center;
-				gap: 10px;
-			}
-			.sw-btn {
-				width: 30px;
-				height: 30px;
-				display: grid;
-				place-items: center;
-				padding: 0;
-				border: 1px solid var(--line);
-				border-radius: 50%;
-				background: none;
-				color: var(--fg);
-				font:
-					16px/1 'JetBrains Mono',
-					monospace;
-				cursor: pointer;
-				transition:
-					border-color 0.2s,
-					opacity 0.2s;
-			}
-			.sw-btn:hover:not(:disabled) {
-				border-color: var(--acc);
-				color: var(--acc);
-			}
-			.sw-btn:disabled {
-				opacity: 0.3;
-				cursor: default;
-			}
-			.sw-btn:focus-visible,
-			.sw-dot:focus-visible {
-				outline: 2px solid var(--focus);
-				outline-offset: 2px;
-			}
-			.sw-dots {
-				display: flex;
-				gap: 2px;
-			}
-			.sw-dot {
-				width: 16px;
-				height: 24px;
-				padding: 0;
-				border: 0;
-				background: none;
-				cursor: pointer;
-				display: grid;
-				place-items: center;
-			}
-			.sw-dot::before {
-				content: '';
-				width: 7px;
-				height: 7px;
-				border-radius: 50%;
-				background: var(--line);
-				transition:
-					background 0.2s,
-					transform 0.2s;
-			}
-			.sw-dot:hover::before {
-				background: var(--stone);
-			}
-			.sw-dot[aria-current='true']::before {
-				background: var(--acc);
-				transform: scale(1.2);
-			}
-			@media (min-width: 861px) {
-				.js .sw-hint.ovf .sw-arr {
-					display: none;
-				}
-				.sw-head.ovf .sw-ctl {
-					display: inline-flex;
-				}
-				.pn .p-body .sw-hint {
-					margin-top: 14px;
-				}
-				/* Outcomes: label and line on the left, the hint and the row share the right column */
-				.ms-group {
-					row-gap: 0;
-				}
-				.ms-group > .ms-head {
-					grid-row: span 2;
-				}
-				.ms-group > .sw-hint,
-				.ms-group > .ms-grid {
-					grid-column: 2;
-				}
-				.ms-group > .sw-hint {
-					margin: 0 0 6px;
-				}
-			}
-			@media (max-width: 860px) {
-				/* phones: one card and a peek of the next; Outcomes and On the side bleed to the screen edge */
-				.ms-grid.ms-sw,
-				.w-side-list {
-					--gut: clamp(20px, 5vw, 64px);
-					margin-inline: calc(-1 * var(--gut));
-					padding-inline: var(--gut);
-					scroll-padding-inline: var(--gut);
-				}
-				.sw,
-				.ms-grid.ms-sw,
-				.w-side-list {
-					gap: 12px;
-				}
-				.sw {
-					grid-auto-columns: 82%;
-				}
-				.ms-grid.ms-sw {
-					grid-auto-columns: 64%;
-				}
-				.w-side-list {
-					grid-auto-columns: 72%;
-				}
-				.ms-sw .ms-n {
-					font-size: 30px;
-				}
-				/* tablet portrait (e.g. iPad 744–834px): narrower cards so 2–3 show at once */
-				@media (min-width: 600px) {
-					.sw {
-						grid-auto-columns: 46%;
-					}
-					.ms-grid.ms-sw {
-						grid-auto-columns: 30%;
-					}
-					.w-side-list {
-						grid-auto-columns: 40%;
-					}
-				}
-				.m-body .sw-hint {
-					margin: 6px 0 0;
-					font-size: 12.5px;
-					opacity: 1;
-				}
-				.m-body .sw-lb {
-					margin: 0;
-					font-size: 16px;
-					opacity: 1;
-				}
-				.m-body .sw-hint + .sw {
-					margin-top: 8px;
-				}
-			}
+			.m-body .sw-hint { margin: 6px 0 0; font-size: 12.5px; opacity: 1; }
+			.m-body .sw-lb { margin: 0; font-size: 16px; opacity: 1; }
+			.m-body .sw-hint + .sw { margin-top: 8px; }
+		}
 
 			@media (prefers-reduced-motion: reduce) {
 				.tl *,
@@ -1842,142 +1624,9 @@
 					</ul>
 				</section>
 
-				<section class="ms" id="milestones" aria-labelledby="ms-title">
-					<h2 class="ms-title" id="ms-title">Outcomes</h2>
-					<p class="ms-note">As of Oct 2026.</p>
-					<section class="ms-group" id="engineering" aria-labelledby="ms-engineering">
-						<div class="ms-head">
-							<h3 class="ms-lb" id="ms-engineering">engineering</h3>
-							<p class="ms-line">
-								Systems and teams that outlast me: documented, shared and handed over.
-							</p>
-						</div>
-						<p class="sw-hint" aria-hidden="true">
-							<span>9 outcomes</span><span class="sw-arr">swipe →</span>
-						</p>
-						<ul class="ms-grid ms-sw" role="list" tabindex="0" aria-label="engineering outcomes">
-							<li class="ms-tile">
-								<span class="ms-n">18% → 3%</span
-								><span class="ms-c"
-									>of deploys could break the live site while rolling out, before vs. after I
-									redesigned how changes ship</span
-								>
-							</li>
-							<li class="ms-tile">
-								<span class="ms-n">1h+ → ~5 min</span
-								><span class="ms-c"
-									>production deploy time after moving from Ansible on fixed servers to containers and
-									CI/CD, so shipping up to 10 times a day became routine</span
-								>
-							</li>
-							<li class="ms-tile">
-								<span class="ms-n ms-wrap">0 “works on my machine”</span
-								><span class="ms-c"
-									>bugs since dev, staging and production started running the exact same images</span
-								>
-							</li>
-							<li class="ms-tile">
-								<span class="ms-n">1 command</span
-								><span class="ms-c"
-									>to set up a dev machine on macOS, Linux or Windows: clone, run one script, the rest
-									lives in containers</span
-								>
-							</li>
-							<li class="ms-tile">
-								<span class="ms-n">&lt; 5 min</span
-								><span class="ms-c">of downtime across eight Kubernetes version upgrades</span>
-							</li>
-							<li class="ms-tile">
-								<span class="ms-n">40 min → secs</span
-								><span class="ms-c"
-									>to give every branch on staging its own copy of the database, so each change is
-									tested against realistic data</span
-								>
-							</li>
-							<li class="ms-tile">
-								<span class="ms-n ms-wrap">~20 years of data</span
-								><span class="ms-c"
-									>millions of records migrated into a two-way CRM sync, keeping sales and finance on
-									one source of truth</span
-								>
-							</li>
-							<li class="ms-tile">
-								<span class="ms-n">14 apps</span
-								><span class="ms-c">running on one shared platform, each deployed on its own</span>
-							</li>
-							<li class="ms-tile">
-								<span class="ms-n">10+ mentees</span
-								><span class="ms-c"
-									>engineers across four companies, from bootcamp juniors to senior hires</span
-								>
-							</li>
-						</ul>
-					</section>
-					<section class="ms-group" id="business" aria-labelledby="ms-business">
-						<div class="ms-head">
-							<h3 class="ms-lb" id="ms-business">business</h3>
-							<p class="ms-line">Tradeoffs explained in numbers — to engineers and to the CFO.</p>
-						</div>
-						<p class="sw-hint" aria-hidden="true">
-							<span>6 outcomes</span><span class="sw-arr">swipe →</span>
-						</p>
-						<ul class="ms-grid ms-sw" role="list" tabindex="0" aria-label="business outcomes">
-							<li class="ms-tile">
-								<span class="ms-n">8 figures</span
-								><span class="ms-c"
-									>yearly revenue of a business running on a platform I architect and operate</span
-								>
-							</li>
-							<li class="ms-tile">
-								<span class="ms-n">−30%</span><span class="ms-c">cloud bill in a single month</span>
-							</li>
-							<li class="ms-tile">
-								<span class="ms-n">~80%</span
-								><span class="ms-c"
-									>less spent on testing infrastructure, same coverage: refactored code, restructured
-									infrastructure, right-sized every service</span
-								>
-							</li>
-							<li class="ms-tile">
-								<span class="ms-n">−22%</span
-								><span class="ms-c">database cost in production on AWS</span>
-							</li>
-							<li class="ms-tile">
-								<span class="ms-n">~90%</span
-								><span class="ms-c">less load-balancer cost for preview environments</span>
-							</li>
-							<li class="ms-tile">
-								<span class="ms-n">3 days</span
-								><span class="ms-c"
-									>of the whole billing team’s manual work, done by one automation instead</span
-								>
-							</li>
-						</ul>
-					</section>
-					<section class="ms-group" id="ai" aria-labelledby="ms-ai">
-						<div class="ms-head">
-							<h3 class="ms-lb" id="ms-ai">ai</h3>
-							<p class="ms-line">LLMs in the product, agents for the team — shipped, not demoed.</p>
-						</div>
-						<ul class="ms-grid" role="list" tabindex="0" aria-label="ai outcomes">
-							<li class="ms-tile">
-								<span class="ms-n">MCP</span
-								><span class="ms-c"
-									>self-hosted server: the team asks an AI assistant about production data,
-									read-only</span
-								>
-							</li>
-							<li class="ms-tile">
-								<span class="ms-n">Agents</span
-								><span class="ms-c"
-									>in the daily dev loop; this site was designed and built with them</span
-								>
-							</li>
-						</ul>
-					</section>
-				</section>
+				<section class="ms" id="milestones" aria-labelledby="ms-title"><h2 class="ms-title" id="ms-title">Outcomes</h2><p class="ms-note">As of Oct 2026.</p><section class="ms-group" id="engineering" aria-labelledby="ms-engineering"><div class="ms-head"><h3 class="ms-lb" id="ms-engineering">engineering</h3><p class="ms-line">Systems and teams that outlast me: documented, shared and handed over.</p></div><p class="sw-hint" aria-hidden="true"><span>9 outcomes</span><span class="sw-arr">swipe →</span></p><ul class="ms-grid ms-sw" role="list" tabindex="0" aria-label="engineering outcomes"><li class="ms-tile"><span class="ms-n">18% → 3%</span><span class="ms-c">of deploys could break the live site while rolling out, before vs. after I redesigned how changes ship</span></li><li class="ms-tile"><span class="ms-n">1h+ → ~5 min</span><span class="ms-c">production deploy time after moving from Ansible on fixed servers to containers and CI/CD, so shipping up to 10 times a day became routine</span></li><li class="ms-tile"><span class="ms-n ms-wrap">0 “works on my machine”</span><span class="ms-c">bugs since dev, staging and production started running the exact same images</span></li><li class="ms-tile"><span class="ms-n">1 command</span><span class="ms-c">to set up a dev machine on macOS, Linux or Windows: clone, run one script, the rest lives in containers</span></li><li class="ms-tile"><span class="ms-n">&lt; 5 min</span><span class="ms-c">of downtime across eight Kubernetes version upgrades</span></li><li class="ms-tile"><span class="ms-n">40 min → secs</span><span class="ms-c">to give every branch on staging its own copy of the database, so each change is tested against realistic data</span></li><li class="ms-tile"><span class="ms-n">~20 years of data</span><span class="ms-c">millions of records migrated into a two-way CRM sync, keeping sales and finance on one source of truth</span></li><li class="ms-tile"><span class="ms-n">14 apps</span><span class="ms-c">running on one shared platform, each deployed on its own</span></li><li class="ms-tile"><span class="ms-n">10+ mentees</span><span class="ms-c">engineers across four companies, from bootcamp juniors to senior hires</span></li></ul></section><section class="ms-group" id="business" aria-labelledby="ms-business"><div class="ms-head"><h3 class="ms-lb" id="ms-business">business</h3><p class="ms-line">Tradeoffs explained in numbers — to engineers and to the CFO.</p></div><p class="sw-hint" aria-hidden="true"><span>6 outcomes</span><span class="sw-arr">swipe →</span></p><ul class="ms-grid ms-sw" role="list" tabindex="0" aria-label="business outcomes"><li class="ms-tile"><span class="ms-n">8 figures</span><span class="ms-c">yearly revenue of a business running on a platform I architect and operate</span></li><li class="ms-tile"><span class="ms-n">−30%</span><span class="ms-c">cloud bill in a single month</span></li><li class="ms-tile"><span class="ms-n">~80%</span><span class="ms-c">less spent on testing infrastructure, same coverage: refactored code, restructured infrastructure, right-sized every service</span></li><li class="ms-tile"><span class="ms-n">−22%</span><span class="ms-c">database cost in production on AWS</span></li><li class="ms-tile"><span class="ms-n">~90%</span><span class="ms-c">less load-balancer cost for preview environments</span></li><li class="ms-tile"><span class="ms-n">3 days</span><span class="ms-c">of the whole billing team’s manual work, done by one automation instead</span></li></ul></section><section class="ms-group" id="ai" aria-labelledby="ms-ai"><div class="ms-head"><h3 class="ms-lb" id="ms-ai">ai</h3><p class="ms-line">LLMs in the product, agents for the team — shipped, not demoed.</p></div><ul class="ms-grid" role="list" tabindex="0" aria-label="ai outcomes"><li class="ms-tile"><span class="ms-n">MCP</span><span class="ms-c">self-hosted server: the team asks an AI assistant about production data, read-only</span></li><li class="ms-tile"><span class="ms-n">Agents</span><span class="ms-c">in the daily dev loop; this site was designed and built with them</span></li></ul></section></section>
 
-				<p class="w-foot">
+			<p class="w-foot">
 					Full history on
 					<a href="https://www.linkedin.com/in/matheus-salmi/" target="_blank" rel="noopener"
 						>LinkedIn<span class="sr-only"> (opens in new tab)</span></a
@@ -1990,82 +1639,73 @@
 			</main>
 		</div>
 
-		<script>
-			/* Swipe rows: honest hints on every screen; arrows and dots on desktop. Without JS the rows still scroll. */
-			((root) => {
-				/* Swipe rows: mark the ones that really overflow (hint, edge fade); on desktop add arrows and one dot per page */
-				const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
-				const rows = [...root.querySelectorAll('.sw, .ms-sw, .sw-tags, .w-side-list')];
-				const pages = (r) =>
-					r.clientWidth ? Math.ceil((r.scrollWidth - r.clientWidth - 2) / r.clientWidth) + 1 : 1;
-				const page = (r) =>
-					r.scrollLeft >= r.scrollWidth - r.clientWidth - 2
-						? pages(r) - 1
-						: Math.round(r.scrollLeft / r.clientWidth);
-				const go = (r, left) => r.scrollTo({ left, behavior: reduced ? 'auto' : 'smooth' });
-				const sync = (r) => {
-					const c = r._ctl;
-					if (!c) return;
-					const n = pages(r);
-					const dots = c.querySelector('.sw-dots');
-					if (dots.children.length !== n) {
-						dots.replaceChildren(
-							...Array.from({ length: n }, (_, i) => {
-								const d = document.createElement('button');
-								d.type = 'button';
-								d.className = 'sw-dot';
-								d.setAttribute('aria-label', `Page ${i + 1} of ${n}`);
-								d.addEventListener('click', () => go(r, i * r.clientWidth));
-								return d;
-							}),
-						);
-					}
-					const p = page(r);
-					[...dots.children].forEach((d, i) => d.setAttribute('aria-current', String(i === p)));
-					c.querySelector('[data-d="-1"]').disabled = r.scrollLeft <= 2;
-					c.querySelector('[data-d="1"]').disabled = r.scrollLeft >= r.scrollWidth - r.clientWidth - 2;
-				};
-				rows.forEach((r) => {
-					const h = r.previousElementSibling;
-					if (!h || !(h.classList.contains('sw-hint') || h.classList.contains('p-tl'))) return;
-					const name = r.getAttribute('aria-label') || 'items';
-					const c = document.createElement('span');
-					c.className = 'sw-ctl';
-					c.innerHTML = `<button type="button" class="sw-btn" data-d="-1" aria-label="Previous: ${name}">‹</button><span class="sw-dots"></span><button type="button" class="sw-btn" data-d="1" aria-label="Next: ${name}">›</button>`;
-					c.querySelectorAll('.sw-btn').forEach((b) =>
-						b.addEventListener('click', () => go(r, r.scrollLeft + Number(b.dataset.d) * r.clientWidth)),
-					);
-					h.classList.add('sw-head');
-					h.appendChild(c);
-					r._ctl = c;
-					r._head = h;
-					let raf = 0;
-					r.addEventListener(
-						'scroll',
-						() => {
-							cancelAnimationFrame(raf);
-							raf = requestAnimationFrame(() => sync(r));
-						},
-						{ passive: true },
-					);
-				});
-				const mark = () =>
-					rows.forEach((r) => {
-						const o = r.scrollWidth > r.clientWidth + 1;
-						r.classList.toggle('ovf', o);
-						const h = r._head || r.previousElementSibling;
-						if (h && (h.classList.contains('sw-hint') || h.classList.contains('p-tl')))
-							h.classList.toggle('ovf', o);
-						sync(r);
-					});
-				(document.fonts ? document.fonts.ready : Promise.resolve()).then(mark);
-				if (window.ResizeObserver) {
-					const ro = new ResizeObserver(mark);
-					rows.forEach((r) => ro.observe(r));
-				} else {
-					addEventListener('resize', mark);
-				}
-			})(document);
-		</script>
+	<script>
+		/* Swipe rows: honest hints on every screen; arrows and dots on desktop. Without JS the rows still scroll. */
+		((root) => {
+	/* Swipe rows: mark the ones that really overflow (hint, edge fade); on desktop add arrows and one dot per page */
+	const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches
+	const rows = [...root.querySelectorAll('.sw, .ms-sw, .sw-tags, .w-side-list')]
+	/* Pages are spread evenly from start to end, at most one row width apart: every dot is reachable, nothing is skipped,
+	   and the last dot is the end (a fixed one-width step left a near-empty last page, so "next" jumped from the 1st dot to the 3rd) */
+	const max = (r) => Math.max(0, r.scrollWidth - r.clientWidth)
+	const pages = (r) => (r.clientWidth && max(r) > 2 ? 1 + Math.max(1, Math.ceil(max(r) / r.clientWidth - 0.2)) : 1) /* steps of at most one width; a last sliver under 20% doesn't get its own dot */
+	const step = (r) => max(r) / Math.max(1, pages(r) - 1)
+	const page = (r) => Math.min(pages(r) - 1, Math.round(r.scrollLeft / (step(r) || 1)))
+	const go = (r, i) => r.scrollTo({ left: Math.max(0, Math.min(pages(r) - 1, i)) * step(r), behavior: reduced ? 'auto' : 'smooth' })
+	const sync = (r) => {
+		const c = r._ctl
+		if (!c) return
+		const n = pages(r)
+		const dots = c.querySelector('.sw-dots')
+		if (dots.children.length !== n) {
+			dots.replaceChildren(...Array.from({ length: n }, (_, i) => {
+				const d = document.createElement('button')
+				d.type = 'button'
+				d.className = 'sw-dot'
+				d.setAttribute('aria-label', `Page ${i + 1} of ${n}`)
+				d.addEventListener('click', () => go(r, i))
+				return d
+			}))
+		}
+		const p = page(r)
+		;[...dots.children].forEach((d, i) => d.setAttribute('aria-current', String(i === p)))
+		c.querySelector('[data-d="-1"]').disabled = r.scrollLeft <= 2
+		c.querySelector('[data-d="1"]').disabled = r.scrollLeft >= max(r) - 2
+	}
+	rows.forEach((r) => {
+		const h = r.previousElementSibling
+		if (!h || !(h.classList.contains('sw-hint') || h.classList.contains('p-tl'))) return
+		const name = r.getAttribute('aria-label') || 'items'
+		const c = document.createElement('span')
+		c.className = 'sw-ctl'
+		c.innerHTML = `<button type="button" class="sw-btn" data-d="-1" aria-label="Previous: ${name}">‹</button><span class="sw-dots"></span><button type="button" class="sw-btn" data-d="1" aria-label="Next: ${name}">›</button>`
+		c.querySelectorAll('.sw-btn').forEach((b) => b.addEventListener('click', () => go(r, page(r) + Number(b.dataset.d))))
+		h.classList.add('sw-head')
+		h.appendChild(c)
+		r._ctl = c
+		r._head = h
+		let raf = 0
+		r.addEventListener('scroll', () => {
+			cancelAnimationFrame(raf)
+			raf = requestAnimationFrame(() => sync(r))
+		}, { passive: true })
+	})
+	const mark = () =>
+		rows.forEach((r) => {
+			const o = r.scrollWidth > r.clientWidth + 1
+			r.classList.toggle('ovf', o)
+			const h = r._head || r.previousElementSibling
+			if (h && (h.classList.contains('sw-hint') || h.classList.contains('p-tl'))) h.classList.toggle('ovf', o)
+			sync(r)
+		})
+	;(document.fonts ? document.fonts.ready : Promise.resolve()).then(mark)
+	if (window.ResizeObserver) {
+		const ro = new ResizeObserver(mark)
+		rows.forEach((r) => ro.observe(r))
+	} else {
+		addEventListener('resize', mark)
+	}
+})(document)
+	</script>
 	</body>
 </html>
