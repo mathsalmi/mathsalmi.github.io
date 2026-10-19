@@ -61,9 +61,15 @@ jobs:
                   echo "|---|---|---|---|---|---|" >> "$GITHUB_STEP_SUMMARY"
                   for page in / /work/ /404.html; do
                       name=$(echo "$page" | tr -dc 'a-z0-9'); name=${name:-home}
-                      npx --yes lighthouse@13.5.0 "http://localhost:8000$page" $preset \
-                          --chrome-flags="--headless=new --no-sandbox --blink-settings=preferredColorScheme=$pref" \
-                          --output=json --output=html --output-path="reports/$name" --quiet
+                      # 3 runs, keep the one with the median Performance: runner CPU noise moves Total Blocking Time a lot
+                      for run in 1 2 3; do
+                          npx --yes lighthouse@13.5.0 "http://localhost:8000$page" $preset \
+                              --chrome-flags="--headless=new --no-sandbox --blink-settings=preferredColorScheme=$pref" \
+                              --output=json --output=html --output-path="reports/$name-$run" --quiet
+                      done
+                      median=$(for run in 1 2 3; do echo "$(jq '.categories.performance.score' "reports/$name-$run.report.json") $run"; done | sort -n | sed -n 2p | cut -d' ' -f2)
+                      for ext in json html; do mv "reports/$name-$median.report.$ext" "reports/$name.report.$ext"; done
+                      rm -f reports/"$name"-?.report.*
                       json="reports/$name.report.json"
                       score() { jq -r ".categories[\"$1\"].score // 0 | . * 100 | round" "$json"; }
                       perf=$(score performance); a11y=$(score accessibility); bp=$(score best-practices); seo=$(score seo); agent=$(score agentic-browsing)
