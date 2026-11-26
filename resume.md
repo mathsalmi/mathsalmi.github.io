@@ -24,7 +24,7 @@ Products: startchurch.com, Admin Console, StartSITES, Kingdom Steward, StartCHUR
 - Own the architecture and day-to-day operation of every product above.
 - Re-platformed everything over several years, alongside product work: DigitalOcean → AWS, Ansible and Vagrant → Docker and Kubernetes, Bitbucket → GitHub with CI and tests on every push.
 - Split a single all-or-nothing deploy into independent apps that scale horizontally and deploy with zero downtime; dev, staging and production run the exact same images.
-- Upgraded the core stack from Symfony 3.4 to 6.4 and PHP 8.3, and legacy views to React and TypeScript; ported Kingdom Steward and StartCHURCH University from Zend to Symfony 6 with Claude Code (rolling out).
+- Upgraded the core stack from Symfony 3.4 to 6.4 and PHP 8.5, and legacy views to React and TypeScript; ported Kingdom Steward and StartCHURCH University from Zend to Symfony 6 with Claude Code (rolling out).
 - Built sc, the team’s CLI: one command sets up a dev machine on macOS, Linux or Windows and standardizes daily work.
 - Co-designed a microservices platform prototype with single sign-on (Keycloak) across legacy and current Symfony apps and Next.js frontends (2020–2021).
 
@@ -54,6 +54,12 @@ Jul 2017 – May 2022 · remote
 - Embedded in US client teams: Tempo (Scalable Path’s showcase site), Timelinely, The Mission Zone and StartCHURCH.
 - Built The Mission Zone’s MVP single-handedly, mentoring a junior developer along the way (2018–2019).
 - Placed with StartCHURCH, which hired me directly in 2022.
+
+### Yaap Up (US) — Software Developer
+
+May 2015 · remote
+
+- First job for a US company, fully remote: one month on a data-analysis platform, alongside IEL-GO.
 
 ### Instituto Euvaldo Lodi (IEL-GO) — Technical Architect
 

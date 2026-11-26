@@ -55,7 +55,7 @@ The same facts are repeated across many files. When one changes, update **all** 
 
 - Terminology (US audience): visible text says **Résumé** (with accents: it can't be read as the verb "resume"); URLs and file names say `resume` (no accents). Never "CV" or "curriculum vitae", which in the US means a long academic document.
 - `resume.md` is the source. `resume.pdf` must say the same thing (A4); regenerate it whenever `resume.md` changes.
-- `resume.pdf` is printed from an HTML layout with Chromium; that HTML is not in this repo.
+- `resume.pdf` is printed from an HTML layout with Chromium by a local script in `.resume-build/` (listed in `.git/info/exclude`, not in this repo).
 - `llms-full.txt` = `llms.txt` + `---` + the body of `resume.md` (from `## Experience` on). Keep both halves identical to their sources.
 
 ### Pages and dates
