@@ -434,6 +434,16 @@
 			.sd-name {
 				font-weight: 600;
 			}
+			/* a linked project: the whole card is the touch target */
+			.w-side-list li:has(a.sd-name) {
+				position: relative;
+			}
+			a.sd-name::after {
+				content: '';
+				position: absolute;
+				inset: 0;
+				border-radius: 12px;
+			}
 			.sd-txt {
 				color: var(--mut);
 			}
@@ -1858,7 +1868,7 @@
 
 				<section class="w-side" aria-labelledby="side-title">
 					<h2 class="w-side-lb" id="side-title">On the side</h2>
-					<p class="sw-hint" aria-hidden="true"><span>4 projects</span><span class="sw-arr">swipe →</span></p>
+					<p class="sw-hint" aria-hidden="true"><span>5 projects</span><span class="sw-arr">swipe →</span></p>
 					<ul class="w-side-list" role="list" tabindex="0" aria-label="Side projects">
 						<li>
 							<span class="sd-yr">2017–2018</span><span class="sd-name">SimUEG</span
@@ -1884,6 +1894,15 @@
 						<li>
 							<span class="sd-yr">2024</span><span class="sd-name">Wonder Journal</span
 							><span class="sd-txt">Short contribution to a web and mobile app (Laravel, Inertia).</span>
+						</li>
+						<li>
+							<span class="sd-yr">2026</span
+							><a class="sd-name" href="https://sift.msalmi.com/" target="_blank" rel="noopener"
+								>Sift<span class="sr-only"> (opens in new tab)</span></a
+							><span class="sd-txt"
+								>Open-source VS Code extension: turns a large set of uncommitted, often AI-written
+								changes into reviewed, atomic commits, with the AI of your choice.</span
+							>
 						</li>
 					</ul>
 				</section>

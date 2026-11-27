@@ -84,8 +84,9 @@ Jul 2007 – Oct 2012 · Anápolis, Brazil
 - First job: web applications for social programs of a UN-partner NGO, reaching young people across Brazil: ODM Universidades, Voz dos Adolescentes, Rejupe, PPCAAM (federal program, Human Rights Secretariat) and the IIDAC website.
 - Worked alongside UN Volunteers from five countries.
 
-## Freelance
+## Projects and freelance
 
+- **Sift (2026):** open-source VS Code extension that turns AI-written changes into reviewed, atomic commits.
 - **SAZ Saúde (2022):** designed the health-benefits platform’s architecture from scratch (Laravel API, Next.js, Docker, CI/CD) and handed it over to their internal dev team.
 - **SimUEG (2017–2018):** indicators and monitoring system for Universidade Estadual de Goiás.
 - **Emigh Livestock (2023), Wonder Journal (2024):** short contributions.

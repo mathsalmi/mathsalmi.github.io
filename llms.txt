@@ -19,6 +19,10 @@ Contact: mathsalmi@gmail.com.
 - [Site](https://msalmi.com/): profile
 - [Work](https://msalmi.com/work/): career timeline, projects per company, and outcomes
 
+## Projects
+
+- [Sift](https://sift.msalmi.com/): open-source VS Code extension that turns a large set of uncommitted, often AI-written changes into reviewed, atomic commits, with the AI of your choice
+
 ## Elsewhere
 
 - [LinkedIn](https://www.linkedin.com/in/matheus-salmi/): professional profile
